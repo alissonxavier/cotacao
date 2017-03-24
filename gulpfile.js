@@ -36,7 +36,11 @@
                 folder: {
                     app: {
                         assets: {
-                            base: './assets'
+                            base: 
+                                [
+                                    './assets/fonts',
+                                    './assets/images'
+                                ]
                         },
 
                         vendor: {
@@ -95,8 +99,12 @@
                             './templates/**/*.html'
                         ],
                         js: [
+                            '!./assets/config/',
+                            '!./assets/config/**',
                             './assets/**/*.js'
-                        ]
+                        ],
+                        config: './assets/config/',
+                        css : './assets/css/*.css'
                     },
 
                 }
@@ -105,7 +113,7 @@
             filename: {
                 'app': {
                     'js': 'app.js',
-                    'css': 'style.css'
+                    'css': 'app.css'
                 },
 
                 'vendor': {
@@ -211,7 +219,7 @@
      */
     gulp.task('app', function (callback) {
         //,'app:components'
-        gulpConfig.run.sequence('translate:json','app:js', 'app:html', 'app:subhtml', 'app:assets', 'jqui-images', callback);
+        gulpConfig.run.sequence('translate:json','app:js','app:css', 'app:html', 'app:subhtml', 'app:assets', 'jqui-images', callback);
     });
 
     gulp.task('app:js', function () {
@@ -221,7 +229,7 @@
         var configPath = argv.environment || 'dev';
 
         console.log('Building in ' + configPath + ' mode');
-
+  
         return streamqueue({objectMode: true},
             gulp.src(gulpConfig.path.files.app.js),
             gulp.src(gulpConfig.path.files.app.config + '*.js'),
@@ -257,6 +265,15 @@
 		    )
 		    .pipe(gulp.dest(gulpConfig.path.folder.app.dist.js))
 		});
+
+    gulp.task('app:css', function () {
+        console.log(gulpConfig.path.files.app.css);
+        return gulp.src(gulpConfig.path.files.app.css)
+            .pipe(gulpConfig.run.concat(gulpConfig.filename.app.css))
+            .on('error', gulpConfig.errorthrow)
+            .pipe(gulp.dest(gulpConfig.path.folder.app.dist.css))
+            .on('error', gulpConfig.errorthrow);
+    });
 
     gulp.task('app:html', function () {
         //  Move o template principal da aplicação
