@@ -1,0 +1,12 @@
+﻿<label class="inputPlace__label" for="{{nameInput}}">
+    {{placeholder}}
+    <i class="fa fa-check icon--green" ng-show="!message && valid"></i>
+    <i class="fa fa-close icon--red" ng-show="message"></i>
+    <span class="icon--red" ng-show="message">
+        {{message}}
+    </span>
+</label>
+<input type="text" readonly value="" class="inputPlace__input" autocomplete="off" id="{{nameInput}}" ng-model="ngModel" ng-focus="outFocus = false" ng-blur="outFocus = true" ng-init="outFocus = false" maxlength="{{maxlength}}" />
+<button class="button--location pull-right" type="button">
+    <i class="fa fa-location-arrow "></i>
+</button>
