@@ -29,7 +29,8 @@
                 sequence: require('run-sequence'),
                 sourcemaps: require('gulp-sourcemaps'),
             	minify: require('gulp-minify'),
-            	htmlreplace: require('gulp-html-replace')
+            	htmlreplace: require('gulp-html-replace'),
+                spsave: require("spsave").spsave
                 },
 
             path: {
@@ -393,6 +394,42 @@
             .pipe(gulp.dest('dist/css/images'));
     });
 
+    /*
+    * Upload para o sharepoint
+    *
+    */
+    gulp.task('upload-to-sp', function(){
+        
+        var argv = require('yargs').argv;
+        var config = require('./gulp.config')();
+        
+        var configPath = argv.environment || 'dev';
+        var user = config.UserConfig[configPath];
+        var spFolder = config.SPConfig.UploadSPFolderJS
+    
+        var creds = {
+            username: user.userName,
+            password: user.passWord,
+            domain: user.domain
+        };
+        var fileOpts =  {
+                glob: 'dist/**/*.*',
+                base: 'dist',
+                folder: 'SiteAssets'
+        };
+
+        var coreOpts = {
+            siteUrl: user.siteUrl
+        };
+
+        gulpConfig.run.spsave(coreOpts, creds, fileOpts)
+        .then(function(data){
+            console.log('File uploaded!');
+        })
+        .catch(function(err){
+            console.log('Error occurred');
+        });
+    });
 
     /*
      *

@@ -24,7 +24,9 @@
     "gulp-rimraf": "^0.1.1",
     "gulp-ruby-sass": "^1.0.5",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-spsave": "^3.0.0",
     "run-sequence": "^1.1.2",
+    "spsave": "^3.0.2",
     "streamqueue": "^1.1.1",
     "yargs": "^4.2.0"
   },
