@@ -6,4 +6,4 @@
         {{message}}
     </span>
 </label>
-<input type="text" class="inputPlace__input" autocomplete="off" id="{{nameInput}}" ng-model="ngModel" ng-focus="outFocus = false" ng-blur="outFocus = true" ng-init="outFocus = false" maxlength="{{maxlength}}" mask="99999-999"/>
+<input type="text" class="inputPlace__input" autocomplete="off" id="{{nameInput}}" ng-model="ngModel" ng-focus="outFocus = false" ng-blur="outFocus = true" ng-init="outFocus = false" maxlength="{{maxlength}}" mask="99999-999"  restrict="reject" ng-disabled="isDisabled"/>

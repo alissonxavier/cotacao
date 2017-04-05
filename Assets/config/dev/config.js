@@ -20,7 +20,7 @@
     .module('app.config', [])
     .constant('APP_CONFIG', {
         'SERVICO': {
-            'WEBSERVICE': 'https://servicosdev2.caixaseguros.intranet/',
+            'WEBSERVICE': 'http://servicossodev.caixaseguros.intranet',
         }
     });
 

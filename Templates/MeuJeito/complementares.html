@@ -1,0 +1,479 @@
+<div class="container-fluid header header--max">
+    <div class="header__svg--left">
+        <img src="../../Assets/images/fundo_grafismo_esquerda.svg" />
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <timeline passo="3"></timeline>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="header__logo header__text--margintop">
+                        <!-- Generator: Adobe Illustrator 20.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                        <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 189.8 51" style="enable-background:new 0 0 189.8 51;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0 {
+                                fill: #FFFFFF;
+                            }
+
+                            .st1 {
+                                font-family: 'Alright Sans';
+                                font-weight: 300;
+                                font-style: normal;
+                            }
+
+                            .st2 {
+                                font-size: 16px;
+                            }
+
+                            .st3 {
+                                font-family: 'Alright Sans';
+                                font-weight: 500;
+                            }
+
+                            .st4 {
+                                font-size: 22px;
+                            }
+
+                            .st5 {
+                                fill: none;
+                                stroke: #FFFFFF;
+                                stroke-miterlimit: 10;
+                            }
+</style>
+                        <text transform="matrix(1 0 0 1 57.2804 19.23)"><tspan x="0" y="0" class="st0 st1 st2">Plan</tspan><tspan x="32.2" y="0" class="st0 st1 st2">o</tspan></text>
+                        <text transform="matrix(1 0 0 1 57.2804 41.23)"><tspan x="0" y="0" class="st0 st3 st4">Do </tspan><tspan x="35.1" y="0" class="st0 st3 st4">s</tspan><tspan x="46.2" y="0" class="st0 st3 st4">eu jei</tspan><tspan x="102.5" y="0" class="st0 st3 st4">t</tspan><tspan x="111.6" y="0" class="st0 st3 st4">o</tspan></text>
+                        <polygon class="st5" points="14.1,41.2 26.1,41.2 26.1,31.5 31,31.5 31,41.2 43,41.2 43,26.7 47.8,26.7 28.6,7.2 9.3,26.7
+	                                14.1,26.7 " />
+                                </svg>
+                    </div>
+
+                    <h1 class="header__text--white text-center">
+                        Estamos quase lá {{dadosPessoais.nome}}!
+                    </h1>
+                    <h4 class="header__text--white text-center">
+                        Agora precisamos de alguns dados pessoais. É rapidinho.
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header__svg--right">
+        <img src="../../Assets/images/fundo_grafismo_direita.svg" />
+    </div>
+</div>
+<div class="section container--white">
+    <form novalidate ng-submit="validarDadosComplementares()">
+        <div class="container container--main" ng-controller="assistenciasCtrl">
+            <div class="row box--margintop--20">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <input-nome placeholder="Nome Completo" type="text" name="nomeCompleto" ng-model="dadosComplementares.nomeCompleto" maxlength="40" valid="error.nomeCompleto.valid" message="{{error.nomeCompleto.message}}" />
+                    </div>
+                </div>
+                <div class="row box--margin--20">
+                    <div class="col-md-4 col-md-offset-4">
+                        <input-cpf placeholder="CPF" name="cpf" ng-model="dadosComplementares.cpf" maxlength="40" valid="error.cpf.valid" message="{{error.cpf.message}}" />
+                    </div>
+                </div>
+                <div class="row box--margin--20">
+                    <div class="col-md-4 col-md-offset-4">
+                        <input-date placeholder="Data de nascimento" name="dataNascimento" ng-model="dadosComplementares.dataNascimento" maxlength="40" valid="error.dataNascimento.valid" message="{{error.dataNascimento.message}}" />
+                    </div>
+                </div>
+                <div class="row box--margin--20">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h5 class="gray--light">
+                                    Sexo
+                                </h5>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="col-md-1 radio">
+                                    <input type="radio" name="sexo" id="masculino" ng-model="dadosComplementares.sexo" ng-value="'Masculino'" />
+                                    <label for="masculino"></label>
+                                </div>
+                                <div class="col-md-9 font--regular radio__label">
+                                    Masculino
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="col-md-1 radio">
+                                    <input type="radio" name="sexo" id="feminino" ng-model="dadosComplementares.sexo" ng-value="'Feminino'" />
+                                    <label for="feminino"></label>
+                                </div>
+                                <div class="col-md-9 font--regular radio__label">
+                                    Feminino
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row box--margin--20">
+                    <div class="col-md-4 col-md-offset-4">
+                        <input-nome placeholder="Profissão" name="profissao" ng-model="dadosComplementares.profissao" maxlength="40" valid="error.profissao.valid" message="{{error.profissao.message}}" />
+                    </div>
+                </div>
+                <div class="row box--margin--20">
+                    <div class="col-md-4 col-md-offset-4">
+                        <select class="font--medium gray--light" id="renda" ng-model="dadosComplementares.faixaDeRenda" ng-options="renda for renda in faixaDeRenda" ng-class="{'alertInput' : !error.faixaDeRenda.valid}" ng-init="error.faixaDeRenda.valid = true">
+                            <option selected value="">
+                                Faixa de renda
+                            </option>
+                        </select>
+                        <label class="select--round" for="renda">
+                            <i class="fa fa-angle-down"></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="col-md-1 checkbox">
+                            <input type="checkbox" id="proprietario" ng-true-value="'Não'" ng-model="dadosComplementares.eProprietario" />
+                            <label for="proprietario"></label>
+                        </div>
+                        <div class="col-md-11 checkbox__label">
+                            <label for="proprietario" class="font--light">
+                                Não sou o proprietário da casa/apartamento.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row box--margintop--20" ng-if="dadosComplementares.eProprietario == 'Não'">
+                    <div class="col-md-4 col-md-offset-4">
+                        <input-nome placeholder="Nome do proprietário" type="text" name="nomeCompleto" ng-model="dadosComplementares.proprietario.nomeCompleto" maxlength="40" valid="error.nomeCompletoProprietario.valid" message="{{error.nomeCompletoProprietario.message}}" />
+                    </div>
+                </div>
+                <div class="row box--margin--20" ng-if="dadosComplementares.eProprietario == 'Não'">
+                    <div class="col-md-4 col-md-offset-4">
+                        <input-cpf placeholder="CPF do proprietário" name="cpf" ng-model="dadosComplementares.proprietario.cpf" maxlength="40" valid="error.cpfProprietario.valid" message="{{error.cpfProprietario.message}}" />
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <hr class="hr--gray hr--margintop" />
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h3 class="title font--regular">
+                                Veja se as informações estão corretas e preencha o que está faltando.
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row box--margintop--20">
+                        <div class="col-md-4 col-md-offset-4">
+                            <input-email placeholder="E-mail" type="text" name="email" ng-model="dadosComplementares.email" maxlength="80" valid="error.email.valid" message="{{error.email.message}}" />
+                        </div>
+                    </div>
+                    <div class="row box--margintop--20">
+                        <div class="col-md-4 col-md-offset-4">
+                            <input-telefone placeholder="Telefone" name="telefone" ng-model="dadosComplementares.telefone" maxlength="80" valid="error.telefone.valid" message="{{error.telefone.message}}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <hr class="hr--gray hr--margintop" />
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h3 class="title font--regular">
+                                O endereço da casa ou apartamento a ser segurado está correto?<br />
+                                Se estiver faltando algo é só completar.
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="row box--margintop--20">
+                        <div class="col-md-4 col-md-offset-4">
+                            <input-cep placeholder="CEP" type="text" name="email" ng-model="dadosPessoais.cep" maxlength="80" valid="error.cep.valid" message="{{error.cep.message}}" is-disabled="true" />
+                        </div>
+                    </div>
+                    <div class="row box--margintop--20">
+                        <div class="col-md-4 col-md-offset-4">
+                            <input-nome placeholder="Endereço" name="endereco" ng-model="dadosPessoais.endereco.endereco" maxlength="80" valid="error.endereco.valid" message="{{error.endereco.message}}" is-disabled="true" />
+                        </div>
+                    </div>
+                    <div class="row box--margintop--20">
+                        <div class="col-md-4 col-md-offset-4">
+                            <div class="col-md-4 box--nopadding">
+                                <input-nome placeholder="Número" name="numero" ng-model="dadosPessoais.numero" maxlength="80" valid="error.numero.valid" message="{{error.numero.message}}" />
+                            </div>
+                            <div class="col-md-8 box--nopadding--right">
+                                <input-nome placeholder="Complemento" name="complemento" ng-model="dadosPessoais.complemento" maxlength="80" valid="error.complemento.valid" message="{{error.complemento.message}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row box--margintop--20">
+                        <div class="col-md-4 col-md-offset-4">
+                            <input-nome placeholder="Bairro" name="Bairro" ng-model="dadosPessoais.endereco.bairro" maxlength="80" valid="error.bairro.valid" message="{{error.bairro.message}}" is-disabled="true" />
+                        </div>
+                    </div>
+                    <div class="row box--margintop--20">
+                        <div class="col-md-4 col-md-offset-4">
+                            <div class="col-md-8 box--nopadding">
+                                <input-nome placeholder="Cidade" name="cidade" ng-model="dadosPessoais.endereco.cidade" maxlength="80" valid="error.cidade.valid" message="{{error.cidade.message}}" is-disabled="true" />
+                            </div>
+                            <div class="col-md-4 box--nopadding--right">
+                                <select class="font--medium gray--light" id="renda" ng-model="complementares.estado" disabled>
+                                    <option selected value="">DF</option>
+                                    <option ng-repeat="estado in estados" value="{{estado.ID}}">
+                                        {{estado.Sigla}}
+                                    </option>
+                                </select>
+                                <label class="select--round" for="renda">
+                                    <i class="fa fa-angle-down"></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-md-offset-4">
+                            <div class="box--margin--20">
+                                <div class="col-md-1 checkbox">
+                                    <input type="checkbox" id="correspondencia" ng-true-value="'Sim'" ng-model="dadosComplementares.correspondencia" />
+                                    <label for="correspondencia"></label>
+                                </div>
+                                <div class="col-md-11 checkbox__label">
+                                    <label for="correspondencia" class="font--light">
+                                        O endereço de correspondencia é diferente do endereço acima.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-if="dadosComplementares.correspondencia">
+                        <div class="row box--margintop--20">
+                            <div class="col-md-4 col-md-offset-4">
+                                <input-cep placeholder="CEP" type="text" name="cep" ng-model="dadosComplementares.correspondencia.cep" maxlength="80" valid="error.cep.valid" message="{{error.cep.message}}" />
+                            </div>
+                        </div>
+                        <div class="row box--margintop--20">
+                            <div class="col-md-4 col-md-offset-4">
+                                <input-nome placeholder="Endereço" name="endereco" ng-model="dadosComplementares.correspondencia.endereco" maxlength="80" valid="error.endereco.valid" message="{{error.endereco.message}}" is-disabled="true" />
+                            </div>
+                        </div>
+                        <div class="row box--margintop--20">
+                            <div class="col-md-4 col-md-offset-4">
+                                <div class="col-md-4 box--nopadding">
+                                    <input-nome placeholder="Número" name="numero" ng-model="dadosComplementares.correspondencia.numero" maxlength="80" valid="error.numero.valid" message="{{error.numero.message}}" />
+                                </div>
+                                <div class="col-md-8 box--nopadding--right">
+                                    <input-nome placeholder="Complemento" name="complemento" ng-model="dadosComplementares.correspondencia.complemento" maxlength="80" valid="error.complemento.valid" message="{{error.complemento.message}}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row box--margintop--20">
+                            <div class="col-md-4 col-md-offset-4">
+                                <input-nome placeholder="Bairro" name="Bairro" ng-model="dadosComplementares.correspondencia.bairro" maxlength="80" valid="error.bairro.valid" message="{{error.bairro.message}}" is-disabled="true" />
+                            </div>
+                        </div>
+                        <div class="row box--margintop--20">
+                            <div class="col-md-4 col-md-offset-4">
+                                <div class="col-md-8 box--nopadding">
+                                    <input-nome placeholder="Cidade" name="cidade" ng-model="dadosComplementares.correspondencia.estado" maxlength="80" valid="error.cidade.valid" message="{{error.cidade.message}}" is-disabled="true" />
+                                </div>
+                                <div class="col-md-4 box--nopadding--right">
+                                    <select class="font--medium gray--light" id="renda" ng-model="complementares.estado" disabled>
+                                        <option selected value="">UF</option>
+                                        <option ng-repeat="estado in estados" value="{{estado.ID}}">
+                                            {{estado.Sigla}}
+                                        </option>
+                                    </select>
+                                    <label class="select--round" for="renda">
+                                        <i class="fa fa-angle-down"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <hr class="hr--gray hr--margintop" />
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h3 class="title font--regular">
+                                Para continuar sua compra, crie uma senha. Futuramente você usará<br />
+                                essa senha e o seu CPF para acessar a sua conta na Caixa Seguradora.
+                            </h3>
+                            <h5 class="title font--regular box--margintop--20">
+                                A senha deve ter no mínimo <span class="font--medium">8 caracteres</span>, contendo letras maiúsculas, minúsculas, números ou símbolos.
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row box--margintop--20">
+                        <div class="col-md-4 col-md-offset-4">
+                            <input-password placeholder="Senha" type="password" name="senha" ng-model="dadosPessoais.senha" maxlength="80" valid="error.senha.valid" message="{{error.senha.message}}" />
+                        </div>
+                    </div>
+                    <div class="row box--margintop--20">
+                        <div class="col-md-4 col-md-offset-4">
+                            <input-password placeholder="Repetir senha" type="password" name="checkSenha" ng-model="dadosPessoais.checkPassword" maxlength="80" valid="error.checkPassword.valid" message="{{error.checkPassword.message}}" />
+                        </div>
+                    </div>
+                    <div class="row box--margin--20 text-center">
+                        <h5 class="title font--regular roxo box--margintop--20">
+                            Se você já é cliente, para continuar a compra, acesse sua conta <span class="font--medium"><u>aqui</u></span>.
+                        </h5>
+                    </div>
+                    <div class="row box--margin--20 text-center">
+                        <h5 class="title font--regular box--margintop--20">
+                            Quer receber informações e promoções da <span class="font--medium">Caixa Seguradora</span>?
+                        </h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <div class="row">
+                                <div class="col-md-1 radio">
+                                    <input type="radio" name="infos" id="option1" />
+                                    <label for="option1"></label>
+                                </div>
+                                <div class="col-md-11 checkbox__label">
+                                    <label for="option1" class="font--light">
+                                        Sim, apenas por e-mail
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 radio">
+                                    <input type="radio" name="infos" id="option2" />
+                                    <label for="option2"></label>
+                                </div>
+                                <div class="col-md-11 checkbox__label">
+                                    <label for="option2" class="font--light">
+                                        Sim, apenas por SMS
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 radio">
+                                    <input type="radio" name="infos" id="option3" />
+                                    <label for="option3"></label>
+                                </div>
+                                <div class="col-md-11 radio__label">
+                                    <label for="option3" name="infos" class="font--light">
+                                        Sim, por e-mail e SMS
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 radio">
+                                    <input type="radio" name="infos" id="option4" />
+                                    <label for="option4"></label>
+                                </div>
+                                <div class="col-md-11 radio__label">
+                                    <label for="option4" class="font--light">
+                                        Não quero receber
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row background--gray">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 box--margin">
+                            <div class="condicoes">
+                                <div class="col-md-4 col-md-offset-4 text-center">
+                                    <h2 class="title font--regular">
+                                        Condições gerais
+                                    </h2>
+                                </div>
+                                <div class="col-md-10 col-md-offset-1 font--regular">
+                                    <h6 class="font--medium gray">Cláusula 1º - Informações preliminares</h6>
+                                    1.1 A aceitação deste seguro estará sujeita à análise do risco.
+                                    1.2 O registro deste plano na SUSEP não implica, por parte da Autarquia, incentivo ou recomendação à sua comercialização. <br />
+                                    1.3 O Segurado poderá consultar a situação cadastral de seu corretor de seguros no site www.susep.gov. br por meio do número de seu registro na SUSEP, nome completo, CNPJ ou CPF. <br />
+                                    1.4 Este plano de seguro é garantido pela Caixa Seguradora S.A. CNPJ 34.020.354/0001-10 e está registrado na SUSEP sob no 15414.001780/2005-33. <br />
+                                    1.5 Este seguro poderá ser cancelado no prazo de 7 (sete) dias corridos, a contar da data da adesão ao contrato, com direito a devolução do prêmio pago, monetariamente atualizado.                                     <h6 class="font--medium gray">Cláusula 2º - Informações preliminares</h6>
+
+                                    2.1 O seguro Residencial da CAIXA destina-se a proprietários ou locatário de imóveis estritamente residenciais, construído com estrutura integral (colunas, vigas
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <div class="col-md-1 checkbox">
+                                <input type="checkbox" id="term" />
+                                <label for="term"></label>
+                            </div>
+                            <div class="col-md-8 checkbox__label">
+                                <label for="term" class="font--light" style="margin-top:-10px;">
+                                    Aceito os termos e condições
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row box--margin">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <button class="button--background">
+                        Ver resumo do plano e pagar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<footer class="footer">
+    <div class="row hidden-xs">
+        <div class="col-md-2">
+            <img src="../Assets/images/logo-caixaseguradora.png" alt="Logotipo Caixa Seguradora e sua tipografia" />
+        </div>
+        <div class="col-md-7">
+            <h6 class="font--regular">
+                &copy; Copyrights 2017 Caixa Seguradora - Todos os direitos reservados.
+            </h6>
+            <div class="footer__content font--regular">
+                O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
+                Processo SUSEP nº 15414.900040/2016-34.
+            </div>
+        </div>
+        <div class="col-md-3">
+            <!--<h6 class="font--regular text-right remove--margin">Fale conosco</h6>-->
+            <h6 class="font--regular text-right remove--margin--top">
+                <strong>Fale conosco:</strong>
+                0800 730 9902
+            </h6>
+            <h6 class="font--regular text-right">
+                <strong>SAC:</strong> 0800-730-9901
+            </h6>
+            <h6 class="remove--margin--top font--regular text-right">
+                <strong>Ouvidoria:</strong> 0800-702-4240
+            </h6>
+        </div>
+    </div>
+    <div class="row visible-xs">
+        <div class="col-md-12 footer__content text-center">
+            <div class="col-md-12">
+                <h6 class="font--regular text-center remove--margin">Fale conosco</h6>
+                <h4 class="font--light text-center remove--margin--top">0800 730 9902</h4>
+                <h5 class="font--regular text-center">
+                    <strong>SAC:</strong> 0800-730-9901
+                </h5>
+                <h6 class="remove--margin--top font--regular text-center">
+                    <strong>Ouvidoria:</strong> 0800-702-4240
+                </h6>
+            </div>
+            <div class="clearfix" style="height: 20px;"></div>
+            <h6 class="font--regular">
+                &copy; Copyrights 2017 Caixa Seguradora <br /> Todos os direitos reservados.
+            </h6>
+            <div class="font--regular">
+                O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
+                Processo SUSEP nº 15414.900040/2016-34.
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <img src="../Assets/images/logo-caixaseguradora.png" alt="Logotipo Caixa Seguradora e sua tipografia" />
+        </div>
+    </div>
+</footer>   

@@ -3,25 +3,34 @@
 
     var $app = angular.module('app');
 
-    $app.controller('dadosPessoaisCtrl', ['$scope', '$attrs', '$location', function ($scope, $attrs, $location) {
+    $app.controller('dadosPessoaisCtrl', ['$scope', '$attrs', '$location', 'storageService', 'parallaxHelper', function ($scope, $attrs, $location, storageService, parallaxHelper) {
 
+        $scope.header = parallaxHelper.createAnimator(-0.5, 150, -150);
+        $scope.grafismoLeft = parallaxHelper.createAnimator(-0.4, 0, -180, 40);
+        $scope.grafismoRight = parallaxHelper.createAnimator(-0.4, 0, -180, 40);
+        
         $scope.dadosPessoais = {};
+
+        if (storageService.restore('rdStorageStep1')) {
+            $scope.dadosPessoais = JSON.parse(storageService.restore('rdStorageStep1'));
+        };
+
         $scope.steps = {
             passo1: true
         }
         $scope.error = {};
-        $scope.valorAproximado = 70000;
+        $scope.valorAproximado = 7000000;
 
         /**
          * slider
          * @description Método de configuração do slider
          */
         $scope.slider = {
-            value : $scope.valorAproximado,
+            value: $scope.valorAproximado,
             options: {
                 showSelectionBar: true,
-                floor: 70000,
-                ceil: 500000,
+                floor: 7000000,
+                ceil: 50000000,
                 step: 100,
                 translate: function (value) {
                     $scope.valorAproximado = value;
@@ -37,13 +46,15 @@
         $scope.validarNome = function () {
             var rule = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/.test($scope.dadosPessoais.nome);
 
-            if (!$scope.dadosPessoais.nome || $scope.dadosPessoais.nome.length < 4) {
-                $scope.error.nome = {
-                    message: "Deve conter ao menos 4 caracteres",
-                    valid: false
-                };
-                return false;
-            };
+            //var ruleNumber = /^[0-9]$/;
+
+            //if (!ruleNumber) {
+            //    $scope.error.nome = {
+            //        message: "Tem certeza?",
+            //        valid: false
+            //    };
+            //    return false;
+            //}
 
             if (!rule) {
                 $scope.error.nome = {
@@ -78,7 +89,7 @@
                         valid: false
                     };
                     $scope.error.telefone = {
-                        message: "ou o seu telfone.",
+                        message: "ou o seu telefone.",
                         valid: false
                     };
                     return false;
@@ -129,7 +140,49 @@
          * @description Validar o tipo de imóvel
          */
         $scope.validarImovel = function () {
-            $scope.steps.passo4 = true;
+
+
+            if ($scope.dadosPessoais.all1) {
+                $scope.dadosPessoais.error = "coletiva";
+                storageService.save('rdStorageStep1', $scope.dadosPessoais);
+                $scope.go('meujeito/error');
+                return false;
+            }
+
+            if ($scope.dadosPessoais.all2) {
+                $scope.dadosPessoais.error = "madeira";
+                storageService.save('rdStorageStep1', $scope.dadosPessoais);
+                $scope.go('meujeito/error');
+                return false;
+            }
+
+            if ($scope.dadosPessoais.all3) {
+                $scope.dadosPessoais.error = "patrimonio";
+                storageService.save('rdStorageStep1', $scope.dadosPessoais);
+                $scope.go('meujeito/error');
+                return false;
+            }
+
+            if ($scope.dadosPessoais.all4) {
+                $scope.dadosPessoais.error = "rural";
+                storageService.save('rdStorageStep1', $scope.dadosPessoais);
+                $scope.go('meujeito/error');
+                return false;
+            }
+
+            if ($scope.dadosPessoais.all5) {
+                $scope.dadosPessoais.error = "construcao";
+                storageService.save('rdStorageStep1', $scope.dadosPessoais);
+                $scope.go('meujeito/error');
+                return false;
+            }
+
+            if ($scope.dadosPessoais.all6) {
+                $scope.dadosPessoais.error = "";
+                storageService.save('rdStorageStep1', $scope.dadosPessoais);
+                $scope.steps.passo4 = true;
+            }
+
         };
 
         /**
@@ -167,6 +220,12 @@
                     $scope.steps.passo5 = true;
                 }
             } else {
+                $scope.dadosPessoais.endereco = {
+                    endereco: "SQN 206 Bloco H",
+                    bairro: "Asa Norte",
+                    cidade: "Brasília"
+                }
+
                 $scope.error.cep = {
                     message: "",
                     valid: true
@@ -206,8 +265,14 @@
         */
         $scope.validarTipoImovel = function () {
             if ($scope.dadosPessoais.tipoImovel) {
-                $scope.isValid = true;
-                $scope.steps.passo6 = true;
+                if ($scope.dadosPessoais.tipoImovel == 'Casa') {
+                    $scope.isValid = true;
+                    $scope.steps.passo6 = true;
+                } else if ($scope.dadosPessoais.tipoImovel == 'Apartamento') {
+                    $scope.isValid = true;
+                    $scope.steps.passo6 = false;
+                    $scope.steps.passo7 = true;
+                }
             };
         };
 
@@ -313,7 +378,10 @@
         $scope.validarImovelComSeguroOutraEmpresa = function () {
             $scope.isValid = true;
             $scope.steps.passo10 = true;
-            $scope.go('assistencias');
+
+            storageService.save('rdStorageStep1', $scope.dadosPessoais);
+            $scope.go('meujeito/assistencias');
+            //console.log(storageService.restore('rdStorageStep1'));
         }
 
         /**

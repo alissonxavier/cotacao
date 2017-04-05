@@ -8,22 +8,59 @@
         return {
             templateUrl: "/Templates/Directives/box-flip.html",
             transclude: true,
-            restrict: 'E',
-            scope : {
-                ngModel: '@',
-                ischeckbox : '@'
+            restrict: 'EA',
+            scope: {
+                ngModel: '=',
+                ischeckbox: '@',
+                type: '@'
             },
             link: function (scope, element, attr, ngModel) {
-
                 $timeout(function () {
                     var elm = element[0];
                     var $button = angular.element(elm.querySelector('.boxflip__button'));
+                    var $check = element.find('input');
 
-                    $button.on('click', function () {
-                        angular.element(elm.querySelector('.boxflip')).toggleClass("boxflip--flipper");
+                    if (attr.ischeckbox) {
+                        if (!$check.prop("checked")) {
+                            angular.element(elm.querySelector('.boxflip__button')).addClass('boxflip__button--disabled');
+                            angular.element(elm.querySelector('.boxflip__button--disabled')).removeClass('boxflip__button');
+                        }
+
+                        $button.on('click', function () {
+                            if ($check.prop("checked")) {
+                                angular.element(elm.querySelector('.boxflip')).toggleClass("boxflip--flipper");
+                            } else {
+                                return false;
+                            }
+                        });
+
+                    };
+                    if (!attr.ischeckbox) {
+                        $button.on('click', function () {
+                            angular.element(elm.querySelector('.boxflip')).toggleClass("boxflip--flipper");
+                        });
+                    };
+
+
+                    $check.on('click', function () {
+
+                        if (!$check.prop("checked")) {
+                            angular.element(elm.querySelector('.boxflip__button')).addClass('boxflip__button--disabled');
+                            angular.element(elm.querySelector('.boxflip__button--disabled')).removeClass('boxflip__button');
+                        }
+
+                        if ($check.prop("checked")) {
+                            angular.element(elm.querySelector('.boxflip__button--disabled')).addClass('boxflip__button');
+                            angular.element(elm.querySelector('.boxflip__button')).removeClass('boxflip__button--disabled');
+                        }
+
                     });
 
-                }, 2);
+
+
+                    //console.log(element);
+
+                }, 0);
 
             }
         };

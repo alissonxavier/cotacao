@@ -1,0 +1,475 @@
+﻿<div ng-controller="assistenciasCtrl">
+    <div class="container-fluid header header--max" fix-to-top>
+        <div class="header__svg--left" style="width: 20%;" du-parallax y="grafismoLeft">
+            <img src="../images/fundo_grafismo_esquerda.svg" height="250" />
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="row" du-parallax y="header">
+                    <div class="col-md-12">
+                        <timeline passo="2"></timeline>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="header__logo--min">
+                            <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 189.8 51" style="enable-background:new 0 0 189.8 51;" xml:space="preserve" height="44">
+                            <style type="text/css">
+                                .st0 {
+                                    fill: #FFFFFF;
+                                }
+
+                                .st1 {
+                                    font-family: 'Alright Sans';
+                                    font-weight: 300;
+                                    font-style: normal;
+                                }
+
+                                .st2 {
+                                    font-size: 16px;
+                                }
+
+                                .st3 {
+                                    font-family: 'Alright Sans';
+                                    font-weight: 500;
+                                }
+
+                                .st4 {
+                                    font-size: 22px;
+                                }
+
+                                .st5 {
+                                    fill: none;
+                                    stroke: #FFFFFF;
+                                    stroke-miterlimit: 10;
+                                }
+</style>
+                            <text transform="matrix(1 0 0 1 57.2804 19.23)"><tspan x="0" y="0" class="st0 st1 st2">Plan</tspan><tspan x="32.2" y="0" class="st0 st1 st2">o</tspan></text>
+                            <text transform="matrix(1 0 0 1 57.2804 41.23)"><tspan x="0" y="0" class="st0 st3 st4">Do </tspan><tspan x="35.1" y="0" class="st0 st3 st4">s</tspan><tspan x="46.2" y="0" class="st0 st3 st4">eu jei</tspan><tspan x="102.5" y="0" class="st0 st3 st4">t</tspan><tspan x="111.6" y="0" class="st0 st3 st4">o</tspan></text>
+                            <polygon class="st5" points="14.1,41.2 26.1,41.2 26.1,31.5 31,31.5 31,41.2 43,41.2 43,26.7 47.8,26.7 28.6,7.2 9.3,26.7
+	                                14.1,26.7 " />
+                                </svg>
+
+                        </div>
+                        <h2 class="header__text--white font--light text-center">
+                            {{dadosPessoais.nome}}, aqui você escolhe quais <strong>coberturas</strong> e <strong>assistências</strong> quer incluir no seu plano.
+                        </h2>
+
+                        <div class="header__text--white font-size--16 font--light text-center">
+                            Todos os nossos planos já vem com <strong>4 <u>coberturas</u></strong> e <strong>9 <u>assistências</u></strong>, mas você pode incluir quantas quiser e personalizar o valor de cada uma delas de acordo com as suas necessidades.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="header__svg--right" style="width: 18%;" du-parallax y="grafismoRight">
+            <img src="../images/fundo_grafismo_direita.svg" />
+        </div>
+    </div>
+    <modal ng-init="sendMail = 'hidden'" display="{{sendMail}}">
+        <div class="modals__header">
+            <div class="header__svg--left modals__header__grafismo--left">
+                <img src="../images/fundo_grafismo_esquerda.svg" />
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h1 class="title font--light modals__header__title text-center">
+                            Enviar cotação por e-mail.
+                        </h1>
+                        <h4 class="title white text-center font--regular box--margintop--20">
+                            Digite o seu e-mail correto para que possamos enviar a sua cotação de Seguro Residencial.
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="header__svg--right modals__header__grafismo--right">
+                <img src="../images/fundo_grafismo_direita.svg" />
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 box--margintop--50">
+                    <input-email placeholder="E-mail" type="text" name="email" ng-model="dadosPessoais.email" maxlength="80" valid="error.email.valid" message="{{error.email.message}}" />
+                </div>
+                <div class="col-md-4 col-md-offset-4 box--margintop--50 text-center">
+                    <button class="button--background">
+                        Enviar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </modal>
+    <form ng-submit="validarAssistencias()" novalidate>
+        <div class="section">
+            <div class="container container--step3">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="col-md-6 col-md-offset-3 text-center">
+                            <h2 class="title title__select--margin--min box--margintop--50 font--medium text-center roxo" style="margin-bottom: 20px;">
+                                Coberturas
+                            </h2>
+                            <h3 class="title box--nomargin title__select--margin--min gray font--light">
+                                O que já está <span class="font--medium">incluido</span> no seu plano:
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div class="row">
+                                <div class="col-md-6" ng-repeat="inclusa in coberturas">
+                                    <box-flip name="{{inclusa.id}}">
+                                        <div class="boxflip__front">
+                                            <div class="boxflip__icon">
+                                                <img src="{{inclusa.icone}}" class="boxflip__icon__img" />
+                                            </div>
+                                            <h4 class="boxflip__title line--inherit box--margintop--10">
+                                                {{inclusa.nome}}
+                                            </h4>
+                                            <h5 class="boxflip__label roxo--light">
+                                                Valor da cobertura
+                                            </h5>
+                                            <p class="boxflip__paragraph boxflip__label--light" ng-if="inclusa.valorMinimo">
+                                                Mínimo de {{inclusa.valorMinimo | currency: 'R$'}} e máximo de {{inclusa.valorMaximo | currency: 'R$'}}
+                                            </p>
+                                            <rzslider rz-slider-model="inclusa.valor" rz-slider-maxlimit="inclusa.valorMaximo" rz-slider-options="{showSelectionBar: true, hideLimitLabels: true, hidePointerLabels: true, ceil: inclusa.valorMaximo}"></rzslider>
+                                            <h3 class="boxflip__price text-center">
+                                                <span class="font--light font__box--min">R$&nbsp;</span>{{inclusa.valor | realCurrency}}
+                                            </h3>
+                                        </div>
+                                        <div class="boxflip__back">
+
+                                            <h4 class="title text-center line--inherit boxflip__back__title">
+                                                {{inclusa.nome}}
+                                            </h4>
+                                            <h6 class="boxflip__back__title--blue box--margintop--20">
+                                                Como funciona
+                                            </h6>
+                                            <div class="font--regular">
+                                                {{inclusa.completa}}
+                                            </div>
+                                            <h6 class="boxflip__back__title--blue box box--margintop--20">
+                                                Franquia
+                                            </h6>
+                                            <div class="font--regular">
+                                                {{inclusa.franquia}}
+                                            </div>
+                                        </div>
+                                    </box-flip>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-8 col-md-offset-2">
+                                <h3 class="title gray font--light text-center title__select--margin--min--40" style="margin-top: 70px;">
+                                    Coberturas que você pode <span class="font--medium">adicionar</span> ao seu plano:
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-6" ng-repeat="cobertura in ofertasCobertura">
+                                <box-flip ischeckbox="{{cobertura.id}}" name="{{cobertura.id}}" ng-class="{'boxflip--disabled' : !coberturas.opcionais[cobertura.id]}">
+                                    <div>
+                                        <input type="checkbox" ng-model="coberturas.opcionais[cobertura.id]" class="boxflip__checkbox___input" id="{{cobertura.id}}" ng-click="selecionaCobertura( cobertura )" />
+                                        <label class="boxflip__checkbox" for="{{cobertura.id}}">
+                                            <i class="fa fa-check boxflip__checkbox__icon--left"></i>
+                                            <span></span>
+                                            <i class="fa fa-close boxflip__checkbox__icon--right"></i>
+                                        </label>
+                                    </div>
+                                    <div class="boxflip__front">
+                                        <div class="boxflip__icon">
+                                            <img src="{{cobertura.icone}}" class="boxflip__icon__img" ng-class="{'boxflip__icon__img--disabled' : !coberturas.opcionais[cobertura.id]}" />
+                                        </div>
+                                        <h4 class="boxflip__title">
+                                            {{cobertura.nome}}
+                                        </h4>
+                                        <div ng-class="{'boxflip__info--visible' : coberturas.opcionais[cobertura.id], 'boxflip__info--invisible' : !coberturas.opcionais[cobertura.id]}">
+                                            <h5 class="boxflip__label roxo--light">
+                                                Valor da cobertura
+                                            </h5>
+                                            <p class="boxflip__paragraph boxflip__label--light">
+                                                Mínimo de R$ 70,00 e máximo de R$ 500,00
+                                            </p>
+                                            <div>
+                                                <rzslider rz-slider-model="cobertura.valor" rz-slider-options="{showSelectionBar: true,floor: 70,ceil: 500,step: 10, minValue: 70, maxValue: coberturas.Incendio.valorMaximo, hideLimitLabels: true, hidePointerLabels: true}"></rzslider>
+                                            </div>
+                                            <h3 class="boxflip__price text-center">
+                                                <span class="font--light font__box--min">R$&nbsp;</span>{{cobertura.valor | realCurrency}}
+                                            </h3>
+                                        </div>
+                                        <div ng-class="{'boxflip__info--visible' : !coberturas.opcionais[cobertura.id], 'boxflip__info--invisible' : coberturas.opcionais[cobertura.id]}">
+                                            <div class="font--regular boxflip__back__description">
+                                                {{cobertura.completa}}
+                                            </div>
+                                            <h5 class="boxflip__back__title--blue">
+                                                Franquia
+                                            </h5>
+                                            <div class="boxflip__description font--regular">
+                                                {{cobertura.franquia}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="boxflip__back">
+                                        <h6 class="boxflip__back__title--blue box--margintop--20">
+                                            Como funciona
+                                        </h6>
+                                        <div class="font--regular">
+                                            {{cobertura.curta}}
+                                        </div>
+                                        <h6 class="boxflip__back__title--blue box box--margintop--20">
+                                            Franquia
+                                        </h6>
+                                        <div class="font--regular">
+                                            {{cobertura.franquia}}
+                                        </div>
+                                    </div>
+                                </box-flip>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 70px;"></div>
+            </div>
+            <div class="container-fluid container--white">
+                <div class="row box--margin">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3 text-center">
+                                <h2 class="title title__select--margin--min font--medium text-center roxo">
+                                    Assistências
+                                </h2>
+                                <h3 class="title box--nomargin title__select--margin--min gray font--light">
+                                    O que já está <span class="font--medium">incluido</span> no seu plano:
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4" ng-repeat="assistencia in assistenciasInclusas">
+                                <box-flip type="min" name="{{assistencia.id}}">
+                                    <div class="boxflip__front">
+                                        <div class="boxflip__icon">
+                                            <img src="{{assistencia.icone}}" class="boxflip__icon__img" />
+                                        </div>
+                                        <h4 class="boxflip__title line--inherit">
+                                            {{assistencia.nome}}
+                                        </h4>
+                                    </div>
+                                    <div class="boxflip__back">
+                                        <h6 class="boxflip__back__title--blue box--margintop--50" style="margin-top: 50px !important;">
+                                            Como funciona
+                                        </h6>
+                                        <div class="font--regular">
+                                            {{assistencia.curta}}
+                                        </div>
+                                        <h6 class="boxflip__back__title--blue box box--margintop--20">
+                                            Franquia
+                                        </h6>
+                                        <div class="font--regular">
+                                            {{assistencia.franquia}}
+                                        </div>
+                                    </div>
+                                </box-flip>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <h3 class="title gray font--light text-center title__select--margin--min--40" style="margin-top: 70px;">
+                                        Assistências que você pode <span class="font--medium">adicionar</span> ao seu plano:
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <h4 class="title blue font--regular text-center">
+                                        Para cuidar dos seus bens
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4" ng-repeat="oferta in ofertasAssistencias">
+                                <box-flip type="min" ischeckbox="{{oferta.id}}" name="{{oferta.id}}">
+                                    <div ng-class="{'boxflip--disabled' : !ofertaAssistencia.opcionais[oferta.id]}">
+                                        <input type="checkbox" ng-model="ofertaAssistencia.opcionais[oferta.id]" class="boxflip__checkbox___input" id="ass-{{oferta.id}}" ng-click="selecionaAssistencia( oferta )" />
+                                        <label class="boxflip__checkbox" for="ass-{{oferta.id}}">
+                                            <i class="fa fa-check boxflip__checkbox__icon--left"></i>
+                                            <span></span>
+                                            <i class="fa fa-close boxflip__checkbox__icon--right"></i>
+                                        </label>
+                                    </div>
+                                    <div class="boxflip__front">
+                                        <div class="boxflip__icon boxflip__icon--minmargin">
+                                            <img src="{{oferta.icone}}" class="boxflip__icon__img" ng-class="{'boxflip__icon__img--disabled' : !ofertaAssistencia.opcionais[oferta.id]}" />
+                                        </div>
+                                        <h4 class="boxflip__title line--inherit" ng-class="{'disabled' : !ofertaAssistencia.opcionais[oferta.id]}">
+                                            {{oferta.nome}}
+                                        </h4>
+                                        <h3 class="boxflip__price text-center" style="margin-top: 23px;" ng-class="{'disabled' : !ofertaAssistencia.opcionais[oferta.id]}">
+                                            <span class="font--light font__box--min">R$&nbsp;</span>{{oferta.valor | realCurrency}}
+                                        </h3>
+                                    </div>
+                                    <div class="boxflip__back">
+                                        <h6 class="boxflip__back__title--blue box--margintop--50" style="margin-top: 50px !important;">
+                                            Como funciona
+                                        </h6>
+                                        <div class="font--regular">
+                                            {{oferta.curta}}
+                                        </div>
+                                        <h6 class="boxflip__back__title--blue box box--margintop--20">
+                                            Franquia
+                                        </h6>
+                                        <div class="font--regular">
+                                            {{oferta.franquia}}
+                                        </div>
+                                    </div>
+                                </box-flip>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <hr class="hr--gray box--margintop--50">
+                            <div class="col-md-12">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <h4 class="title blue font--regular text-center box--margintop--20">
+                                        Para cuidar de você e da sua família
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer box__pricing box--margintop--20">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2 class="font--light header__text--white">
+                            O seu plano ficou assim:
+                        </h2>
+                        <h4 class="header__text--white">
+                            Plano: <span class="font--medium">Do seu jeito</span>
+                        </h4>
+                        <h4 class="header__text--white">
+                            <span class="font--medium">05</span>
+                            <span class="font--medium header__text--orange"> coberturas</span>
+                            e
+                            <span class="font--medium">10</span>
+                            <span class="font--medium header__text--orange"> assistências</span>
+                        </h4>
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="container-fluid">
+                            <div class="row box__pricing__actions">
+                                <div class="col-md-1 box__pricing--label">
+                                    Total
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="price__box">
+                                        <h5 class="header__text--white pull-left">
+                                            R$
+                                        </h5>
+                                        <h2 class="header__text--white--strong box--nomargin pull-left box__pricing__price">
+                                            149,90
+                                        </h2>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="hidden">
+                                        <button class="button--background--negative box__pricing__button" type="button">
+                                            <i class="fa fa-history"></i> Recalcular
+                                        </button>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="text-center">
+                                        <h6 class="header__text--white" ng-click="sendMail = 'show'">
+                                            <i class="fa fa-envelope"></i>
+                                            <span class="font--regular">
+                                                Enviar cotação por e-mail
+                                            </span>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <button class="button--background--negative box__pricing__button">
+                                        Continuar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <hr class="hr--gray--opacity" />
+            <div class="row hidden-xs">
+                <div class="col-md-2">
+                    <img src="../images/logo_caixa_branco.svg" />
+                </div>
+                <div class="col-md-7">
+                    <h6 class="font--regular">
+                        &copy; Copyrights 2017 Caixa Seguradora - Todos os direitos reservados.
+                    </h6>
+                    <div class="footer__content font--regular">
+                        O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
+                        Processo SUSEP nº 15414.900040/2016-34.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!--<h6 class="font--regular text-right remove--margin">Fale conosco</h6>-->
+                    <h6 class="font--regular text-right remove--margin--top">
+                        <strong>Fale conosco:</strong>
+                        0800 730 9902
+                    </h6>
+                    <h6 class="font--regular text-right">
+                        <strong>SAC:</strong> 0800-730-9901
+                    </h6>
+                    <h6 class="remove--margin--top font--regular text-right">
+                        <strong>Ouvidoria:</strong> 0800-702-4240
+                    </h6>
+                </div>
+            </div>
+            <div class="row visible-xs">
+                <div class="col-md-12 footer__content text-center">
+                    <div class="col-md-12">
+                        <h6 class="font--regular text-center remove--margin">Fale conosco</h6>
+                        <h4 class="font--light text-center remove--margin--top">0800 730 9902</h4>
+                        <h5 class="font--regular text-center">
+                            <strong>SAC:</strong> 0800-730-9901
+                        </h5>
+                        <h6 class="remove--margin--top font--regular text-center">
+                            <strong>Ouvidoria:</strong> 0800-702-4240
+                        </h6>
+                    </div>
+                    <div class="clearfix" style="height: 20px;"></div>
+                    <h6 class="font--regular">
+                        &copy; Copyrights 2017 Caixa Seguradora <br /> Todos os direitos reservados.
+                    </h6>
+                    <div class="font--regular">
+                        O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
+                        Processo SUSEP nº 15414.900040/2016-34.
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <img src="../images/logo-caixaseguradora.png" alt="Logotipo Caixa Seguradora e sua tipografia" />
+                </div>
+            </div>
+        </footer>
+    </form>
+</div>

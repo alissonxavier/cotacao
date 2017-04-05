@@ -38,10 +38,12 @@
                     app: {
                         assets: {
                             base: 
-                                [
-                                    './assets/fonts',
-                                    './assets/images'
-                                ]
+                                {
+                                    fonts:'./assets/fonts',
+                                    images:'./assets/images'
+                                }
+
+                                    
                         },
 
                         vendor: {
@@ -52,6 +54,8 @@
                             base: './dist',
                             js: './dist/js',
                             css: './dist/css',
+                            fonts: './dist/fonts',
+                            images: './dist/images',
                             templates: './dist/templates',
                             components: './dist/components'
 
@@ -82,14 +86,15 @@
                             './Vendor/jquery/dist/jquery.min.js',
                             './Vendor/angular-route/angular-route.min.js',
                             './Vendor/angular-mask/dist/ngMask.js',
-                            './Vendor/angularjs-slider/dist/rzslider.min.js'
+                            './Vendor/angularjs-slider/dist/rzslider.min.js',
+                            './Vendor/angular-scroll/angular-scroll.min.js',
+                            './Vendor/ng-parallax/angular-parallax.min.js'
                             
                         ],
                         
                         css: [
                             './Vendor/bootstrap/dist/css/bootstrap.min.css',
                             './Vendor/bootstrap/dist/css/bootstrap-theme.min.css',
-                            './Vendor/font-awsome/css/font-awesome.css',
                             './Vendor/angularjs-slider/dist/rzslider.css'
                         ]
                     },
@@ -297,13 +302,26 @@
             .on('error', gulpConfig.errorthrow);
     });*/
 
-    gulp.task('app:assets', function () {
-
-        //  Move assets da aplicação
-        return gulp.src(gulpConfig.path.folder.app.assets.base + '/**/*')
-            .pipe(gulp.dest(gulpConfig.path.folder.app.dist.base))
-            .on('error', gulpConfig.errorthrow);
+    gulp.task('app:assets', function (callback) {
+         gulpConfig.run.sequence('app:assets:fonts', 'app:assets:images', callback);
     });
+
+    gulp.task('app:assets:fonts', function () {
+    //  Move assets da aplicação
+        return gulp.src(gulpConfig.path.folder.app.assets.base.fonts + '/**/*')
+            .pipe(gulp.dest(gulpConfig.path.folder.app.dist.fonts))
+            .on('error', gulpConfig.errorthrow);
+
+    });
+
+    gulp.task('app:assets:images', function () {
+    //  Move assets da aplicação
+        return gulp.src(gulpConfig.path.folder.app.assets.base.images + '/**/*')
+            .pipe(gulp.dest(gulpConfig.path.folder.app.dist.images))
+            .on('error', gulpConfig.errorthrow);
+
+    });
+
 
     /*
     *

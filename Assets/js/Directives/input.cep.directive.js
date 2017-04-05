@@ -3,8 +3,8 @@
 
     var $app = angular.module('app');
 
-    $app.directive('inputCep', [function () {
-        console.log('inputCep');
+    $app.directive('inputCep', ['$logService','$cepService',function ($logService,$cepService) {
+        $logService.message('inputCep');
         return {
             templateUrl: '/Templates/Directives/input-cep.html',
             require: ['ngModel'],
@@ -15,7 +15,8 @@
                 ngModel: '=',
                 maxlength: '@',
                 valid: '=',
-                message: '@'
+                message: '@',
+                isDisabled: '='
             },
             restrict: 'E',
             link: function (scope, element, attr, ngModel, form) {
@@ -25,8 +26,24 @@
                     if (!$this) {
                         element.find('label').removeClass("inputPlace__label--actived");
                         scope.valid = "";
+                    } else {
+                        //Buscando as informações do cep
+                        $cepService.consultaCEP($this)
+                        .then(function (result) {
+                           console.log('Resultado com Sucesso');
+                        }, function (error) {
+                           console.log('Resultado com erro');
+                        });
+
                     }
                 });
+
+                setTimeout(function () {
+                    var value = element.find('input').val();
+                    if (value) {
+                        element.find('label').addClass("inputPlace__label--actived");
+                    }
+                }, 0);
 
                 element.find('input').on('focus', function () {
                     element.find('label').addClass("inputPlace__label--actived");

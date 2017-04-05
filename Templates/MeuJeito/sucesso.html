@@ -1,0 +1,153 @@
+﻿<div class="container-fluid header header--max" style="height: 450px;">
+    <div class="header__svg--left" style="width: 25%;">
+        <img src="../../Assets/images/fundo_grafismo_esquerda.svg" />
+    </div>
+    <div class="row" ng-controller="sucessoCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <timeline passo="5"></timeline>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="header__logo header__text--margintop" style="margin-top: 60px;">
+                        <img src="../../Assets/images/SVGs/ilustracoes_caixa_am_export-35.svg" />
+                    </div>
+                    <h1 class="header__text--white text-center box--margintop--50">
+                        Prontinho {{dadosPessoais.nome}}, sua casa agora está bem cuidada pela Caixa Seguradora.
+                    </h1>
+                </div>
+                <div class="col-md-12">
+                    <div class="header__logo">
+                        <!-- Generator: Adobe Illustrator 20.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                        <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 189.8 51" style="enable-background:new 0 0 189.8 51;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0 {
+                                fill: #FFFFFF;
+                            }
+
+                            .st1 {
+                                font-family: 'Alright Sans';
+                                font-weight: 300;
+                                font-style: normal;
+                            }
+
+                            .st2 {
+                                font-size: 16px;
+                            }
+
+                            .st3 {
+                                font-family: 'Alright Sans';
+                                font-weight: 500;
+                            }
+
+                            .st4 {
+                                font-size: 22px;
+                            }
+
+                            .st5 {
+                                fill: none;
+                                stroke: #FFFFFF;
+                                stroke-miterlimit: 10;
+                            }
+</style>
+                        <text transform="matrix(1 0 0 1 57.2804 19.23)"><tspan x="0" y="0" class="st0 st1 st2">Plan</tspan><tspan x="32.2" y="0" class="st0 st1 st2">o</tspan></text>
+                        <text transform="matrix(1 0 0 1 57.2804 41.23)"><tspan x="0" y="0" class="st0 st3 st4">Do </tspan><tspan x="35.1" y="0" class="st0 st3 st4">s</tspan><tspan x="46.2" y="0" class="st0 st3 st4">eu jei</tspan><tspan x="102.5" y="0" class="st0 st3 st4">t</tspan><tspan x="111.6" y="0" class="st0 st3 st4">o</tspan></text>
+                        <polygon class="st5" points="14.1,41.2 26.1,41.2 26.1,31.5 31,31.5 31,41.2 43,41.2 43,26.7 47.8,26.7 28.6,7.2 9.3,26.7
+	                                14.1,26.7 " />
+                                </svg>
+
+                    </div>
+                    <h5 class="header__text--white text-center font--light">
+                        Aguarde que você receberá a sua apólice por e-mail em algumas horas.
+                    </h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="header__svg--right" style="width: 25%;">
+        <img src="../../Assets/images/fundo_grafismo_direita.svg" />
+    </div>
+</div>
+<div class="container">
+    <div class="row box--margin">
+        <div class="col-md-8 col-md-offset-2 text-center">
+            <h5>Acesse sua conta e veja tudo que a <strong>Caixa Seguradora</strong> oferece para facilitar a sua vida.</h5>
+        </div>
+    </div>
+    <div class="row box--margintop--20">
+        <div class="col-md-4 col-md-offset-4">
+            <input-nome placeholder="Login" type="text" name="Nome" ng-model="login" maxlength="40" valid="error.nome.valid" message="{{error.nome.message}}" />
+        </div>
+    </div>
+    <div class="row box--margintop--10">
+        <div class="col-md-4 col-md-offset-4">
+            <input-password placeholder="Senha" type="text" name="Senha" ng-model="senha" maxlength="40" valid="error.nome.valid" message="{{error.nome.message}}" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 text-center input--margintop">
+            <button class="button--background" style="width: 100%;">
+                Acessar minha conta
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="clearfix" style="height: 60px;"></div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="row hidden-xs">
+        <div class="col-md-2">
+            <img src="../../Assets/images/logo_caixa_cor.svg" />
+        </div>
+        <div class="col-md-7">
+            <h6 class="font--regular">
+                &copy; Copyrights 2017 Caixa Seguradora - Todos os direitos reservados.
+            </h6>
+            <div class="footer__content font--regular">
+                O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
+                Processo SUSEP nº 15414.900040/2016-34.
+            </div>
+        </div>
+        <div class="col-md-3">
+            <!--<h6 class="font--regular text-right remove--margin">Fale conosco</h6>-->
+            <h6 class="font--regular text-right remove--margin--top">
+                <strong>Fale conosco:</strong>
+                0800 730 9902
+            </h6>
+            <h6 class="font--regular text-right">
+                <strong>SAC:</strong> 0800-730-9901
+            </h6>
+            <h6 class="remove--margin--top font--regular text-right">
+                <strong>Ouvidoria:</strong> 0800-702-4240
+            </h6>
+        </div>
+    </div>
+    <div class="row visible-xs">
+        <div class="col-md-12 footer__content text-center">
+            <div class="col-md-12">
+                <h6 class="font--regular text-center remove--margin">Fale conosco</h6>
+                <h4 class="font--light text-center remove--margin--top">0800 730 9902</h4>
+                <h5 class="font--regular text-center">
+                    <strong>SAC:</strong> 0800-730-9901
+                </h5>
+                <h6 class="remove--margin--top font--regular text-center">
+                    <strong>Ouvidoria:</strong> 0800-702-4240
+                </h6>
+            </div>
+            <div class="clearfix" style="height: 20px;"></div>
+            <h6 class="font--regular">
+                &copy; Copyrights 2017 Caixa Seguradora <br /> Todos os direitos reservados.
+            </h6>
+            <div class="font--regular">
+                O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
+                Processo SUSEP nº 15414.900040/2016-34.
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <img src="../Assets/images/logo-caixaseguradora.png" alt="Logotipo Caixa Seguradora e sua tipografia" />
+        </div>
+    </div>
+</footer>

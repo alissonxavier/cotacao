@@ -1,12 +1,4 @@
-﻿<div class="boxflip text-center">
-    <div ng-if="ischeckbox">
-        <input type="checkbox" ng-model="ngModel" value="{{ischeckbox}}" class="boxflip__checkbox___input" id="{{ischeckbox}}" />
-        <label class="boxflip__checkbox" for="{{ischeckbox}}">
-            <i class="fa fa-check boxflip__checkbox__icon--left"></i>
-            <span></span>
-            <i class="fa fa-close boxflip__checkbox__icon--right"></i>
-        </label>
-    </div>
+﻿<div class="boxflip text-center" ng-class="{'boxflip--min' : type == 'min'}">
     <ng-transclude></ng-transclude>
     <div class="boxflip__footer">
         <div class="boxflip__button"></div>

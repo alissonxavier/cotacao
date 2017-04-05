@@ -1,120 +1,255 @@
-﻿<div class="container-fluid header">
-    <div class="row">
-        <div class="container">
+﻿<div ng-controller="mainCtrl">
+    <div class="container-fluid header">
+        <div class="header__svg--left" style="width: 20%; top: -66px;" du-parallax y="grafismoLeft">
+            <img src="../images/fundo_grafismo_esquerda.svg" height="250"/>
+        </div>
+        <div class="row" du-parallax y="header" opacity="fadeOut">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="header__text--white header__text--margintop text-center">
+                            Na <span class="header__text--white--strong">Caixa Seguradora</span> você pode cotar <br />
+                            um <span class="header__text--white--strong">Seguro Residencial</span> de duas formas.
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header__svg--right" style="width: 18%; top: -25px;" du-parallax y="grafismoLeft">
+            <img src="../images/fundo_grafismo_direita.svg" height="215"/>
+        </div>
+    </div>
+    <modal ng-init="login = 'hidden'" display="{{login}}">
+        <div class="container-fluid header">
+            <div class="header__svg--left" style="width: 20%; top: 10px;">
+                <img src="../images/fundo_grafismo_esquerda.svg" />
+            </div>
+            <div class="row" du-parallax y="header">
+                <div class="container-fluid">
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="header__text--white header__text--margintop text-center">
+                                Na <span class="header__text--white--strong">Caixa Seguradora</span> você pode cotar <br />
+                                um <span class="header__text--white--strong">Seguro Residencial</span> de duas formas.
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header__svg--right" style="width: 17%; top: 38px;">
+                <img src="../images/fundo_grafismo_direita.svg" />
+            </div>
+        </div>
+
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="header__text--white header__text--margintop text-center">
-                        Na <span class="header__text--white--strong">Caixa Seguradora</span> você pode cotar <br />
-                        um <span class="header__text--white--strong">Seguro Residencial</span> de duas formas.
-                    </h2>
+                <div class="col-md-4 col-md-offset-4 box--margintop--50">
+                    <input-email placeholder="E-mail" type="text" name="email" ng-model="dadosPessoais.email" maxlength="80" valid="error.email.valid" message="{{error.email.message}}" />
+                </div>
+                <div class="col-md-4 col-md-offset-4 box--margintop--50 text-center">
+                    <button class="button--background">
+                        Enviar
+                    </button>
                 </div>
             </div>
         </div>
 
-    </div>
-</div>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <h3 class="title title__select--margin font--regular text-center">
-                    Você só precisa escolher a opção que faz mais o seu estilo:
-                </h3>
+    </modal>
+    <div class="section">
+        <div class="container container--step1">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <h3 class="title title__select--margin font--regular text-center">
+                        Você só precisa escolher a opção que faz mais o seu estilo:
+                    </h3>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-xs-12 text-center">
-                        <div class="col-md-5 pull-left box-container text-center">
-                            <div class="col-md-12">
-                                <div class="col-md-12 text-center box-container__plain"></div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="box-container__icon"></div>
-                            </div>
-                            <div class="col-md-12 box-container__description text-center font--regular">
-                                Nessa cotação, você responde algumas perguntas e monta o plano para cuidar do seu imóvel como quiser.
-                            </div>
-                            <div class="col-md-12 box-container__button" ng-click="go('meujeito')">
-                                <button class="button--background">Quero o Seguro do Meu Jeito</button>
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-md-offset-1 text-center">
+                            <div class="col-md-12 col-xs-offset-1 box-container text-center">
+                                <div class="col-md-12">
+                                    <div class="col-md-12 text-center box-container__plain">
+                                        <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             viewBox="0 0 189.8 51" style="enable-background:new 0 0 189.8 51;" xml:space="preserve" width="160px">
+                                        <style type="text/css">
+                                            .st0 {
+                                                fill: #733791;
+                                            }
+
+                                            .st1 {
+                                                font-family: 'Alright Sans';
+                                                font-weight: 300;
+                                                font-style: normal;
+                                            }
+
+                                            .st2 {
+                                                font-size: 16px;
+                                            }
+
+                                            .st3 {
+                                                font-family: 'Alright Sans';
+                                                font-weight: 500;
+                                            }
+
+                                            .st4 {
+                                                font-size: 22px;
+                                            }
+
+                                            .st5 {
+                                                fill: none;
+                                                stroke: #733791;
+                                                stroke-miterlimit: 10;
+                                            }
+</style>
+                                        <text transform="matrix(1 0 0 1 57.2804 19.23)"><tspan x="0" y="0" class="st0 st1 st2">Plan</tspan><tspan x="32.2" y="0" class="st0 st1 st2">o</tspan></text>
+                                        <text transform="matrix(1 0 0 1 57.2804 41.23)"><tspan x="0" y="0" class="st0 st3 st4">Do </tspan><tspan x="35.1" y="0" class="st0 st3 st4">s</tspan><tspan x="46.2" y="0" class="st0 st3 st4">eu jei</tspan><tspan x="102.5" y="0" class="st0 st3 st4">t</tspan><tspan x="111.6" y="0" class="st0 st3 st4">o</tspan></text>
+                                        <polygon class="st5" points="14.1,41.2 26.1,41.2 26.1,31.5 31,31.5 31,41.2 43,41.2 43,26.7 47.8,26.7 28.6,7.2 9.3,26.7
+	                                14.1,26.7 " />
+                                </svg>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="box-container__icon">
+                                        <img src="../images/SVGs/ilustracoes_caixa_am_export-57.svg" style="height: 143px;" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12 box-container__description text-center gray--light font--regular">
+                                    Nessa cotação, você responde algumas perguntas e monta o plano para cuidar do seu imóvel como quiser.
+                                </div>
+                                <div class="col-md-12 box-container__button" ng-click="go('meujeito')">
+                                    <button class="button--background">Quero o Seguro do Meu Jeito</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-5 pull-right box-container text-center">
-                            <div class="col-md-12">
-                                <div class="col-md-12 text-center box-container__plain"></div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="box-container__icon"></div>
-                            </div>
-                            <div class="col-md-12 box-container__description text-center font--regular">
-                                Nessa cotação, você responde algumas perguntas e monta o plano para cuidar do seu imóvel como quiser.
-                            </div>
-                            <div class="col-md-12 box-container__button">
-                                <button class="button--background">Quero o Seguro Ideal</button>
+
+                        <div class="col-md-5 text-center">
+                            <div class="col-md-12 col-xs-offset-1 box-container text-center">
+                                <div class="col-md-12">
+                                    <div class="col-md-12 text-center box-container__plain">
+                                        <!-- Generator: Adobe Illustrator 20.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                        <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             viewBox="0 0 223.9 51" style="enable-background:new 0 0 223.9 51;" xml:space="preserve" width="180px">
+                                        <text transform="matrix(1 0 0 1 58.2003 19.2298)"><tspan x="0" y="0" class="st0 st1 st2">Plan</tspan>
+                                        <tspan x="32.2" y="0" class="st0 st1 st2">o</tspan></text>
+                                        <text transform="matrix(1 0 0 1 58.2003 41.2298)"><tspan x="0" y="0" class="st0 st3 st4">Id</tspan><tspan x="19.6" y="0" class="st0 st3 st4">e</tspan><tspan x="32.2" y="0" class="st0 st3 st4">al </tspan><tspan x="55.9" y="0" class="st0 st3 st4">p</tspan><tspan x="69.3" y="0" class="st0 st3 st4">a</tspan><tspan x="81.5" y="0" class="st0 st3 st4">r</tspan><tspan x="90.8" y="0" class="st0 st3 st4">a </tspan><tspan x="108.6" y="0" class="st0 st3 st4">v</tspan><tspan x="120.1" y="0" class="st0 st3 st4">o</tspan><tspan x="133.7" y="0" class="st0 st3 st4">c</tspan><tspan x="145.1" y="0" class="st0 st3 st4">ê</tspan></text>
+                                        <polygon class="st5" points="15,41.2 27.1,41.2 27.1,31.5 31.9,31.5 31.9,41.2 43.9,41.2 43.9,26.7 48.7,26.7 29.5,7.2 10.2,26.7
+	                                            15,26.7 " />
+                                            </svg>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="box-container__icon">
+                                        <img src="../images/SVGs/ilustracoes_caixa_am_export-58.svg" style="height: 149px;" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12 box-container__description gray--light text-center font--regular">
+                                    Você responde perguntas mais detalhadas sobre a sua vida e descobrimos juntos o plano mais indicado para o seu imóvel.
+                                </div>
+                                <div class="col-md-12 box-container__button">
+                                    <button class="button--background" ng-click="go('ideal')">Quero o Seguro Ideal</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-md-offset-1 box--margin">
-                <h4 class="title font--regular text-center">
-                    Se você já é cliente, para fazer a cotação, acesse sua conta <a href="#"><u>aqui</u></a>.
-                </h4>
-            </div>
-        </div>
-    </div>
-    <footer class="footer">
-        <div class="row hidden-xs">
-            <div class="col-md-2">
-                <img src="../Assets/images/logo-caixaseguradora.png" alt="Logotipo Caixa Seguradora e sua tipografia" />
-            </div>
-            <div class="col-md-7">
-                <h6 class="font--regular">
-                    &copy; Copyrights 2017 Caixa Seguradora - Todos os direitos reservados.
-                </h6>
-                <div class="footer__content font--regular">
-                    O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
-                    Processo SUSEP nº 15414.900040/2016-34.
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="title title__select--margin font--regular text-center">
+                        Se você já é cliente, para fazer a cotação, acesse sua conta <a ng-click="login = 'show'" class="title__href"><u class="title__href__u">aqui</u></a>.
+                    </h4>
                 </div>
             </div>
-            <div class="col-md-3">
-                <h6 class="font--regular text-right remove--margin">Fale conosco</h6>
-                <h4 class="font--light text-right remove--margin--top">0800 730 9902</h4>
-                <h5 class="font--regular text-right">
-                    <strong>SAC:</strong> 0800-730-9901
-                </h5>
-                <h6 class="remove--margin--top font--regular text-right">
-                    <strong>Ouvidoria:</strong> 0800-702-4240
-                </h6>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="col-md-12 box-container box-container--padding" style="padding-bottom: 30px;">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h2 class="font--light roxo box--margintop--10">
+                                        Cotação
+                                    </h2>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="title font--regular gray--light">
+                                        Se você realizou uma cotação anteriormente, você poderá
+                                        recupera-la através do número de protocolo ou seu cpf.
+                                    </h5>
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <button class="button--background">
+                                            Recuperar cotação
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row visible-xs">
-            <div class="col-md-12 footer__content text-center">
-                <div class="col-md-12">
-                    <h6 class="font--regular text-center remove--margin">Fale conosco</h6>
-                    <h4 class="font--light text-center remove--margin--top">0800 730 9902</h4>
-                    <h5 class="font--regular text-center">
+        <footer class="footer box--margintop--50">
+            <div class="row hidden-xs">
+                <div class="col-md-9">
+                    <div class="col-md-2">
+                        <img src="../images/logo_caixa_cor.svg" height="40" />
+                    </div>
+                    <div class="col-md-10">
+                        <h6 class="font--regular box--nomargin gray--light">
+                            &copy; Copyrights 2017 Caixa Seguradora - Todos os direitos reservados.
+                        </h6>
+                        <div class="footer__content font--regular gray--light">
+                            O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
+                            Processo SUSEP nº 15414.900040/2016-34.
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <!--<h6 class="font--regular text-right remove--margin">Fale conosco</h6>-->
+                    <h6 class="font--regular text-right gray--light remove--margin--top remove--margin--bottom">
+                        <strong>Fale conosco:</strong>
+                        0800 730 9902
+                    </h6>
+                    <h6 class="font--regular text-right gray--light remove--margin--top remove--margin--bottom">
                         <strong>SAC:</strong> 0800-730-9901
-                    </h5>
-                    <h6 class="remove--margin--top font--regular text-center"   >
+                    </h6>
+                    <h6 class="remove--margin--top gray--light font--regular text-right remove--margin--top remove--margin--bottom">
                         <strong>Ouvidoria:</strong> 0800-702-4240
                     </h6>
                 </div>
-                <div class="clearfix" style="height: 20px;"></div>
-                <h6 class="font--regular">
-                    &copy; Copyrights 2017 Caixa Seguradora <br /> Todos os direitos reservados.
-                </h6>
-                <div class="font--regular">
-                    O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
-                    Processo SUSEP nº 15414.900040/2016-34.
+            </div>
+            <div class="row visible-xs">
+                <div class="col-md-12 footer__content text-center">
+                    <div class="col-md-12">
+                        <h6 class="font--regular text-center remove--margin">Fale conosco</h6>
+                        <h4 class="font--light text-center remove--margin--top">0800 730 9902</h4>
+                        <h5 class="font--regular text-center">
+                            <strong>SAC:</strong> 0800-730-9901
+                        </h5>
+                        <h6 class="remove--margin--top font--regular text-center">
+                            <strong>Ouvidoria:</strong> 0800-702-4240
+                        </h6>
+                    </div>
+                    <div class="clearfix" style="height: 20px;"></div>
+                    <h6 class="font--regular">
+                        &copy; Copyrights 2017 Caixa Seguradora <br /> Todos os direitos reservados.
+                    </h6>
+                    <div class="font--regular">
+                        O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
+                        Processo SUSEP nº 15414.900040/2016-34.
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <img src="../images/logo-caixaseguradora.png" alt="Logotipo Caixa Seguradora e sua tipografia" />
                 </div>
             </div>
-            <div class="col-md-12 text-center">
-                <img src="../Assets/images/logo-caixaseguradora.png" alt="Logotipo Caixa Seguradora e sua tipografia" />
-            </div>
-        </div>
-    </footer>
-</div>
+        </footer>
+    </div>
+</div> 
