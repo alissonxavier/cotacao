@@ -3,7 +3,7 @@
 
     var $app = angular.module('app');
 
-    $app.controller('dadosPessoaisCtrl', ['$scope', '$attrs', '$location', 'storageService', 'parallaxHelper', function ($scope, $attrs, $location, storageService, parallaxHelper) {
+    $app.controller('dadosPessoaisCtrl', ['$scope', '$attrs', '$location', 'storageService', 'parallaxHelper','$cepService', function ($scope, $attrs, $location, storageService, parallaxHelper,$cepService) {
 
         $scope.header = parallaxHelper.createAnimator(-0.5, 150, -150);
         $scope.grafismoLeft = parallaxHelper.createAnimator(-0.4, 0, -180, 40);
@@ -220,11 +220,19 @@
                     $scope.steps.passo5 = true;
                 }
             } else {
-                $scope.dadosPessoais.endereco = {
-                    endereco: "SQN 206 Bloco H",
-                    bairro: "Asa Norte",
-                    cidade: "Brasília"
-                }
+
+                 //Buscando as informações do cep
+                $cepService.consultaCEP(cep)
+                .then(function (result) {
+                    console.log('Resultado com Sucesso');
+                    $scope.dadosPessoais.endereco = {
+                        endereco: result.data.indTipoLogradouro,
+                        bairro: result.data.nomBairro,
+                        cidade: result.data.nomLocalidade
+                    }
+                }, function (error) {
+                    console.log('Resultado com erro');
+                });
 
                 $scope.error.cep = {
                     message: "",

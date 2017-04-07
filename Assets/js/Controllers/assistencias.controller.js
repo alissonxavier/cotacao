@@ -3,7 +3,7 @@
 
     var $app = angular.module('app');
 
-    $app.controller('assistenciasCtrl', ['$scope', '$location', 'storageService', '$logService', 'parallaxHelper', function ($scope, $location, storageService, $logService, parallaxHelper) {
+    $app.controller('assistenciasCtrl', ['$scope', '$location', 'storageService', '$logService', 'parallaxHelper','$cotacaoService', function ($scope, $location, storageService, $logService, parallaxHelper,$cotacaoService) {
 
         $logService.message("assistencias Ctrl");
 
@@ -122,7 +122,15 @@
 
         $scope.validarAssistencias = function () {
             storageService.save('rdStorageStep2', $scope.assistencias);
-            $scope.go('meujeito/complementares');
+            
+            $cotacaoService.realizacaoCotacao()
+            .then(function (result){
+                console.log('OK');
+                $scope.go('meujeito/complementares');
+            }, function (error){
+                console.log('NOK');
+            });
+
         }
 
         $scope.selecionaCobertura = function (cobertura) {

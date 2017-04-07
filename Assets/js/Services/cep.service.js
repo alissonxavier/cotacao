@@ -10,16 +10,23 @@
         };
 
         function consultaCEP(cep) {
-            console.log(cep);
-            console.log(APP_CONFIG.SERVICO.WEBSERVICE);
-
-            var url = APP_CONFIG.SERVICO.WEBSERVICE + '/Corporativo.svc/Servico_ConsultaCep';
+            
+            var url = APP_CONFIG.SERVICO.WEBSERVICE + '/api-consultarcep/consultaCEP';
 
             var requestBody = {
-                numCep : cep
+                cep : cep,
+                codSistema : 'NS'
             }
 
-            return $http.post(url, requestBody);
+            var headers = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-ibm-client-id': APP_CONFIG.SERVICO.CLIENTID,
+                    'x-ibm-client-secret': APP_CONFIG.SERVICO.CLIENTSECRET
+                }
+            }
+
+            return $http.post(url, requestBody,headers);
         }
 
         

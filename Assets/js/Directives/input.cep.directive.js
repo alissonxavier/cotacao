@@ -3,7 +3,7 @@
 
     var $app = angular.module('app');
 
-    $app.directive('inputCep', ['$logService','$cepService',function ($logService,$cepService) {
+    $app.directive('inputCep', ['$logService',function ($logService) {
         $logService.message('inputCep');
         return {
             templateUrl: '/Templates/Directives/input-cep.html',
@@ -20,22 +20,13 @@
             },
             restrict: 'E',
             link: function (scope, element, attr, ngModel, form) {
-
+                scope.endereco = "";
                 element.find('input').on('blur', function () {
                     var $this = angular.element(this).val();
                     if (!$this) {
                         element.find('label').removeClass("inputPlace__label--actived");
                         scope.valid = "";
-                    } else {
-                        //Buscando as informações do cep
-                        $cepService.consultaCEP($this)
-                        .then(function (result) {
-                           console.log('Resultado com Sucesso');
-                        }, function (error) {
-                           console.log('Resultado com erro');
-                        });
-
-                    }
+                    } 
                 });
 
                 setTimeout(function () {
