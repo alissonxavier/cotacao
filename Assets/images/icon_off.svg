@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="bt-switch-off" transform="translate(-30.000000, -9.000000)" fill="#FFFFFF">
+            <g id="off">
+                <g id="x" transform="translate(30.434783, 9.420290)">
+                    <rect id="Path" x="3.51074987" y="-0.862956135" width="2.01863354" height="10.7660455" rx="1.00931677"></rect>
+                    <rect id="Rectangle-163" x="-0.862956135" y="3.51074987" width="10.7660455" height="2.01863354" rx="1.00931677"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

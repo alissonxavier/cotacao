@@ -88,7 +88,9 @@
                             './Vendor/angular-mask/dist/ngMask.js',
                             './Vendor/angularjs-slider/dist/rzslider.min.js',
                             './Vendor/angular-scroll/angular-scroll.min.js',
-                            './Vendor/ng-parallax/angular-parallax.min.js'
+                            './Vendor/ng-parallax/angular-parallax.min.js',
+                            './Vendor/angular-credit-cards/release/angular-credit-cards.js',
+                            './Vendor/ng-lodash/build/ng-lodash.min.js'
                             
                         ],
                         

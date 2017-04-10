@@ -1,9 +1,14 @@
-﻿<label class="inputPlace__label" for="{{nameInput}}">
+﻿<label class="inputPlace__label" for="{{nameInput}}" ng-class="{'input--min' : size=='min', 'input--medium' : size=='medium'}">
     {{placeholder}}
     <i class="fa fa-check icon--green" ng-show="!message && valid"></i>
     <i class="fa fa-close icon--red" ng-show="message"></i>
-    <span class="icon--red" ng-show="message">
+    <span class="icon--red" ng-if="message" scrolling-to-error>
         {{message}}
     </span>
 </label>
-<input type="text" class="inputPlace__input" autocomplete="off" id="{{nameInput}}" ng-model="ngModel" ng-focus="outFocus = false" ng-blur="outFocus = true" ng-init="outFocus = false" maxlength="{{maxlength}}" mask="9999 9999 9999 9999"  restrict="reject"/>
+<input type="text" class="inputPlace__input" name="card" autocomplete="off" id="{{nameInput}}" ng-model="ngModel" ng-focus="outFocus = false" ng-blur="outFocus = true" ng-init="outFocus = false" maxlength="{{maxlength}}" mask="9999 9999 9999 9999" restrict="reject" />
+<div class="creditCard">
+    <img src="../images/icon_visa.svg" ng-show="flag == 'Visa'" />
+    <img src="../images/icon_master.svg" ng-show="flag == 'MasterCard'" />
+    <img src="../images/icon_amex.svg" ng-show="flag == 'American Express'" />
+</div>

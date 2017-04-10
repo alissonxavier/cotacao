@@ -16,7 +16,8 @@
                 maxlength: '@',
                 valid: '=',
                 message: '@',
-                isDisabled: '='
+                isDisabled: '=',
+                size: '@'
             },
             restrict: 'EA',
             link: function (scope, element, attr, ngModel) {

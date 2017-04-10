@@ -3,8 +3,8 @@
 
     var $app = angular.module('app');
 
-    $app.directive('inputCep', ['$logService',function ($logService) {
-        $logService.message('inputCep');
+    $app.directive('inputCep', [function () {
+        console.log('inputCep');
         return {
             templateUrl: '/Templates/Directives/input-cep.html',
             require: ['ngModel'],
@@ -20,13 +20,13 @@
             },
             restrict: 'E',
             link: function (scope, element, attr, ngModel, form) {
-                scope.endereco = "";
+
                 element.find('input').on('blur', function () {
                     var $this = angular.element(this).val();
                     if (!$this) {
                         element.find('label').removeClass("inputPlace__label--actived");
                         scope.valid = "";
-                    } 
+                    }
                 });
 
                 setTimeout(function () {

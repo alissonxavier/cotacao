@@ -3,7 +3,7 @@
 
     var $app = angular.module('app');
 
-    $app.controller('assistenciasCtrl', ['$scope', '$location', 'storageService', '$logService', 'parallaxHelper','$cotacaoService', function ($scope, $location, storageService, $logService, parallaxHelper,$cotacaoService) {
+    $app.controller('assistenciasCtrl', ['$scope', '$location', 'storageService', '$logService', 'parallaxHelper','lodash', function ($scope, $location, storageService, $logService, parallaxHelper,lodash) {
 
         $logService.message("assistencias Ctrl");
 
@@ -17,6 +17,57 @@
 
         $scope.assistenciasSelecionadas = [];
 
+        /**
+         * diminuiRange
+         * @param modelChange - Model value
+         * @param range - Valor do salto
+         */
+        $scope.diminuiRange = function (model, id, range, limit) {
+            debugger;
+
+            if (model == 'inclusas') {
+                if (id >= 0) {
+                    if ($scope.coberturas[id].valor >= limit) {
+                        $scope.coberturas[id].valor = Math.round($scope.coberturas[id].valor - range);
+                    }
+                    return false;
+                }
+            }
+
+            if (model == 'ofertas') {
+                if (id >= 0) {
+                    if ($scope.ofertasCobertura[id].valor >= limit) {
+                        $scope.ofertasCobertura[id].valor = Math.round($scope.ofertasCobertura[id].valor - range);
+                    }
+                }
+                return false;
+            }
+        }
+
+        $scope.aumentaRange = function (model, id, range, limit) {
+            debugger;
+            if (model == 'inclusas') {
+                if (id >= 0) {
+                    if ($scope.coberturas[id].valor <= limit) {
+                        $scope.coberturas[id].valor = Math.round($scope.coberturas[id].valor + range);
+                    }
+                }
+                return false;
+            }
+
+            if (model == 'ofertas') {
+                if (id >= 0) {
+                    if ($scope.ofertasCobertura[id].valor <= limit) {
+                        $scope.ofertasCobertura[id].valor = Math.round($scope.ofertasCobertura[id].valor + range);
+                    }
+                }
+                return false;
+            }
+
+            return false;
+        }
+
+
         if (storageService.restore('rdStorageStep1')) {
             $scope.dadosPessoais = JSON.parse(storageService.restore('rdStorageStep1'));
         }
@@ -25,17 +76,22 @@
             console.log(assistencia);
         }
 
-        $scope.coberturas = [
+        if (storageService.restore('coberturas')) {
+            $scope.coberturas = JSON.parse(storageService.restore('coberturas'));
+        }
+        //Coberturas Básicas
+        $scope.coberturas = lodash.find($scope.coberturas.composicaoOferta,{'cobertura':{'indicadorTipo' : 'COBERTURA'},'tipoComposicao': 'B'});
+        /*$scope.coberturas = [
             {
-                "id": 1,
-                "nome": "Incêndio, queda de raio e explosão",
-                "valor": 9000,
-                "curta": "Em caso de incêndio, explosão ou queda de raio, você poderá receber até 100% da cobertura para reparar os danos causados ao imóvel e aos seus bens.",
-                "completa": "Se ocorrer um incêndio de qualquer natureza no imóvel, se um raio cair no terreno do imóvel ou uma explosão de qualquer natureza começar dentro da área de seu terreno, você poderá receber até 100% do valor dessa cobertura para reparar danos causados ao imóvel e aos seus bens.",
-                "valorMinimo": 7000,
-                "valorMaximo": 50000,
-                "icone": "../images/SVGs/ilustracoes_caixa_am_export-01.svg",
-                "franquia": "Não há"
+                "id": 1,//sequencial
+                "nome": "Incêndio, queda de raio e explosão",//descricao
+                "valor": 9000,//valorFranquia
+                "curta": "Em caso de incêndio, explosão ou queda de raio, você poderá receber até 100% da cobertura para reparar os danos causados ao imóvel e aos seus bens.",//não existe
+                "completa": "Se ocorrer um incêndio de qualquer natureza no imóvel, se um raio cair no terreno do imóvel ou uma explosão de qualquer natureza começar dentro da área de seu terreno, você poderá receber até 100% do valor dessa cobertura para reparar danos causados ao imóvel e aos seus bens.",//texto
+                "valorMinimo": 7000,//coberturaLimiteCanal.valorMinimo
+                "valorMaximo": 50000,//coberturaLimiteCanal.ValorMaximo
+                "icone": "../images/SVGs/ilustracoes_caixa_am_export-01.svg",//não existe
+                "franquia": "Não há"//não existe
 
             },
             {
@@ -71,7 +127,7 @@
                 "icone": "../images/SVGs/ilustracoes_caixa_am_export-04.svg",
                 "franquia": "10% do valor do sinistro com mínimo de R$ 300,00"
             }
-        ];
+        ];*/
 
         $scope.ofertasCobertura = [
             {
@@ -122,15 +178,7 @@
 
         $scope.validarAssistencias = function () {
             storageService.save('rdStorageStep2', $scope.assistencias);
-            
-            $cotacaoService.realizacaoCotacao()
-            .then(function (result){
-                console.log('OK');
-                $scope.go('meujeito/complementares');
-            }, function (error){
-                console.log('NOK');
-            });
-
+            $scope.go('meujeito/complementares');
         }
 
         $scope.selecionaCobertura = function (cobertura) {

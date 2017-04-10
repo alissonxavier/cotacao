@@ -28,6 +28,13 @@
                     }
                 });
 
+                setTimeout(function () {
+                    var value = element.find('input').val();
+                    if (value) {
+                        element.find('label').addClass("inputPlace__label--actived");
+                    }
+                }, 0);
+
                 element.find('input').on('focus', function () {
                     element.find('label').addClass("inputPlace__label--actived");
                 });

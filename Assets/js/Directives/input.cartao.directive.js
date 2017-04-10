@@ -15,7 +15,9 @@
                 ngModel: '=',
                 maxlength: '@',
                 valid: '=',
-                message: '@'
+                message: '@',
+                size: '@',
+                flag : '@'
             },
             restrict: 'E',
             link: function (scope, element, attr, ngModel, form) {

@@ -8,11 +8,10 @@
             restrict: 'A',
             link: function (scope, element, attr) {
 
-                var elementTop = element[0].offsetTop,
-                    $win = angular.element($window);
+                var elementTop = element[0].offsetTop;
 
-                $win.on('scroll', function (e) {
-                    if ($window.scrollY > 150) {
+                $('.container--gray').on('scroll', function (e) {
+                    if ($('.container--gray').scrollTop() > 150) {
                         element.addClass('headerFix');
                     } else {
                         element.removeClass('headerFix');

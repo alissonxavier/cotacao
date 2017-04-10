@@ -1,48 +1,18 @@
 ﻿<div ng-controller="dadosPessoaisCtrl">
-    <div class="container-fluid header header--min" fix-to-top>
+    <div class="container-fluid header header--min" scrolling-to-top fix-to-top>
         <div class="header__svg--left" style="width: 20%;" du-parallax y="grafismoLeft">
             <img src="../images/fundo_grafismo_esquerda.svg" height="250" />
         </div>
         <div class="row">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row" du-parallax y="header">
-                    <div class="col-md-12">
+                    <div class="col-lg-12 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                         <timeline passo="1"></timeline>
                     </div>
-                    <div class="col-md-8 col-md-offset-2">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
                         <div class="header__logo--min">
                             <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 189.8 51" style="enable-background:new 0 0 189.8 51;" xml:space="preserve" height="44">
-                            <style type="text/css">
-                                .st0 {
-                                    fill: #FFFFFF;
-                                }
-
-                                .st1 {
-                                    font-family: 'Alright Sans';
-                                    font-weight: 300;
-                                    font-style: normal;
-                                }
-
-                                .st2 {
-                                    font-size: 16px;
-                                }
-
-                                .st3 {
-                                    font-family: 'Alright Sans';
-                                    font-weight: 500;
-                                }
-
-                                .st4 {
-                                    font-size: 22px;
-                                }
-
-                                .st5 {
-                                    fill: none;
-                                    stroke: #FFFFFF;
-                                    stroke-miterlimit: 10;
-                                }
-</style>
                             <text transform="matrix(1 0 0 1 57.2804 19.23)"><tspan x="0" y="0" class="st0 st1 st2">Plan</tspan><tspan x="32.2" y="0" class="st0 st1 st2">o</tspan></text>
                             <text transform="matrix(1 0 0 1 57.2804 41.23)"><tspan x="0" y="0" class="st0 st3 st4">Do </tspan><tspan x="35.1" y="0" class="st0 st3 st4">s</tspan><tspan x="46.2" y="0" class="st0 st3 st4">eu jei</tspan><tspan x="102.5" y="0" class="st0 st3 st4">t</tspan><tspan x="111.6" y="0" class="st0 st3 st4">o</tspan></text>
                             <polygon class="st5" points="14.1,41.2 26.1,41.2 26.1,31.5 31,31.5 31,41.2 43,41.2 43,26.7 47.8,26.7 28.6,7.2 9.3,26.7
@@ -65,7 +35,7 @@
     <div class="section">
         <div class="container container--step2">
             <div class="row">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-lg-10 col-lg-offset-1 col-md-8 col-md-offset-2 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                     <h3 class="title title__select--margin font--regular text-center">
                         Você poderia nos dizer o seu nome?
                     </h3>
@@ -75,12 +45,12 @@
         <div class="container">
             <form novalidate ng-submit="validarNome()">
                 <div class="row">
-                    <div class="col-md-4 col-md-offset-4">
-                        <input-nome placeholder="Nome" type="text" name="Nome" ng-model="dadosPessoais.nome" maxlength="40" valid="error.nome.valid" message="{{error.nome.message}}" />
+                    <div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
+                        <input-nome placeholder="Nome" type="text" name="Nome" ng-model="dadosPessoais.nome" maxlength="40" valid="error.nome.valid" message="{{error.nome.message}}"  />
                     </div>
                 </div>
-                <div class="row" ng-hide="steps.passo2">
-                    <div class="col-md-4 col-md-offset-4 text-center input--margintop">
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 text-center input--margintop">
                         <button class="button--background">
                             Continuar
                         </button>
@@ -92,21 +62,21 @@
                     <hr class="hr--gray hr--margin" />
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
+                            <div class="col-lg-10 col-lg-offset-1 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                                 <h3 class="title title__select--margin--bottom font--regular text-center">
                                     Também precisamos que você informe um telefone ou um e-mail:
                                 </h3>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-4">
-                            <input-email placeholder="E-mail" type="text" name="email" ng-model="dadosPessoais.email" maxlength="80" valid="error.email.valid" message="{{error.email.message}}" />
+                        <div class="row">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                                <input-email placeholder="E-mail" type="text" name="email" ng-model="dadosPessoais.email" maxlength="80" valid="error.email.valid" message="{{error.email.message}}" />
+                            </div>
                         </div>
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                                 <h4 class="title title__select--margin--min font--regular text-center">
                                     ou
                                 </h4>
@@ -115,172 +85,140 @@
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-4 col-md-offset-4">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                                 <input-telefone placeholder="Telefone" name="telefone" ng-model="dadosPessoais.telefone" maxlength="80" valid="error.telefone.valid" message="{{error.telefone.message}}" />
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-4 text-center input--margintop">
-                            <button class="button--background">
-                                Continuar
-                            </button>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 text-center input--margintop">
+                                <button class="button--background">
+                                    Continuar
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </form>
-            <form novalidate ng-submit="validarImovel()">
-                <div class="row" ng-if="steps.passo3" scrolling-to-steps>
-                    <div class="container">
-                        <hr class="hr--gray hr--margin" />
-                        <div class="row ">
-                            <div class="col-md-12 text-center">
-                                <h2 class="box--nomargin font--light roxo">
-                                    Perfeito, {{dadosPessoais.nome}}.<br /> Agora, precisamos conhecer um pouco o imóvel para o qual você pretende fazer o seguro.
-                                </h2>
-                            </div>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col-md-4 col-md-offset-4">
-                                <h3 class="title__select--margin--min--40 font--regular text-center">
-                                    O imóvel que você quer cuidar:
-                                </h3>
-                            </div>
-                        </div>
-
+            <form novalidate ng-submit="validarImovel()" ng-if="steps.passo3" scrolling-to-steps>
+                <hr class="hr--gray hr--margin" />
+                <div class="row ">
+                    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 text-center">
+                        <h3 class="box--nomargin font--light roxo visible-xs">
+                            Agora, precisamos conhecer um pouco o imóvel para o qual você pretende fazer o seguro.
+                        </h3>
+                        <h2 class="box--nomargin font--light roxo visible-sm visible-md visible-lg">
+                            Agora, precisamos conhecer um pouco o imóvel para o qual você pretende fazer o seguro.
+                        </h2>
                     </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3">
-                                <div class="row">
-                                    <div class="col-md-1 checkbox">
+                </div>
 
-                                    </div>
-                                    <div class="col-md-11 checkbox__label">
-                                        <div class="pull-left checkbox">
+                <div class="row ">
+                    <div class="col-lg-10 col-lg-offset-1 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                        <h3 class="title__select--margin--min--40 font--regular text-center">
+                            O imóvel que você quer cuidar:
+                        </h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="col-lg-4 col-lg-offset-4 col-md-5 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                            <div class="row">
+                                <div class="col-md-11 checkbox__label">
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 box--nopadding">
+                                        <div class="checkbox">
                                             <input type="checkbox" id="test1" ng-true-value="'coletiva'" ng-model="dadosPessoais.all1" />
                                             <label for="test1"></label>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-11 col-md-11 col-sn-11 col-xs-11">
                                         <label for="test1" class="font--light">
                                             É uma habitação coletiva, como república, pensão ou albergue
                                         </label>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-1 checkbox">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11 checkbox__label">
 
-                                    </div>
-                                    <div class="col-md-11 checkbox__label">
-                                        <div class="pull-left checkbox">
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 box--nopadding">
+                                        <div class="checkbox">
                                             <input type="checkbox" id="test2" ng-true-value="'madeira'" ng-model="dadosPessoais.all2" />
                                             <label for="test2"></label>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-11 col-md-11 col-sn-11 col-xs-11">
                                         <label for="test2" class="font--light">
                                             É um imóvel pré-fabricado ou de madeira
                                         </label>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-1 checkbox">
-
-                                    </div>
-                                    <div class="col-md-11 checkbox__label">
-                                        <div class="pull-left checkbox">
-                                            <input type="checkbox" id="test3" ng-true-value="'tombado'" ng-model="dadosPessoais.all2" />
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11 checkbox__label">
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 box--nopadding">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="test3" ng-true-value="'tombado'" ng-model="dadosPessoais.all3" />
                                             <label for="test3"></label>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-11 col-md-11 col-sn-11 col-xs-11">
                                         <label for="test3" class="font--light">
                                             É tombado pelo patrimônio histórico
                                         </label>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-1 checkbox">
-
-                                    </div>
-                                    <div class="col-md-11 checkbox__label">
-                                        <div class="pull-left checkbox">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11 checkbox__label">
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 box--nopadding">
+                                        <div class="checkbox">
                                             <input type="checkbox" id="test4" ng-true-value="'rural'" ng-model="dadosPessoais.all2" />
                                             <label for="test4"></label>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-11 col-md-11 col-sn-11 col-xs-11">
                                         <label for="test4" class="font--light">
                                             É uma propriedade rural
                                         </label>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-1 checkbox">
-
-                                    </div>
-                                    <div class="col-md-11 checkbox__label">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11 checkbox__label">
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 box--nopadding">
                                         <div class="pull-left checkbox">
                                             <input type="checkbox" id="test5" ng-true-value="'construcao'" ng-model="dadosPessoais.all5" />
                                             <label for="test5"></label>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-11 col-md-11 col-sn-11 col-xs-11">
                                         <label for="test5" class="font--light">
                                             Está em construção, reconstrução, reforma, manutenção ou demolição
                                         </label>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-1 checkbox">
-
-                                    </div>
-                                    <div class="col-md-11 checkbox__label">
-                                        <div class="pull-left checkbox">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11 checkbox__label">
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 box--nopadding">
+                                        <div class="checkbox">
                                             <input type="checkbox" id="test6" ng-true-value="'false'" ng-model="dadosPessoais.all6" />
                                             <label for="test6"></label>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-11 col-md-11 col-sn-11 col-xs-11">
                                         <label for="test6" class="font--light">
                                             Não se enquadra em nenhum desses casos
                                         </label>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="col-md-4 col-md-offset-4 text-center input--margintop">
-                            <button class="button--background">
-                                Continuar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-            </form>
-            <form novalidate ng-submit="validarCepOuLocalizacao()">
-                <div class="row" ng-if="steps.passo4" scrolling-to-steps>
-                    <hr class="hr--gray hr--margin" />
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <h3 class="title title__select--margin--bottom font--regular box--nomargin">
-                                Qual é o CEP da casa ou apartamento?
-                            </h3>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-4">
-                            <input-cep placeholder="CEP" type="text" name="cep" valid="error.cep.valid" ng-model="dadosPessoais.cep" maxlength="80" />
-                        </div>
-                        <div class="col-md-4 col-md-offset-4 text-center">
-                            <span class="font__box--min">
-                                <a href="" class="title__href">
-                                    <u class="title__href__u font--regular roxo">
-                                        Não sei meu cep
-                                    </u>
-                                </a>
-
-                            </span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-4 text-center input--margintop">
+                        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 text-center input--margintop">
                             <button class="button--background">
                                 Continuar
                             </button>
@@ -288,76 +226,109 @@
                     </div>
                 </div>
             </form>
-            <form novalidate ng-submit="validarTipoImovel()">
-                <div class="row" ng-if="steps.passo5" scrolling-to-steps>
-                    <hr class="hr--gray hr--margin" />
-                    <div class="row box--margin">
-                        <div class="col-md-12 text-center">
-                            <h3 class="title box--nomargin font--regular">
-                                Esse imóvel é:
-                            </h3>
-                        </div>
-                    </div>
 
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-3 col-md-offset-3 text-center">
-                                <button class="button--line button--line--icon" ng-click="defineImovel('Casa')" ng-class="{'button--line--active' : dadosPessoais.tipoImovel == 'Casa'}">
-                                    <div class="text-center">
-                                        <img src="../images/SVGs/ilustracoes_caixa_am_export-48.svg" />
-                                    </div>
-                                    <div class="button--line--icon__text">
-                                        Casa
-                                    </div>
-                                </button>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <button class="button--line button--line--icon" ng-click="defineImovel('Apartamento')" ng-class="{'button--line--active' : dadosPessoais.tipoImovel == 'Apartamento'}">
-                                    <div class="text-center">
-                                        <img src="../images/SVGs/ilustracoes_caixa_am_export-49.svg" />
-                                    </div>
-                                    <div class="button--line--icon__text">
-                                        Apartamento
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
 
+            <form novalidate ng-submit="validarCepOuLocalizacao()" ng-if="steps.passo4" scrolling-to-steps>
+                <hr class="hr--gray hr--margin" />
+                <div class="row">
+                    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                        <h3 class="title title__select--margin--bottom font--regular box--nomargin text-center">
+                            Qual é o CEP da casa ou apartamento?
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <input-cep placeholder="CEP" type="text" name="cep" valid="error.cep.valid" ng-model="dadosPessoais.cep" maxlength="80" />
+                    </div>
+                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 text-center">
+                        <span class="font__box--min">
+                            <a href="" class="title__href">
+                                <u class="title__href__u font--regular roxo">
+                                    Não sei meu cep
+                                </u>
+                            </a>
+
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 text-center input--margintop">
+                        <button class="button--background">
+                            Continuar
+                        </button>
+                    </div>
                 </div>
             </form>
-            <form novalidate ng-submit="validarCondominioFechado()">
-                <div class="container" ng-if="steps.passo6">
-                    <hr class="hr--gray hr--margin" />
-                    <div class="row" scrolling-to-steps>
-                        <div class="col-md-12 text-center">
-                            <h3 class="title title__select--margin--bottom font--regular">
-                                <span ng-if="dadosPessoais.tipoImovel == 'Apartamento'">Este apartamento</span>
-                                <span ng-if="dadosPessoais.tipoImovel == 'Casa'">Esta casa</span>
-                                fica em condomínio fechado?
-                            </h3>
-                        </div>
+            <form novalidate ng-submit="validarTipoImovel()" ng-if="steps.passo5" scrolling-to-steps>
+                <hr class="hr--gray hr--margin" />
+                <div class="row box--margin">
+                    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 text-center">
+                        <h3 class="title box--nomargin font--regular">
+                            Esse imóvel é:
+                        </h3>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-6 col-xs-offset-0 text-center">
+                        <button class="button--line button--line--icon" ng-click="defineImovel('Casa')" ng-class="{'button--line--active' : dadosPessoais.tipoImovel == 'Casa'}">
+                            <div class="text-center">
+                                <img src="../images/SVGs/ilustracoes_caixa_am_export-48.svg" />
+                            </div>
+                            <div class="button--line--icon__text">
+                                Casa
+                            </div>
+                        </button>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 text-center">
+                        <button class="button--line button--line--icon" ng-click="defineImovel('Apartamento')" ng-class="{'button--line--active' : dadosPessoais.tipoImovel == 'Apartamento'}">
+                            <div class="text-center">
+                                <img src="../images/SVGs/ilustracoes_caixa_am_export-49.svg" />
+                            </div>
+                            <div class="button--line--icon__text">
+                                Apartamento
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </form>
 
-                    <div class="row ">
-                        <div class="col-md-12 text-center">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-3 col-md-offset-3">
-                                        <button class="button--line" ng-click="defineCondominioFechado('Sim')" ng-class="{'button--line--active' : dadosPessoais.condominioFechado == 'Sim'}">
-                                            <div class="button--line__text">
-                                                Sim
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button class="button--line" ng-click="defineCondominioFechado('Nao')" ng-class="{'button--line--active' : dadosPessoais.condominioFechado == 'Nao'}">
-                                            <div class="button--line__text">
-                                                Não
-                                            </div>
-                                        </button>
-                                    </div>
+            <form novalidate ng-submit="validarCondominioFechado()" ng-if="steps.passo6">
+
+                <hr class="hr--gray hr--margin" />
+                <div class="row" scrolling-to-steps>
+                    <div class="col-md-12 text-center">
+                        <h3 class="title title__select--margin--bottom font--regular">
+                            <span ng-if="dadosPessoais.tipoImovel == 'Apartamento'">Este apartamento</span>
+                            <span ng-if="dadosPessoais.tipoImovel == 'Casa'">Esta casa</span>
+                            fica em condomínio fechado?
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col-md-12 text-center">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                                    <button class="button--line" ng-click="defineCondominioFechado('Sim')" ng-class="{'button--line--active' : dadosPessoais.condominioFechado == 'Sim'}">
+                                        <div class="button--line__text">
+                                            Sim
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </button>
                                 </div>
+                                <div class="clearfix visible-xs" style="height: 95px;"></div>
+                                <div class="col-lg-3 col-lg-offset-0 col-md-4 col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                                    <button class="button--line" ng-click="defineCondominioFechado('Nao')" ng-class="{'button--line--active' : dadosPessoais.condominioFechado == 'Nao'}">
+                                        <div class="button--line__text">
+                                            Não
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </button>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
@@ -368,7 +339,7 @@
                 <div class="container">
                     <div class="row" ng-if="steps.passo7" scrolling-to-steps>
                         <hr class="hr--gray hr--margin" />
-                        <div class="col-md-12 text-center">
+                        <div class="col-lg-10 col-lg-offset-1 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 text-center">
                             <h3 class="title title__select--margin--bottom box--nomargin font--regular">
                                 É sua moradia principal?
                             </h3>
@@ -376,29 +347,30 @@
 
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-md-4 col-md-offset-4 text-center roxo--light" ng-if="dadosPessoais.tipoImovel == 'Casa'">
+                                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1 text-center roxo--light" ng-if="dadosPessoais.tipoImovel == 'Casa'">
                                     <img src="../images/SVGs/ilustracoes_caixa_am_export-48.svg" />
                                 </div>
-                                <div class="col-md-4 col-md-offset-4 text-center roxo--light" ng-if="dadosPessoais.tipoImovel == 'Apartamento'">
+                                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1 text-center roxo--light" ng-if="dadosPessoais.tipoImovel == 'Apartamento'">
                                     <img src="../images/SVGs/ilustracoes_caixa_am_export-49.svg" />
                                 </div>
                             </div>
                             <div class="row title__select--margin--bottom">
-                                <div class="col-md-8 col-md-offset-2 text-center">
+                                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 text-center">
                                     <h4 class="gray--light box--nomargin font--light line--inherit">
                                         Moradia principal é a residência que você passa a maior parte dos dias. Não é um lugar que fica muito tempo vazio ou que você usa somente nos finais de semana e férias.
                                     </h4>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 col-md-offset-3">
+                                <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                                     <button class="button--line" ng-click="defineMoradiaPrincipal('Sim')" ng-class="{'button--line--active' : dadosPessoais.moradiaPrincial == 'Sim'}">
                                         <div class="button--line__text">
                                             Sim
                                         </div>
                                     </button>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="clearfix visible-xs" style="height: 95px;"></div>
+                                <div class="col-lg-3 col-lg-offset-0 col-md-4 col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                                     <button class="button--line" ng-click="defineMoradiaPrincipal('Nao')" ng-class="{'button--line--active' : dadosPessoais.moradiaPrincial == 'Nao'}">
                                         <div class="button--line__text">
                                             Não
@@ -416,7 +388,7 @@
                 <div class="container" ng-if="steps.passo8" scrolling-to-steps>
                     <hr class="hr--gray hr--margin" />
                     <div class="row">
-                        <div class="col-md-10 col-md-offset-1 text-center">
+                        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 text-center">
                             <h3 class="title box--nomargin font--regular">
                                 Você pode dizer o valor aproximado
                                 <span ng-if="dadosPessoais.tipoImovel == 'Apartamento'">do apartamento</span>
@@ -424,7 +396,7 @@
                                 ?
                             </h3>
                             <h5 class="gray--light font--regular line--inherit box--nomargin box--margintop--20">
-                                Caso o imóvel possua um valor abaixo ou acima do valor estipulado, por favor, procure uma agência da Caixa Econômica e fale com o gerente.
+                                Caso o imóvel possua um valor abaixo de R$70 mil ou acima de R$500 mil, por favor, procure uma agência da Caixa Econômica e fale com o gerente.
                             </h5>
                             <h5 class="roxo--light font--regular line--inherit box--nomargin box--margintop--50 text-center">
                                 Valor da cobertura
@@ -432,143 +404,158 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-3 text-center">
-                            <!--<button type="button" ng-click="diminuirValorImovel()">
-                                -
-                            </button>-->
-                            <rzslider rz-slider-model="valorAproximado" rz-slider-options="slider.options"></rzslider>
-                            <!--<button type="button" ng-click="somaValorImovel()">
-                                +
-                            </button>-->
+                        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 text-center">
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xs-1 col-xs-offset-1 col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1">
+                                        <button class="button--rounded--slider" type="button" ng-click="diminuirValorImovel()">
+                                            -
+                                        </button>
+                                    </div>
+                                    <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8">
+                                        <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
+                                    </div>
+                                    <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
+                                        <button class="button--rounded--slider" type="button" ng-click="somaValorImovel()">
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="text-center">
                             <h3 class="price font--medium gray">
-                                <span class="font--light font__box--min">R$&nbsp;</span>{{valorAproximado | realCurrency}}
+                                <span class="font--light font__box--min">R$&nbsp;</span>{{slider.value | realCurrency}}
                             </h3>
                         </div>
                     </div>
                     <div class="row box--margintop--50 text-center">
-                        <button class="button--background">
-                            Continuar
-                        </button>
-                    </div>
-
-                </div>
-
-            </form>
-            <form novalidate ng-submit="validarImovelComSeguroOutraEmpresa()">
-                <div class="row" ng-if="steps.passo9" scrolling-to-steps>
-                    <hr class="hr--gray hr--margin" />
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <h3 class="title box--nomargin title__select--margin--bottom font--regular">
-                                <span ng-if="dadosPessoais.tipoImovel == 'Apartamento'">Este apartamento</span>
-                                <span ng-if="dadosPessoais.tipoImovel == 'Casa'">Esta casa</span>
-                                já possui seguro em outra empresa?
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-3 col-md-offset-3">
-                                            <button class="button--line" type="button" ng-click="definePossuiSeguroOutraEmpresa('Sim')" ng-class="{'button--line--active' : dadosPessoais.possuiSeguroOutraEmpresa == 'Sim'}">
-                                                <div class="button--line__text">
-                                                    Sim
-                                                </div>
-                                            </button>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <button class="button--line" type="button" ng-click="definePossuiSeguroOutraEmpresa('Nao')" ng-class="{'button--line--active' : dadosPessoais.possuiSeguroOutraEmpresa == 'Nao'}">
-                                                <div class="button--line__text">
-                                                    Não
-                                                </div>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row box--margintop--50" ng-if="dadosPessoais.possuiSeguroOutraEmpresa == 'Sim'">
-                                        <div class="col-md-12 text-center">
-                                            <h4 class="title box--nomargin font--regular">
-                                                Qual o nome da empresa?
-                                            </h4>
-                                        </div>
-                                        <div class="col-md-4 box--margintop--20 col-md-offset-4 text-center">
-                                            <input-nome placeholder="Qual a empresa?" type="text" name="empresa" ng-model="dadosPessoais.seguroOutraEmpresa" maxlength="40" valid="error.seguroOutraEmpresa.valid" message="{{error.seguroOutraEmpresa.message}}" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row box--margin text-center">
-                            <button class="button--background button--background--max" ng-class="{'button--visible' : dadosPessoais.possuiSeguroOutraEmpresa == 'Nao' || dadosPessoais.possuiSeguroOutraEmpresa == 'Sim' && dadosPessoais.seguroOutraEmpresa, 'button--invisible' : !dadosPessoais.seguroOutraEmpresa}">
-                                Escolher assistências e coberturas
+                        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 text-center">
+                            <button class="button--background">
+                                Continuar
                             </button>
                         </div>
                     </div>
 
                 </div>
+
+            </form>
+            <form novalidate ng-submit="validarImovelComSeguroOutraEmpresa()" ng-if="steps.passo9" scrolling-to-steps>
+                <hr class="hr--gray hr--margin" />
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 text-center">
+                        <h3 class="title box--nomargin title__select--margin--bottom font--regular">
+                            <span ng-if="dadosPessoais.tipoImovel == 'Apartamento'">Este apartamento</span>
+                            <span ng-if="dadosPessoais.tipoImovel == 'Casa'">Esta casa</span>
+                            já possui seguro em outra empresa?
+                        </h3>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                                        <button class="button--line" type="button" ng-click="definePossuiSeguroOutraEmpresa('Sim')" ng-class="{'button--line--active' : dadosPessoais.possuiSeguroOutraEmpresa == 'Sim'}">
+                                            <div class="button--line__text">
+                                                Sim
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="clearfix visible-xs" style="height: 95px;"></div>
+                                    <div class="col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                                        <button class="button--line" type="button" ng-click="definePossuiSeguroOutraEmpresa('Nao')" ng-class="{'button--line--active' : dadosPessoais.possuiSeguroOutraEmpresa == 'Nao'}">
+                                            <div class="button--line__text">
+                                                Não
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row box--margintop--50" ng-if="dadosPessoais.possuiSeguroOutraEmpresa == 'Sim'">
+                                    <div class="col-lg-12 col-lg-offset-12 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 text-center">
+                                        <h4 class="title box--nomargin font--regular">
+                                            Qual o nome da empresa?
+                                        </h4>
+                                    </div>
+                                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 box--margintop--20 text-center">
+                                        <input-nome placeholder="Qual a empresa?" type="text" name="empresa" ng-model="dadosPessoais.seguroOutraEmpresa" maxlength="40" valid="error.seguroOutraEmpresa.valid" message="{{error.seguroOutraEmpresa.message}}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row box--margin text-center">
+                        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+                            <button class="button--background button--background--max" ng-class="{'button--visible' : dadosPessoais.possuiSeguroOutraEmpresa == 'Nao' || dadosPessoais.possuiSeguroOutraEmpresa == 'Sim' && dadosPessoais.seguroOutraEmpresa, 'button--invisible' : !dadosPessoais.seguroOutraEmpresa}">
+                                Escolher assistências e coberturas
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
-    <footer class="footer box--margintop--50">
-        <div class="row hidden-xs">
-            <div class="col-md-9">
-                <div class="col-md-2">
-                    <img src="../images/logo_caixa_cor.svg" height="40" />
-                </div>
-                <div class="col-md-10">
-                    <h6 class="font--regular box--nomargin gray--light">
-                        &copy; Copyrights 2017 Caixa Seguradora - Todos os direitos reservados.
-                    </h6>
-                    <div class="footer__content font--regular gray--light">
-                        O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
-                        Processo SUSEP nº 15414.900040/2016-34.
-                    </div>
-                </div>
-
+</div>
+<footer class="footer box--margintop--50">
+    <div class="row hidden-xs">
+        <div class="col-md-9">
+            <div class="col-md-2 box--nomargin box--nopadding">
+                <img src="../images/logo_caixa_cor.svg" height="40" style="margin-top: -4px;" />
             </div>
-            <div class="col-md-3">
-                <!--<h6 class="font--regular text-right remove--margin">Fale conosco</h6>-->
-                <h6 class="font--regular text-right gray--light remove--margin--top remove--margin--bottom">
-                    <strong>Fale conosco:</strong>
-                    0800 730 9902
+            <div class="col-md-10">
+                <h6 class="font--regular box--nomargin gray--light">
+                    &copy; Copyrights 2017 Caixa Seguradora - Todos os direitos reservados.
                 </h6>
-                <h6 class="font--regular text-right gray--light remove--margin--top remove--margin--bottom">
-                    <strong>SAC:</strong> 0800-730-9901
-                </h6>
-                <h6 class="remove--margin--top gray--light font--regular text-right remove--margin--top remove--margin--bottom">
-                    <strong>Ouvidoria:</strong> 0800-702-4240
-                </h6>
-            </div>
-        </div>
-        <div class="row visible-xs">
-            <div class="col-md-12 footer__content text-center">
-                <div class="col-md-12">
-                    <h6 class="font--regular text-center remove--margin">Fale conosco</h6>
-                    <h4 class="font--light text-center remove--margin--top">0800 730 9902</h4>
-                    <h5 class="font--regular text-center">
-                        <strong>SAC:</strong> 0800-730-9901
-                    </h5>
-                    <h6 class="remove--margin--top font--regular text-center">
-                        <strong>Ouvidoria:</strong> 0800-702-4240
-                    </h6>
-                </div>
-                <div class="clearfix" style="height: 20px;"></div>
-                <h6 class="font--regular">
-                    &copy; Copyrights 2017 Caixa Seguradora <br /> Todos os direitos reservados.
-                </h6>
-                <div class="font--regular">
+                <div class="footer__content font--regular gray--light">
                     O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
                     Processo SUSEP nº 15414.900040/2016-34.
                 </div>
             </div>
-            <div class="col-md-12 text-center">
-                <img src="../images/logo-caixaseguradora.png" alt="Logotipo Caixa Seguradora e sua tipografia" />
+
+        </div>
+        <div class="col-md-3">
+            <!--<h6 class="font--regular text-right remove--margin">Fale conosco</h6>-->
+            <h6 class="font--regular text-right remove--margin--top remove--margin--bottom gray--light">
+                <span class="font--medium">Fale conosco:</span>
+                0800 730 9902
+            </h6>
+            <h6 class="font--regular text-right remove--margin--top remove--margin--bottom gray--light">
+                <span class="font--medium">SAC:</span> 0800-730-9901
+            </h6>
+            <h6 class="remove--margin--top font--regular text-right remove--margin--top remove--margin--bottom gray--light">
+                <span class="font--medium">Ouvidoria:</span> 0800-702-4240
+            </h6>
+        </div>
+    </div>
+    <div class="row visible-xs">
+        <div class="col-md-12 footer__content text-center">
+            <div class="col-md-12">
+                <h6 class="font--regular text-center remove--margin">Fale conosco</h6>
+                <h4 class="font--light text-center remove--margin--top">0800 730 9902</h4>
+                <h5 class="font--regular text-center">
+                    <strong>SAC:</strong> 0800-730-9901
+                </h5>
+                <h6 class="remove--margin--top font--regular text-center">
+                    <strong>Ouvidoria:</strong> 0800-702-4240
+                </h6>
+            </div>
+            <div class="clearfix" style="height: 20px;"></div>
+            <h6 class="font--regular">
+                &copy; Copyrights 2017 Caixa Seguradora <br /> Todos os direitos reservados.
+            </h6>
+            <div class="font--regular">
+                O registro deste plano na SUSEP não implica por parte da Autarquia, incentivo ou recomendação à sua comercialização.<br />
+                Processo SUSEP nº 15414.900040/2016-34.
             </div>
         </div>
-    </footer>
+        <div class="col-md-12 text-center">
+            <img src="../images/logo-caixaseguradora.png" alt="Logotipo Caixa Seguradora e sua tipografia" />
+        </div>
+    </div>
+</footer>
 </div>

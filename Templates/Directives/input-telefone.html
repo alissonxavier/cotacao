@@ -2,7 +2,7 @@
     {{placeholder}}
     <i class="fa fa-check icon--green" ng-show="!message && valid"></i>
     <i class="fa fa-close icon--red" ng-show="message"></i>
-    <span class="icon--red" ng-show="message">
+    <span class="icon--red" ng-if="message" scrolling-to-error>
         {{message}}
     </span>
 </label>

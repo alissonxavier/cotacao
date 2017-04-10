@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="12px" viewBox="0 0 19 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M43.1178199,38.0938784 L29,38.0938784 L29,36.6222642 L42.6755542,36.6222642 L37.0938784,31.0405884 L38.1344669,30 L45.4185858,37.284119 L45.415596,37.2871089 L45.7106812,37.5821941 L38.2032091,45.0896661 L37.1626207,44.0490777 L43.1178199,38.0938784 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-0.3" y="-0.3" width="17.3106812" height="15.6896661">
+            <rect x="28.7" y="29.7" width="17.3106812" height="15.6896661" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="bt-flip-copy" transform="translate(-28.000000, -29.000000)">
+            <g id="Combined-Shape">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="0.6" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

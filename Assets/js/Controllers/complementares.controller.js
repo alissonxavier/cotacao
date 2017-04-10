@@ -3,7 +3,11 @@
 
     var $app = angular.module('app');
 
-    $app.controller('complementaresCtrl', ['$scope', '$location', 'storageService', function ($scope, $location, storageService) {
+    $app.controller('complementaresCtrl', ['$scope', '$location', 'storageService', 'parallaxHelper', function ($scope, $location, storageService, parallaxHelper) {
+
+        $scope.header = parallaxHelper.createAnimator(-0.5, 150, -150);
+        $scope.grafismoLeft = parallaxHelper.createAnimator(-0.4, 0, -180, 40);
+        $scope.grafismoRight = parallaxHelper.createAnimator(-0.4, 0, -180, 40);
 
         $scope.dadosPessoais = {};
         $scope.dadosComplementares = {};
@@ -12,6 +16,13 @@
             $scope.dadosPessoais = JSON.parse(storageService.restore('rdStorageStep1'));
         };
 
+        if (storageService.restore('rdStorageStep3')) {
+            $scope.dadosComplementares = JSON.parse(storageService.restore('rdStorageStep3'));
+        }
+
+        if ($scope.dadosPessoais.nome) {
+            $scope.dadosComplementares.nomeCompleto = $scope.dadosPessoais.nome;
+        }
         if ($scope.dadosPessoais.email) {
             $scope.dadosComplementares.email = $scope.dadosPessoais.email;
         }
@@ -339,6 +350,77 @@
             storageService.save('rdStorageStep3', $scope.dadosComplementares);
             $scope.go('meujeito/pagamento');
         };
+
+        //Validar dados caso não seja proprietário
+        if ($scope.dadosComplementares.eProprietario == 'Não') {
+            if (!$scope.dadosComplementares.proprietario.nomeCompleto) {
+                $scope.error.nomeCompletoProprietario = {
+                    message: "Preenchimento obrigatório.",
+                    valid: false
+                }
+                return false;
+            } else {
+                var rule = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/.test($scope.dadosComplementares.proprietario.nomeCompleto);
+
+                if (!rule || $scope.dadosComplementares.proprietario.nomeCompleto.length < 4) {
+                    $scope.error.nomeCompletoProprietario = {
+                        message: "A formatação do nome não está correta.",
+                        valid: false
+                    };
+                    return false;
+                } else {
+                    $scope.error.nomeCompletoProprietario = {
+                        message: "",
+                        valid: true
+                    };
+                }
+
+            }
+
+            if (!$scope.dadosComplementares.proprietario.cpf) {
+                $scope.error.cpfProprietario = {
+                    message: "Preenchimento obrigatório",
+                    valid: false
+                }
+                return false;
+            } else {
+                $scope.error.cpfProprietario = {
+                    message: "",
+                    valid: true
+                };
+            }
+
+        }
+
+        //Validar dados caso seja imovel de correspondencia
+        if ($scope.dadosComplementares.eCorrespondencia == 'Não') {
+            if (!$scope.dadosComplementares.correspondencia.cepCorrespondencia) {
+                $scope.error.cepCorrespondencia = {
+                    message: "Preenchimento obrigatório.",
+                    valid: false
+                }
+                return false;
+            }
+
+            $scope.error.cepCorrespondencia = {
+                message: "",
+                valid: true
+            }
+
+            if (!$scope.dadosComplementares.proprietario.cpf) {
+                $scope.error.cpfProprietario = {
+                    message: "Preenchimento obrigatório",
+                    valid: false
+                }
+                return false;
+            } else {
+                $scope.error.cpfProprietario = {
+                    message: "",
+                    valid: true
+                };
+            }
+
+        }
 
 
         /**

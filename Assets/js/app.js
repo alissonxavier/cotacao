@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var $app = angular.module('app', ['ngRoute', 'ngMask', 'rzModule', 'duParallax','app.config']);
+    var $app = angular.module('app', ['ngRoute', 'ngMask', 'rzModule', 'duParallax', 'credit-cards','app.config','ngLodash']);
     console.log("AppConfig");
 
     $app.config(function ($routeProvider, $locationProvider) {
@@ -37,6 +37,10 @@
         .when("/meujeito/sucesso", {
             templateUrl: "Templates/MeuJeito/sucesso.html",
             controller: "sucessoCtrl"
+        })
+        .when("/meujeito/analise", {
+            templateUrl: "Templates/MeuJeito/analise.html",
+            controller: "errorCtrl"
         })
         .when("/ideal", {
             templateUrl: "Templates/Ideal/dadosBasicos.html",

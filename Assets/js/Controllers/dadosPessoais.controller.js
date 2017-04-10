@@ -3,11 +3,13 @@
 
     var $app = angular.module('app');
 
-    $app.controller('dadosPessoaisCtrl', ['$scope', '$attrs', '$location', 'storageService', 'parallaxHelper','$cepService', function ($scope, $attrs, $location, storageService, parallaxHelper,$cepService) {
+    $app.controller('dadosPessoaisCtrl', ['$scope', '$attrs', '$location', 'storageService', 'parallaxHelper','$coberturasService','lodash', function ($scope, $attrs, $location, storageService, parallaxHelper,$coberturasService,lodash) {
 
-        $scope.header = parallaxHelper.createAnimator(-0.5, 150, -150);
-        $scope.grafismoLeft = parallaxHelper.createAnimator(-0.4, 0, -180, 40);
-        $scope.grafismoRight = parallaxHelper.createAnimator(-0.4, 0, -180, 40);
+        
+
+        $scope.header = parallaxHelper.createAnimator(-0.5, 0, -150);
+        $scope.grafismoLeft = parallaxHelper.createAnimator(-0.4, 0, 0, 40);
+        $scope.grafismoRight = parallaxHelper.createAnimator(-0.4, 0, 0, 40);
         
         $scope.dadosPessoais = {};
 
@@ -21,6 +23,22 @@
         $scope.error = {};
         $scope.valorAproximado = 7000000;
 
+        $coberturasService.getCoberturas().
+        then(function (result){
+
+                if (storageService.restore('plano')) {
+                    $scope.plano = JSON.parse(storageService.restore('plano'));
+                }
+
+                $scope.filteredData = lodash.find(result.data.ofertas, function(o) { return o.descricao = $scope.plano; });
+                
+                storageService.save('coberturas',$scope.filteredData);
+            },
+            function (error) {
+                alert('Ocorreu um erro');
+            }
+        );
+
         /**
          * slider
          * @description Método de configuração do slider
@@ -31,13 +49,14 @@
                 showSelectionBar: true,
                 floor: 7000000,
                 ceil: 50000000,
-                step: 100,
+                step: 1000,
                 translate: function (value) {
-                    $scope.valorAproximado = value;
+                    $scope.slider.value = value;
                     return '';
                 }
             }
         };
+
 
         /**
          * @function validarNopme
@@ -46,15 +65,13 @@
         $scope.validarNome = function () {
             var rule = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/.test($scope.dadosPessoais.nome);
 
-            //var ruleNumber = /^[0-9]$/;
-
-            //if (!ruleNumber) {
-            //    $scope.error.nome = {
-            //        message: "Tem certeza?",
-            //        valid: false
-            //    };
-            //    return false;
-            //}
+            if (!$scope.dadosPessoais.nome) {
+                $scope.error.nome = {
+                    message: "Precisamos do seu nome",
+                    valid: false
+                };
+                return false;
+            }
 
             if (!rule) {
                 $scope.error.nome = {
@@ -63,6 +80,9 @@
                 };
                 return false;
             };
+
+            var primeiroNome = $scope.dadosPessoais.nome.match(/[A-z]*/i);
+            $scope.dadosPessoais.primeiroNome = primeiroNome[0];
 
             $scope.error.nome = {
                 message: "",
@@ -220,19 +240,13 @@
                     $scope.steps.passo5 = true;
                 }
             } else {
-
-                 //Buscando as informações do cep
-                $cepService.consultaCEP(cep)
-                .then(function (result) {
-                    console.log('Resultado com Sucesso');
-                    $scope.dadosPessoais.endereco = {
-                        endereco: result.data.indTipoLogradouro,
-                        bairro: result.data.nomBairro,
-                        cidade: result.data.nomLocalidade
-                    }
-                }, function (error) {
-                    console.log('Resultado com erro');
-                });
+                $scope.dadosPessoais.endereco = {
+                    endereco: "SQN 206 Bloco H",
+                    bairro: "Asa Norte",
+                    cidade: "Brasília",
+                    numero: "20",
+                    complemento : "Apartamento"
+                }
 
                 $scope.error.cep = {
                     message: "",
@@ -344,7 +358,10 @@
          * @returns void
          */
         $scope.somaValorImovel = function () {
-            $scope.valorAproximado = Math.round($scope.valorAproximado + 100);
+            if ($scope.slider.value < 50000000) {
+                $scope.slider.value = Math.round($scope.slider.value + 500000);
+            }
+            return false;
         }
 
         /**
@@ -352,7 +369,10 @@
          * @returns void
          */
         $scope.diminuirValorImovel = function () {
-            $scope.valorAproximado = Math.round($scope.valorAproximado - 100);
+            if ($scope.slider.value > 7000000) {
+                $scope.slider.value = Math.round($scope.slider.value - 500000);
+            }
+            return false;
         }
 
         /**
