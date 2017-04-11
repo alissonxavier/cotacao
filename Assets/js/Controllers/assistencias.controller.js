@@ -77,23 +77,27 @@
         }
 
         if (storageService.restore('coberturas')) {
-            $scope.coberturas = JSON.parse(storageService.restore('coberturas'));
+            $scope.coberturasIniciais = JSON.parse(storageService.restore('coberturas'));
         }
         //Coberturas Básicas
-        $scope.coberturas = lodash.find($scope.coberturas.composicaoOferta,{'cobertura':{'indicadorTipo' : 'COBERTURA'},'tipoComposicao': 'B'});
+        $scope.coberturas = lodash.filter($scope.coberturasIniciais.composicaoOferta, function(o) { return o.cobertura.indicadorTipo == 'COBERTURA'; });
         /*$scope.coberturas = [
             {
-                "id": 1,//sequencial
-                "nome": "Incêndio, queda de raio e explosão",//descricao
-                "valor": 9000,//valorFranquia
+                "sequencial": 1,//sequencial
+                "descricao": "Incêndio, queda de raio e explosão",//descricao
+                "valorFranquia": 9000,//valorFranquia
                 "curta": "Em caso de incêndio, explosão ou queda de raio, você poderá receber até 100% da cobertura para reparar os danos causados ao imóvel e aos seus bens.",//não existe
-                "completa": "Se ocorrer um incêndio de qualquer natureza no imóvel, se um raio cair no terreno do imóvel ou uma explosão de qualquer natureza começar dentro da área de seu terreno, você poderá receber até 100% do valor dessa cobertura para reparar danos causados ao imóvel e aos seus bens.",//texto
-                "valorMinimo": 7000,//coberturaLimiteCanal.valorMinimo
-                "valorMaximo": 50000,//coberturaLimiteCanal.ValorMaximo
+                "texto": "Se ocorrer um incêndio de qualquer natureza no imóvel, se um raio cair no terreno do imóvel ou uma explosão de qualquer natureza começar dentro da área de seu terreno, você poderá receber até 100% do valor dessa cobertura para reparar danos causados ao imóvel e aos seus bens.",//texto
+                "coberturaLimiteCanal" : [
+                    {
+                    "valorMinimo": 7000,//coberturaLimiteCanal.valorMinimo
+                    "valorMaximo": 50000,//coberturaLimiteCanal.ValorMaximo
+                    }
+                ],
                 "icone": "../images/SVGs/ilustracoes_caixa_am_export-01.svg",//não existe
                 "franquia": "Não há"//não existe
 
-            },
+            }/*,
             {
                 "id": 2,
                 "nome": "Danos Elétricos",
@@ -128,8 +132,8 @@
                 "franquia": "10% do valor do sinistro com mínimo de R$ 300,00"
             }
         ];*/
-
-        $scope.ofertasCobertura = [
+        //Coberturas Adicionais
+        /*$scope.ofertasCobertura = [
             {
                 "id": 1,
                 "nome": "Roubo e furto de equipamentos portáteis",
@@ -174,7 +178,7 @@
                 "icone": "../images/SVGs/ilustracoes_caixa_am_export-08.svg",
                 "franquia": "Não há"
             }
-        ];
+        ];*/
 
         $scope.validarAssistencias = function () {
             storageService.save('rdStorageStep2', $scope.assistencias);
@@ -257,7 +261,8 @@
             }
         ];
 
-        $scope.assistenciasInclusas = [
+        $scope.assistenciasInclusas = lodash.filter($scope.coberturasIniciais.composicaoOferta, function(o) { return o.cobertura.indicadorTipo == 'ASSISTENCIA'; });
+        /*$scope.assistenciasInclusas = [
             {
                 "id": 1,
                 "nome": "Chaveiro",
@@ -345,7 +350,7 @@
                 "icone": "../images/SVGs/ilustracoes_caixa_am_export-18.svg",
                 "franquia": "Não há"
             }
-        ];
+        ];*/
 
         $scope.selecionaAssistencia = function (assistencia) {
 

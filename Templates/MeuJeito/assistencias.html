@@ -25,7 +25,7 @@
                         </h2>
 
                         <div class="header__text--white font-size--16 font--light text-center">
-                            Todos os nossos planos já vem com <span class="font--medium title__href__u white">4 <u>coberturas</u></span> e <span class="font--medium font--medium title__href__u white">9 <u>assistências</u></span>, mas você pode incluir quantas quiser e personalizar o valor de cada uma delas de acordo com as suas necessidades.
+                            Todos os nossos planos já vem com <span class="font--medium title__href__u white">{{coberturasFiltradas.length}} <u>coberturas</u></span> e <span class="font--medium font--medium title__href__u white">{{assistenciasFiltradas.length}} <u>assistências</u></span>, mas você pode incluir quantas quiser e personalizar o valor de cada uma delas de acordo com as suas necessidades.
                         </div>
                     </div>
                 </div>
@@ -92,49 +92,49 @@
                     <div class="row">
                         <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-repeat="inclusa in coberturas">
-                                    <box-flip name="{{inclusa.sequencial}}">
-                                        <div class="boxflip__front">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-repeat="inclusa in coberturas | filter: { tipoComposicao: 'B'} as coberturasFiltradas">
+                                       <box-flip name="{{inclusa.cobertura.sequencial}}">
+                                       <div class="boxflip__front">
                                             <div class="boxflip__icon">
                                                 <img src="../images/SVGs/ilustracoes_caixa_am_export-03.svg" class="boxflip__icon__img" />
                                             </div>
                                             <h4 class="boxflip__title line--inherit box--margintop--10">
-                                                {{inclusa.descricao}}
+                                                {{inclusa.cobertura.descricao}}
                                             </h4>
                                             <h5 class="boxflip__label roxo--light">
                                                 Valor da cobertura
                                             </h5>
-                                            <p class="boxflip__paragraph boxflip__label--light" ng-if="inclusa.coberturaLimiteCanal[0].valorMinimo">
-                                                Mínimo de {{inclusa.coberturaLimiteCanal[0].valorMinimo | currency: 'R$'}} e máximo de {{inclusa.coberturaLimiteCanal[0].valorMaximo | currency: 'R$'}}
+                                            <p class="boxflip__paragraph boxflip__label--light" ng-if="inclusa.cobertura.coberturaLimiteCanal[0].valorMinimo">
+                                                Mínimo de {{inclusa.cobertura.coberturaLimiteCanal[0].valorMinimo | currency: 'R$'}} e máximo de {{inclusa.cobertura.coberturaLimiteCanal[0].valorMaximo | currency: 'R$'}}
                                             </p>
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="col-xs-1 col-xs-offset-1 col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1">
-                                                    <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="diminuiRange('inclusas', $index, 10000, inclusa.coberturaLimiteCanal[0].valorMinimo)">
+                                                    <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="diminuiRange('inclusas', $index, 10000, inclusa.cobertura.coberturaLimiteCanal[0].valorMinimo)">
                                                         -
                                                     </button>
                                                 </div>
                                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                                    <rzslider rz-slider-model="inclusa.valorFranquia" rz-slider-maxlimit="inclusa.coberturaLimiteCanal[0].valorMaximo" rz-slider-options="{showSelectionBar: true, hideLimitLabels: true, hidePointerLabels: true, ceil: inclusa.coberturaLimiteCanal[0].valorMaximo}"></rzslider>
+                                                    <rzslider rz-slider-model="inclusa.valorFranquia" rz-slider-maxlimit="inclusa.cobertura.coberturaLimiteCanal[0].valorMaximo" rz-slider-options="{showSelectionBar: true, hideLimitLabels: true, hidePointerLabels: true, ceil: inclusa.cobertura.coberturaLimiteCanal[0].valorMaximo}"></rzslider>
                                                 </div>
                                                 <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
-                                                    <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="aumentaRange('inclusas', [$index], 10000, inclusa.coberturaLimiteCanal[0].valorMaximo)">
+                                                    <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="aumentaRange('inclusas', [$index], 10000, inclusa.cobertura.coberturaLimiteCanal[0].valorMaximo)">
                                                         +
                                                     </button>
                                                 </div>
                                             </div>
                                             <h3 class="boxflip__price text-center">
-                                                <span class="font--light font__box--min">R$&nbsp;</span>{{inclusa.valorFranquia | realCurrency}}
+                                                <span class="font--light font__box--min">R$&nbsp;</span>{{inclusa.cobertura.valorFranquia | realCurrency}}
                                             </h3>
                                         </div>
                                         <div class="boxflip__back">
                                             <h4 class="title text-center line--inherit boxflip__back__title">
-                                                {{inclusa.descricao}}
+                                                {{inclusa.cobertura.descricao}}
                                             </h4>
                                             <h6 class="boxflip__back__title--blue box--margintop--20">
                                                 Como funciona
                                             </h6>
                                             <div class="font--regular">
-                                                {{inclusa.texto}}
+                                                {{inclusa.cobertura.texto}}
                                             </div>
                                             <h6 class="boxflip__back__title--blue box box--margintop--20">
                                                 Franquia
@@ -160,72 +160,72 @@
                     <div class="row">
                         <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 " ng-repeat="cobertura in ofertasCobertura">
-                                    <box-flip ischeckbox="{{cobertura.id}}" ng-model="coberturas.opcionais[cobertura.id]" name="{{cobertura.id}}" action="selecionaCobertura(cobertura)">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 " ng-repeat="cobertura in coberturas | filter: { tipoComposicao: 'A'}">
+                                    <box-flip ischeckbox="{{cobertura.cobertura.sequencial}}" ng-model="coberturas.opcionais[cobertura.id]" name="{{cobertura.cobertura.sequencial}}" action="selecionaCobertura(cobertura.cobertura)">
                                         <div class="boxflip__front">
                                             <div class="boxflip__icon">
-                                                <img src="{{cobertura.icone}}" class="boxflip__icon__img" />
+                                                <img src="../images/SVGs/ilustracoes_caixa_am_export-06.svg" class="boxflip__icon__img" />
                                             </div>
                                             <h4 class="boxflip__title">
-                                                {{cobertura.nome}}
+                                                {{cobertura.cobertura.descricao}}
                                             </h4>
                                             <div class="boxflip__info--actived">
                                                 <h5 class="boxflip__label roxo--light">
                                                     Valor da cobertura
                                                 </h5>
                                                 <p class="boxflip__paragraph boxflip__label--light">
-                                                    Mínimo de R$ 70,00 e máximo de R$ 500,00
+                                                    Mínimo de {{cobertura.cobertura.coberturaLimiteCanal[0].valorMinimo | currency: 'R$'}} e máximo de {{cobertura.cobertura.coberturaLimiteCanal[0].valorMaximo | currency: 'R$'}}
                                                 </p>
 
                                                 <div>
                                                     <div class="col-xs-1 col-xs-offset-1 col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1">
-                                                        <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="diminuiRange('ofertas', $index, 10000, cobertura.valorMinimo)">
+                                                        <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="diminuiRange('ofertas', $index, 10000, cobertura.cobertura.valorMinimo)">
                                                             -
                                                         </button>
                                                     </div>
                                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                                        <rzslider rz-slider-model="cobertura.valor" rz-slider-options="{showSelectionBar: true,floor: 70,ceil: 500,step: 10, minValue: 70, maxValue: coberturas.Incendio.valorMaximo, hideLimitLabels: true, hidePointerLabels: true}"></rzslider>
+                                                        <rzslider rz-slider-model="cobertura.cobertura.valorFranquia" rz-slider-options="{showSelectionBar: true,floor: 70,ceil: 500,step: 10, minValue: 70, maxValue: coberturas.Incendio.valorMaximo, hideLimitLabels: true, hidePointerLabels: true}"></rzslider>
                                                     </div>
                                                     <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
-                                                        <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="aumentaRange('ofertas', [$index], 10000, cobertura.valorMaximo)">
+                                                        <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="aumentaRange('ofertas', [$index], 10000, cobertura.cobertura.valorMaximo)">
                                                             +
                                                         </button>
                                                     </div>
                                                 </div>
                                                 <h3 class="boxflip__price text-center">
-                                                    <span class="font--light font__box--min">R$&nbsp;</span>{{cobertura.valor | realCurrency}}
+                                                    <span class="font--light font__box--min">R$&nbsp;</span>{{cobertura.cobertura.valorFranquia | realCurrency}}
                                                 </h3>
                                             </div>
                                             <div class="boxflip__info--desactived">
                                                 <div class="font--regular boxflip__back__description visible-lg">
-                                                    {{cobertura.completa}}
+                                                    {{cobertura.cobertura.descricao}}
                                                 </div>
                                                 <div class="font--regular boxflip__back__description visible-md">
-                                                    {{cobertura.curta}}
+                                                    CRIAR ATRIBUTO
                                                 </div>
                                                 <h5 class="boxflip__back__title--blue">
                                                     Franquia
                                                 </h5>
                                                 <div class="boxflip__description font--regular">
-                                                    {{cobertura.franquia}}
+                                                   CRIAR ATRIBUTO
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="boxflip__back">
                                             <h4 class="title text-center line--inherit boxflip__back__title slider--invisible">
-                                                {{cobertura.nome}}
+                                                {{cobertura.cobertura.descricao}}
                                             </h4>
                                             <h6 class="boxflip__back__title--blue box--margintop--20">
                                                 Como funciona
                                             </h6>
                                             <div class="font--regular">
-                                                {{cobertura.completa}}
+                                                {{cobertura.cobertura.texto}}
                                             </div>
                                             <h6 class="boxflip__back__title--blue box box--margintop--20">
                                                 Franquia
                                             </h6>
                                             <div class="font--regular">
-                                                {{cobertura.franquia}}
+                                                CRIAR ATRIBUTO
                                             </div>
                                         </div>
                                     </box-flip>
@@ -249,14 +249,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="assistencia in assistenciasInclusas">
-                            <box-flip type="min" name="{{assistencia.id}}">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="assistencia in assistenciasInclusas | filter: { tipoComposicao: 'B'} as assistenciasFiltradas">
+                            <box-flip type="min" name="{{assistencia.cobertura.sequencial}}">
                                 <div class="boxflip__front">
                                     <div class="boxflip__icon">
-                                        <img src="{{assistencia.icone}}" class="boxflip__icon__img" />
+                                        <img src="../images/SVGs/ilustracoes_caixa_am_export-11.svg" class="boxflip__icon__img" />
                                     </div>
                                     <h4 class="boxflip__title line--inherit">
-                                        {{assistencia.nome}}
+                                        {{assistencia.cobertura.descricao}}
                                     </h4>
                                 </div>
                                 <div class="boxflip__back">
@@ -264,13 +264,13 @@
                                         Como funciona
                                     </h6>
                                     <div class="font--regular">
-                                        {{assistencia.curta}}
+                                       assistencia.curta
                                     </div>
                                     <h6 class="boxflip__back__title--blue box box--margintop--20">
                                         Franquia
                                     </h6>
                                     <div class="font--regular">
-                                        {{assistencia.franquia}}
+                                        assistencia.franquia
                                     </div>
                                 </div>
                             </box-flip>
