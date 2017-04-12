@@ -6,7 +6,7 @@
     $app.directive('inputTelefone', [function () {
         console.log('inputTelefone');
         return {
-            templateUrl: '/Templates/Directives/input-telefone.html',
+            templateUrl: 'Templates/Directives/input-telefone.html',
             require: ['ngModel'],
             scope: {
                 placeholder: '@',

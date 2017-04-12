@@ -9,7 +9,7 @@
 		}];
 
 		return {
-			templateUrl: "/Templates/Directives/timeline.html",
+			templateUrl: "Templates/Directives/timeline.html",
 			restrict: "E",
 			replace: true,
 			scope: {

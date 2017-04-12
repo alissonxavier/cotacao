@@ -7,7 +7,7 @@
         return {
             restrict: 'E',
             transclude: true,
-            templateUrl: '/Templates/Directives/modal.html',
+            templateUrl: 'Templates/Directives/modal.html',
             scope : {
                 display : "@"
             },

@@ -8,7 +8,7 @@
             restrict: 'A',
             link: function (scope, element, attrs) {
                 var wTop = element[0].offsetTop;
-                $("body,html").stop().animate({ scrollTop: 0 }, 600);
+                $(".container--gray").stop().animate({ scrollTop: 0 }, 600);
             }
         };
 

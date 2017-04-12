@@ -6,7 +6,7 @@
     $app.directive('inputCep', [function () {
         console.log('inputCep');
         return {
-            templateUrl: '/Templates/Directives/input-cep.html',
+            templateUrl: 'Templates/Directives/input-cep.html',
             require: ['ngModel'],
             scope: {
                 placeholder: '@',

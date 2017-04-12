@@ -9,7 +9,7 @@
                     <div class="col-lg-12 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                         <timeline passo="1"></timeline>
                     </div>
-                    <div class="col-lg-8 col-lg-offset-2 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                         <div class="header__logo--min">
                             <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 189.8 51" style="enable-background:new 0 0 189.8 51;" xml:space="preserve" height="44">
@@ -46,7 +46,7 @@
             <form novalidate ng-submit="validarNome()">
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
-                        <input-nome placeholder="Nome" type="text" name="Nome" ng-model="dadosPessoais.nome" maxlength="40" valid="error.nome.valid" message="{{error.nome.message}}"  />
+                        <input-nome placeholder="Nome" type="text" name="Nome" ng-model="dadosPessoais.nome" maxlength="40" valid="error.nome.valid" message="{{error.nome.message}}" />
                     </div>
                 </div>
                 <div class="row">
@@ -70,7 +70,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
-                                <input-email placeholder="E-mail" type="text" name="email" ng-model="dadosPessoais.email" maxlength="80" valid="error.email.valid" message="{{error.email.message}}" />
+                                <input-email placeholder="E-mail" type="email" name="email" ng-model="dadosPessoais.email" maxlength="80" valid="error.email.valid" message="{{error.email.message}}" />
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
-                                <input-telefone placeholder="Telefone" name="telefone" ng-model="dadosPessoais.telefone" maxlength="80" valid="error.telefone.valid" message="{{error.telefone.message}}" />
+                                <input-telefone type="tel" placeholder="Telefone" name="telefone" ng-model="dadosPessoais.telefone" maxlength="80" valid="error.telefone.valid" message="{{error.telefone.message}}" />
                             </div>
                         </div>
 
@@ -121,9 +121,9 @@
                         </h3>
                     </div>
                 </div>
-                <div class="row">
+                <div class="container">
                     <div class="row">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-5 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                        <div class="col-lg-4 col-lg-offset-4 col-md-5 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                             <div class="row">
                                 <div class="col-md-11 checkbox__label">
                                     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 box--nopadding">
@@ -274,7 +274,16 @@
                     <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-6 col-xs-offset-0 text-center">
                         <button class="button--line button--line--icon" ng-click="defineImovel('Casa')" ng-class="{'button--line--active' : dadosPessoais.tipoImovel == 'Casa'}">
                             <div class="text-center">
-                                <img src="../images/SVGs/ilustracoes_caixa_am_export-48.svg" />
+                                <!--<img src="../images/SVGs/ilustracoes_caixa_am_export-48.svg" />-->
+                                <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 342 170" width="342" height="170">
+                                    <defs>
+                                        <filter id="filtersPicture">
+                                            <feComposite result="inputTo_38" in="SourceGraphic" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="0" k4="0" />
+                                            <feColorMatrix id="filter_38" type="saturate" values="0" data-filterid="38" />
+                                        </filter>
+                                    </defs>
+                                    <image x="0" y="0" width="252" height="170" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../images/SVGs/ilustracoes_caixa_am_export-48.svg" />
+                                </svg>
                             </div>
                             <div class="button--line--icon__text">
                                 Casa
@@ -284,7 +293,16 @@
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 text-center">
                         <button class="button--line button--line--icon" ng-click="defineImovel('Apartamento')" ng-class="{'button--line--active' : dadosPessoais.tipoImovel == 'Apartamento'}">
                             <div class="text-center">
-                                <img src="../images/SVGs/ilustracoes_caixa_am_export-49.svg" />
+                                <!--<img src="../images/SVGs/ilustracoes_caixa_am_export-49.svg" />-->
+                                <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 342 170" width="342" height="170">
+                                    <defs>
+                                        <filter id="filtersPicture">
+                                            <feComposite result="inputTo_38" in="SourceGraphic" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="0" k4="0" />
+                                            <feColorMatrix id="filter_38" type="saturate" values="0" data-filterid="38" />
+                                        </filter>
+                                    </defs>
+                                    <image x="0" y="0" width="252" height="170" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../images/SVGs/ilustracoes_caixa_am_export-49.svg" />
+                                </svg>
                             </div>
                             <div class="button--line--icon__text">
                                 Apartamento
@@ -477,7 +495,7 @@
                                     </div>
                                 </div>
                                 <div class="row box--margintop--50" ng-if="dadosPessoais.possuiSeguroOutraEmpresa == 'Sim'">
-                                    <div class="col-lg-12 col-lg-offset-12 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 text-center">
+                                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 box--margintop--20 text-center">
                                         <h4 class="title box--nomargin font--regular">
                                             Qual o nome da empresa?
                                         </h4>

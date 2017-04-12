@@ -3,9 +3,7 @@
 
     var $app = angular.module('app');
 
-    $app.controller('dadosPessoaisCtrl', ['$scope', '$attrs', '$location', 'storageService', 'parallaxHelper','$coberturasService','lodash', function ($scope, $attrs, $location, storageService, parallaxHelper,$coberturasService,lodash) {
-
-        
+    $app.controller('dadosPessoaisCtrl', ['$scope', '$attrs', '$location', 'storageService', 'parallaxHelper', function ($scope, $attrs, $location, storageService, parallaxHelper) {
 
         $scope.header = parallaxHelper.createAnimator(-0.5, 0, -150);
         $scope.grafismoLeft = parallaxHelper.createAnimator(-0.4, 0, 0, 40);
@@ -22,22 +20,6 @@
         }
         $scope.error = {};
         $scope.valorAproximado = 7000000;
-
-        $coberturasService.getCoberturas().
-        then(function (result){
-
-                if (storageService.restore('plano')) {
-                    $scope.plano = JSON.parse(storageService.restore('plano'));
-                }
-
-                $scope.filteredData = lodash.find(result.data.ofertas, function(o) { return o.descricao = $scope.plano; });
-                
-                storageService.save('coberturas',$scope.filteredData);
-            },
-            function (error) {
-                alert('Ocorreu um erro');
-            }
-        );
 
         /**
          * slider

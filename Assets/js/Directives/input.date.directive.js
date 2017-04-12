@@ -6,7 +6,7 @@
     $app.directive('inputDate', [function () {
         console.log('inputDate');
         return {
-            templateUrl: '/Templates/Directives/input-date.html',
+            templateUrl: 'Templates/Directives/input-date.html',
             require: ['ngModel'],
             scope: {
                 placeholder: '@',

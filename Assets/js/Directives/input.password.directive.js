@@ -6,7 +6,7 @@
     $app.directive('inputPassword', [function () {
         console.log('inputPassword');
         return {
-            templateUrl: '/Templates/Directives/input-password.html',
+            templateUrl: 'Templates/Directives/input-password.html',
             require: ['ngModel'],
             scope: {
                 placeholder: '@',

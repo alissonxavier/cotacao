@@ -1,16 +1,4 @@
 ﻿<div class="text-center">
-    <div ng-if="ischeckbox">
-        <input type="checkbox" ng-model="ngModel" class="boxflip__checkbox___input" id="{{ischeckbox}}" ng-click="action" />
-        <label class="boxflip__checkbox" for="{{ischeckbox}}">
-            <div class="pull-left boxflip__checkbox__icon--left">
-                <img src="../images/icon_check.svg" />
-            </div>
-            <span></span>
-            <div class="pull-left boxflip__checkbox__icon--right">
-                <img src="../images/icon_off.svg" />
-            </div>
-        </label>
-    </div>
     <div class="boxflip col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-class="{'boxflip--min' : type == 'min'}">
         <ng-transclude></ng-transclude>
     </div>

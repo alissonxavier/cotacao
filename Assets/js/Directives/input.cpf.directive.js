@@ -6,7 +6,7 @@
     $app.directive('inputCpf', [function () {
         console.log('inputCpf');
         return {
-            templateUrl: '/Templates/Directives/input-cpf.html',
+            templateUrl: 'Templates/Directives/input-cpf.html',
             require: ['ngModel'],
             scope: {
                 placeholder: '@',
