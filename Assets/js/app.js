@@ -1,10 +1,10 @@
 ﻿(function () {
     'use strict';
 
-    var $app = angular.module('app', ['ngRoute', 'ngMask', 'rzModule', 'duParallax', 'credit-cards','app.config','ngLodash']);
+    var $app = angular.module('app', ['ngRoute', 'ngMask', 'rzModule', 'duParallax', 'credit-cards','app.config','ngLodash','ngAnimate','toastr']);
     console.log("AppConfig");
 
-    $app.config(function ($routeProvider, $locationProvider) {
+    $app.config(function ($routeProvider, $locationProvider,toastrConfig) {
 
         $routeProvider
         .when("/", {
@@ -45,6 +45,21 @@
         .when("/ideal", {
             templateUrl: "Templates/Ideal/dadosBasicos.html",
             controller: "mainController"
+        });
+
+        angular.extend(toastrConfig, {
+            autoDismiss: true,
+            closeButton: false,
+            extendedTimeout: "1000",
+            html: false,
+            maxOpened: 0,
+            newestOnTop: true,
+            positionClass: 'toast-top-full-width',
+            preventDuplicates: false,
+            preventOpenDuplicates: false,
+            progressBar: false,
+            tapToDismiss: true,
+            timeout: 0
         });
     });
 

@@ -90,14 +90,17 @@
                             './Vendor/angular-scroll/angular-scroll.min.js',
                             './Vendor/ng-parallax/angular-parallax.min.js',
                             './Vendor/angular-credit-cards/release/angular-credit-cards.js',
-                            './Vendor/ng-lodash/build/ng-lodash.min.js'
+                            './Vendor/ng-lodash/build/ng-lodash.min.js',
+                            './Vendor/angular-toastr/dist/angular-toastr.tpls.js',
+                            './Vendor/angular-animate/angular-animate.min.js'
                             
                         ],
                         
                         css: [
                             './Vendor/bootstrap/dist/css/bootstrap.min.css',
                             './Vendor/bootstrap/dist/css/bootstrap-theme.min.css',
-                            './Vendor/angularjs-slider/dist/rzslider.css'
+                            './Vendor/angularjs-slider/dist/rzslider.css',
+                            './Vendor/angular-toastr/dist/angular-toastr.css'
                         ]
                     },
 

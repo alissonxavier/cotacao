@@ -8,6 +8,8 @@
     "angular-mask": "3.1.1",
     "angularjs-slider": "6.1.0",
     "ng-parallax": "0.1.8",
-    "ng-lodash": "0.5.0"
+    "ng-lodash": "0.5.0",
+    "angular-toastr": "2.1.1",
+    "angular-animate": "^1.6.4"
   }
 }

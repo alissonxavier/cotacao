@@ -1,4 +1,4 @@
-﻿<div ng-controller="mainCtrl">
+<div ng-controller="mainCtrl">
     <div class="container-fluid header">
         <div class="header__svg--left" style="width: 20%; top: -66px;" du-parallax y="grafismoLeft">
             <img src="../images/fundo_grafismo_esquerda.svg" height="250" />
@@ -67,92 +67,35 @@
             <div class="row">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-5 col-md-offset-1 text-center">
-                            <div class="col-md-12 box-container text-center">
-                                <div class="col-md-12">
-                                    <div class="col-md-12 text-center box-container__plain">
-                                        <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             viewBox="0 0 189.8 51" style="enable-background:new 0 0 189.8 51;" xml:space="preserve" width="160px">
-                                        <text transform="matrix(1 0 0 1 57.2804 19.23)"><tspan x="0" y="0" class="st0 st1 st2">Plan</tspan><tspan x="32.2" y="0" class="st0 st1 st2">o</tspan></text>
-                                        <text transform="matrix(1 0 0 1 57.2804 41.23)"><tspan x="0" y="0" class="st0 st3 st4">Do </tspan><tspan x="35.1" y="0" class="st0 st3 st4">s</tspan><tspan x="46.2" y="0" class="st0 st3 st4">eu jei</tspan><tspan x="102.5" y="0" class="st0 st3 st4">t</tspan><tspan x="111.6" y="0" class="st0 st3 st4">o</tspan></text>
-                                        <polygon class="st5" points="14.1,41.2 26.1,41.2 26.1,31.5 31,31.5 31,41.2 43,41.2 43,26.7 47.8,26.7 28.6,7.2 9.3,26.7
-	                                14.1,26.7 " />
-                                </svg>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="box-container__icon">
-                                        <img src="../images/SVGs/ilustracoes_caixa_am_export-57.svg" style="height: 143px;" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12 box-container__description text-center gray--light font--regular">
-                                    Nessa cotação, você responde algumas perguntas e monta o plano para cuidar do seu imóvel como quiser.
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-6 col-sm-offset-3 col-md-offset-0 box-container__button" ng-click="go('meujeito')">
-                                    <button class="button--background">Quero o Seguro do Meu Jeito</button>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="clearfix visible-sm" style="height: 30px;"></div>
-                        <div class="col-md-5 text-center">
+						<div class="col-md-1"></div>
+                        <div class="col-md-5 text-center" ng-repeat="oferta in ofertas">
                             <div class="col-md-12 box-container text-center">
                                 <div class="col-md-12">
                                     <div class="col-md-12 text-center box-container__plain">
                                         <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                              viewBox="0 0 223.9 51" style="enable-background:new 0 0 223.9 51;" xml:space="preserve" width="180px">
-                                            <style>
-                                                .st0 {
-                                                    fill: #733791;
-                                                }
-
-                                                .st1 {
-                                                    font-family: 'Alright Sans';
-                                                    font-weight: 300;
-                                                    font-style: normal;
-                                                }
-
-                                                .st2 {
-                                                    font-size: 16px;
-                                                }
-
-                                                .st3 {
-                                                    font-family: 'Alright Sans';
-                                                    font-weight: 500;
-                                                }
-
-                                                .st4 {
-                                                    font-size: 22px;
-                                                }
-
-                                                .st5 {
-                                                    fill: none;
-                                                    stroke: #733791;
-                                                    stroke-miterlimit: 10;
-                                                }
-                                                </style>
-                                        <text transform="matrix(1 0 0 1 58.2003 19.2298)"><tspan x="0" y="0" class="st0 st1 st2">Plan</tspan>
-                                        <tspan x="32.2" y="0" class="st0 st1 st2">o</tspan></text>
-                                        <text transform="matrix(1 0 0 1 58.2003 41.2298)"><tspan x="0" y="0" class="st0 st3 st4">Id</tspan><tspan x="19.6" y="0" class="st0 st3 st4">e</tspan><tspan x="32.2" y="0" class="st0 st3 st4">al </tspan><tspan x="55.9" y="0" class="st0 st3 st4">p</tspan><tspan x="69.3" y="0" class="st0 st3 st4">a</tspan><tspan x="81.5" y="0" class="st0 st3 st4">r</tspan><tspan x="90.8" y="0" class="st0 st3 st4">a </tspan><tspan x="108.6" y="0" class="st0 st3 st4">v</tspan><tspan x="120.1" y="0" class="st0 st3 st4">o</tspan><tspan x="133.7" y="0" class="st0 st3 st4">c</tspan><tspan x="145.1" y="0" class="st0 st3 st4">ê</tspan></text>
-                                        <polygon class="st5" points="15,41.2 27.1,41.2 27.1,31.5 31.9,31.5 31.9,41.2 43.9,41.2 43.9,26.7 48.7,26.7 29.5,7.2 10.2,26.7
-	                                            15,26.7 " />
-                                            </svg>
-
+                                        <text transform="matrix(1 0 0 1 57.2804 19.23)">
+                                        <tspan x="0" y="0" class="plano st0 st1 st2">Plan</tspan>
+                                        <tspan x="32.2" y="0" class="plano st0 st1 st2">o</tspan>
+                                        </text>
+                                        <text transform="matrix(1 0 0 1 57.2804 41.23)">
+                                        <tspan x="0" y="0" class="plano st0 st3 st4">{{oferta.titulo}}</tspan>
+                                        </text>
+                                        <polygon class="plano st5" points="14.1,41.2 26.1,41.2 26.1,31.5 31,31.5 31,41.2 43,41.2 43,26.7 47.8,26.7 28.6,7.2 9.3,26.7
+	                                14.1,26.7 " />
+                                        </svg>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="box-container__icon">
-                                        <img src="../images/SVGs/ilustracoes_caixa_am_export-58.svg" style="height: 149px;" />
+                                        <img src="{{oferta.urlImagemIcone}}" style="height: 143px;" />
                                     </div>
                                 </div>
-                                <div class="col-md-12 box-container__description gray--light text-center font--regular">
-                                    Você responde perguntas mais detalhadas sobre a sua vida e descobrimos juntos o plano mais indicado para o seu imóvel.
+                                <div class="col-md-12 box-container__description text-center gray--light font--regular">
+                                    {{oferta.descricao}}
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-6 col-sm-offset-3 col-md-offset-0 box-container__button" ng-click="go('ideal')">
-                                    <button class="button--background">
-                                        Quero o seguro ideal para mim
-                                    </button>
+                                <div class="col-lg-12 col-md-12 col-sm-6 col-sm-offset-3 col-md-offset-0 box-container__button" ng-click="go('meujeito')">
+                                    <button class="button--background" ng-click="escolherPlano(oferta.sequencialOferta)">{{oferta.textoAdesao}}</button>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -271,9 +214,9 @@
                     </div>
                 </div>
                 <div class="col-md-12 text-center">
-                    <img src="../images/logo-caixaseguradora.png" alt="Logotipo Caixa Seguradora e sua tipografia" />
+                    <img src="../images/logo_caixa_cor.svg" height="40" style="margin-top: -4px;" />
                 </div>
             </div>
         </footer>
     </div>
-</div> 
+</div>
