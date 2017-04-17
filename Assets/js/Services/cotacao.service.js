@@ -9,13 +9,16 @@
             realizacaoCotacao: realizacaoCotacao
         };
 
-        function realizacaoCotacao() {
-            console.log(APP_CONFIG.SERVICO.WEBSERVICE);
+        function realizacaoCotacao(requestBody) {
+            
+            var url = APP_CONFIG.SERVICO.WEBSERVICE + "/produto/1/canal/1";
 
-            var url = '';
-
-            var requestBody = {
-                
+            var headers = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-ibm-client-id': APP_CONFIG.SERVICO.CLIENTID,
+                    'x-ibm-client-secret': APP_CONFIG.SERVICO.CLIENTSECRET
+                }
             }
 
             return $http.post(url, requestBody);

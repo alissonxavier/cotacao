@@ -186,9 +186,8 @@
                             <input-nome placeholder="Cidade" name="cidade" ng-model="dadosPessoais.endereco.cidade" maxlength="80" valid="error.cidade.valid" message="{{error.cidade.message}}" />
                         </div>
                         <div class="col-lg-4 col-sm-4 col-md-4 col-xs-3 box--nopadding--right">
-                            <select class="font--medium gray--light" id="renda" ng-model="complementares.estado" disabled>
-                                <option selected value="">DF</option>
-                                <option ng-repeat="estado in estados" value="{{estado.ID}}">
+                            <select class="font--medium gray--light" id="renda" ng-model="dadosPessoais.endereco.codUF" disabled>
+                                <option ng-repeat="estado in estados" ng-selected="{{estado.Sigla==dadosPessoais.endereco.codUF}}" value="{{estado.Sigla}}">
                                     {{estado.Sigla}}
                                 </option>
                             </select>
@@ -215,7 +214,7 @@
                 <div ng-if="dadosComplementares.eCorrespondencia">
                     <div class="row box--margintop--24">
                         <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
-                            <input-cep placeholder="CEP" type="text" name="cepCorrespondencia" ng-model="dadosComplementares.correspondencia.cep" maxlength="80" valid="error.cep.valid" message="{{error.cepCorrespondencia.message}}" />
+                            <input-cep placeholder="CEP" type="text" name="cepCorrespondencia" ng-model="dadosComplementares.correspondencia.cep" maxlength="80" valid="error.cep.valid" message="{{error.cepCorrespondencia.message}}"/>
                         </div>
                     </div>
                     <div class="row box--margintop--24">

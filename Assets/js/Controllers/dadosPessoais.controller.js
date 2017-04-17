@@ -3,7 +3,7 @@
 
     var $app = angular.module('app');
 
-    $app.controller('dadosPessoaisCtrl', ['$scope', '$attrs', '$location', 'storageService', 'parallaxHelper', function ($scope, $attrs, $location, storageService, parallaxHelper) {
+    $app.controller('dadosPessoaisCtrl', ['$scope', '$attrs', '$location', 'storageService', 'parallaxHelper','$cepService','toastr', function ($scope, $attrs, $location, storageService, parallaxHelper,$cepService,toastr) {
 
         $scope.header = parallaxHelper.createAnimator(-0.5, 0, -150);
         $scope.grafismoLeft = parallaxHelper.createAnimator(-0.4, 0, 0, 40);
@@ -222,26 +222,39 @@
                     $scope.steps.passo5 = true;
                 }
             } else {
-                $scope.dadosPessoais.endereco = {
-                    endereco: "SQN 206 Bloco H",
-                    bairro: "Asa Norte",
-                    cidade: "Brasília",
-                    numero: "20",
-                    complemento : "Apartamento"
-                }
 
-                $scope.error.cep = {
-                    message: "",
-                    valid: true
-                };
+                $cepService.consultaCEP(cep).
+                then(function (result){
+                        if(result.data.codRetorno == "0"){
 
-                $scope.error.localizacao = {
-                    message: "",
-                    valid: true
-                };
+                            $scope.dadosPessoais.endereco = {
+                                endereco: result.data.indTipoLogradouro.trim(),
+                                bairro: result.data.nomBairro.trim(),
+                                cidade: result.data.nomLocalidade.trim(),
+                                codUF: result.data.codUF
+                            }
 
-                $scope.isValid = true;
-                $scope.steps.passo5 = true;
+                            $scope.error.cep = {
+                                message: "",
+                                valid: true
+                            };
+
+                            $scope.error.localizacao = {
+                                message: "",
+                                valid: true
+                            };
+
+                            $scope.isValid = true;
+                            $scope.steps.passo5 = true;
+
+                        } else {
+                            toastr.error('Ocorreu um erro ao buscar as informações do cep consultado', 'Error');
+                        }
+
+                }, function (error){
+                    toastr.error('Ocorreu um erro ao buscar as informações do cep consultado', 'Error');
+                })
+                
             }
 
         };
@@ -364,6 +377,8 @@
             if (!$scope.valorAproximado) {
                 return false;
             }
+            
+            $scope.dadosPessoais.valorImovel = $scope.slider.value;
 
             $scope.isValid = true;
             $scope.steps.passo9 = true;

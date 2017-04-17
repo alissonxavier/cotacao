@@ -120,15 +120,16 @@
                                                 </p>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="col-xs-1 col-xs-offset-0 col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1">
-                                                        <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="diminuiRange('inclusas', $index, 100, inclusa.cobertura.coberturaLimiteCanal[0].valorMinimo)">
+                                                        <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="diminuiRange(inclusa, 100)">
                                                             -
                                                         </button>
                                                     </div>
                                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                                        <rzslider rz-slider-model="inclusa.valor" rz-slider-maxlimit="inclusa.cobertura.coberturaLimiteCanal[0].valorMaximo" rz-slider-options="{id: inclusa.id, showSelectionBar: true, hideLimitLabels: true, hidePointerLabels: true, ceil: inclusa.cobertura.coberturaLimiteCanal[0].valorMaximo, onChange : slider.onChange }"></rzslider>
+                                                        <rzslider rz-slider-model="inclusa.cobertura.valorFranquia" rz-slider-maxlimit="inclusa.cobertura.coberturaLimiteCanal[0].valorMaximo" rz-slider-options="{id: inclusa.cobertura.sequencial, showSelectionBar: true, hideLimitLabels: true, hidePointerLabels: true,floor: inclusa.cobertura.coberturaLimiteCanal[0].valorMinimo, ceil: inclusa.cobertura.coberturaLimiteCanal[0].valorMaximo, onChange : slider.onChange }"></rzslider>
+                                                        
                                                     </div>
                                                     <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
-                                                        <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="aumentaRange('inclusas', [$index], 100, inclusa.cobertura.coberturaLimiteCanal[0].valorMaximo)">
+                                                        <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="aumentaRange(inclusa, 100)">
                                                             +
                                                         </button>
                                                     </div>
@@ -189,13 +190,6 @@
                                                 <div class="boxflip__icon">
                                                     <!--<img src="{{cobertura.icone}}" class="boxflip__icon__img" />-->
                                                     <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 280 158" width="280" height="158">
-                                                        <defs>
-                                                            <f
-                                                            <filter id="filtersPicture">
-                                                                <feComposite result="inputTo_38" in="SourceGraphic" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="0" k4="0" />
-                                                                <feColorMatrix id="filter_38" type="saturate" values="0" data-filterid="38" />
-                                                            </filter>
-                                                        </defs>
                                                         <image class="boxflip__icon__img" x="-60" y="0" width="280" height="158" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{cobertura.cobertura.urlImagemIcone}}" />
                                                     </svg>
                                                 </div>
@@ -212,15 +206,15 @@
 
                                                     <div>
                                                         <div class="col-xs-1 col-xs-offset-0 col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1">
-                                                            <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="diminuiRange('ofertas', $index, 100, cobertura.cobertura.coberturaLimiteCanal[0].valorMinimo)">
+                                                            <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="diminuiRange($index, 100)">
                                                                 -
                                                             </button>
                                                         </div>
                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                                            <rzslider rz-slider-model="cobertura.valor" rz-slider-options="{showSelectionBar: true,floor: 70,ceil: 500,step: 10, minValue: 70, maxValue: cobertura.cobertura.coberturaLimiteCanal[0].valorMaximo, hideLimitLabels: true, hidePointerLabels: true, onChange : slider.onChange}"></rzslider>
+                                                            <rzslider rz-slider-model="cobertura.valor" rz-slider-maxlimit="cobertura.cobertura.coberturaLimiteCanal[0].valorMaximo" rz-slider-options="{id: inclusa.id, showSelectionBar: true, hideLimitLabels: true, hidePointerLabels: true, floor: cobertura.cobertura.coberturaLimiteCanal[0].valorMinimo, ceil: cobertura.cobertura.coberturaLimiteCanal[0].valorMaximo, onChange : slider.onChange }"></rzslider>    
                                                         </div>
                                                         <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
-                                                            <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="aumentaRange('ofertas', [$index], 100, cobertura.cobertura.coberturaLimiteCanal[0].valorMaximo)">
+                                                            <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="aumentaRange($index, 100)">
                                                                 +
                                                             </button>
                                                         </div>
@@ -290,13 +284,6 @@
                                         <div class="boxflip__icon">
                                             <!--<img src="{{assistencia.icone}}" class="boxflip__icon__img" />-->
                                             <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 160 140" width="160" height="140">
-                                                <defs>
-                                                    <filter id="filtersPicture">
-                                                        <feC
-                                                        <feComposite result="inputTo_38" in="SourceGraphic" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="0" k4="0" />
-                                                        <feColorMatrix id="filter_38" type="saturate" values="0" data-filterid="38" />
-                                                    </filter>
-                                                </defs>
                                                 <image class="boxflip__icon__img" x="-40" y="0" width="240" height="170" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{assistencia.cobertura.urlImagemIcone}}" />
                                             </svg>
                                         </div>
@@ -341,9 +328,9 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" ng-repeat="assistencia in assistenciasInclusasBENS">
-                            <box-flip ischeckbox="{{assistencia.cobertura.sequencial}}" name="{{assistencia.cobertura.sequencial}}" type="min">
-                                <input type="checkbox" class="boxflip__checkbox___input" id="f{{assistencia.cobertura.sequencial}}" ng-click="selecionaAssistencia(assistencia.cobertura)" />
-                                <label class="boxflip__checkbox" for="f{{assistencia.cobertura.sequencial}}">
+                            <box-flip ischeckbox="bens{{assistencia.cobertura.sequencial}}" name="bens{{assistencia.cobertura.sequencial}}" type="min">
+                                <input type="checkbox" class="boxflip__checkbox___input" id="bens{{assistencia.cobertura.sequencial}}" ng-click="selecionaAssistencia(assistencia.cobertura)" />
+                                <label class="boxflip__checkbox" for="bens{{assistencia.cobertura.sequencial}}">
                                     <div class="pull-left boxflip__checkbox__icon--left">
                                         <img src="../images/icon_check.svg" />
                                     </div>
@@ -356,12 +343,6 @@
                                     <div class="boxflip__front">
                                         <div class="boxflip__icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 280 158" width="280" height="158">
-                                                <defs>
-                                                    <filter id="filtersPicture">
-                                                        <feComposite result="inputTo_38" in="SourceGraphic" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="0" k4="0" />
-                                                        <feColorMatrix id="filter_38" type="saturate" values="0" data-filterid="38" />
-                                                    </filter>
-                                                </defs>
                                                 <image class="boxflip__icon__img" x="-60" y="0" width="280" height="158" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{assistencia.cobertura.urlImagemIcone}}" />
                                             </svg>
                                         </div>
@@ -421,12 +402,6 @@
                                         <div class="boxflip__icon boxflip__icon--minmargin">
                                             <!--<img src="{{oferta.icone}}" class="boxflip__icon__img" ng-class="{'boxflip__icon__img--disabled' : !ofertaAssistencia.opcionais[oferta.id]}" />-->
                                             <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 160 140" width="160" height="140">
-                                                    <defs>
-                                                        <filter id="filtersPicture">
-                                                            <feComposite result="inputTo_38" in="SourceGraphic" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="0" k4="0" />
-                                                            <feColorMatrix id="filter_38" type="saturate" values="0" data-filterid="38" />
-                                                        </filter>
-                                                    </defs>
                                                     <image class="boxflip__icon__img" x="-40" y="0" width="240" height="170" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="" ng-href="{{assistencia.cobertura.urlImagemIcone}}" />
                                             </svg>
                                         </div>
@@ -470,7 +445,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" ng-repeat="assistencia in assistenciasInclusasAMIGOS">
                             <box-flip type="min" ischeckbox="{{assistencia.cobertura.sequencial}}" name="{{assistencia.cobertura.sequencial}}">
                                 <input type="checkbox" class="boxflip__checkbox___input" id="pet{{assistencia.cobertura.sequencial}}" ng-click="selecionaAssistencia(assistencia.cobertura)" />
-                                <label class="boxflip__checkbox" for="per{{assistencia.cobertura.sequencial}}">
+                                <label class="boxflip__checkbox" for="pet{{assistencia.cobertura.sequencial}}">
                                     <div class="pull-left boxflip__checkbox__icon--left">
                                         <img src="../images/icon_check.svg" />
                                     </div>
@@ -484,12 +459,6 @@
                                         <div class="boxflip__icon boxflip__icon--minmargin">
                                             <!--<img src="{{oferta.icone}}" class="boxflip__icon__img" ng-class="{'boxflip__icon__img--disabled' : !ofertaAssistencia.opcionais[oferta.id]}" />-->
                                             <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 160 140" width="160" height="140">
-                                                    <defs>
-                                                        <filter id="filtersPicture">
-                                                            <feComposite result="inputTo_38" in="SourceGraphic" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="0" k4="0" />
-                                                            <feColorMatrix id="filter_38" type="saturate" values="0" data-filterid="38" />
-                                                        </filter>
-                                                    </defs>
                                                     <image class="boxflip__icon__img" x="-40" y="0" width="240" height="170" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="" ng-href="{{assistencia.cobertura.urlImagemIcone}}" />
                                             </svg>
                                         </div>
@@ -530,13 +499,13 @@
                             O seu plano ficou assim:
                         </h3>
                         <div class="header__text--white font-size--16">
-                            Plano: <span class="font--medium">Do seu jeito</span>
+                            Plano: <span class="font--medium">{{coberturasIniciais[0].titulo}}</span>
                         </div>
                         <div class="header__text--white font-size--16">
-                            <span class="font--medium">{{coberuraSelecionada.length + coberturasFiltradas.length}}</span>
+                            <span class="font--medium">{{coberturaSelecionada.length}}</span>
                             <span class="font--regular header__text--orange"> coberturas</span>
                             e
-                            <span class="font--medium">{{assistenciasSelecionadas.length + assistenciasFiltradas.length}}</span>
+                            <span class="font--medium">{{assistenciasSelecionadas.length}}</span>
                             <span class="font--regular header__text--orange"> assistências</span>
                         </div>
                         <div class="header__text--white">
