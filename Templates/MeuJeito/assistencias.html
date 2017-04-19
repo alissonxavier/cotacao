@@ -1,4 +1,4 @@
-﻿<div ng-controller="assistenciasCtrl">
+﻿<div>
     <div class="container-fluid header header--max" scrolling-to-top fix-to-top>
         <div class="header__svg--left" style="width: 20%;" du-parallax y="grafismoLeft">
             <img src="../images/fundo_grafismo_esquerda.svg" height="250" />
@@ -310,7 +310,7 @@
                         </div>
 
                     </div>
-                    <div class="row">
+                    <div class="row" ng-if="assistenciasInclusasBENS.length > 0">
                         <div class="col-md-12">
                             <div class="col-md-8 col-md-offset-2">
                                 <h4 class="title gray font--light text-center title--margin--top--bottom" style="margin-top: 70px;">
@@ -326,7 +326,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" ng-if="assistenciasInclusasBENS.length > 0">
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" ng-repeat="assistencia in assistenciasInclusasBENS">
                             <box-flip ischeckbox="bens{{assistencia.cobertura.sequencial}}" name="bens{{assistencia.cobertura.sequencial}}" type="min">
                                 <input type="checkbox" class="boxflip__checkbox___input" id="bens{{assistencia.cobertura.sequencial}}" ng-click="selecionaAssistencia(assistencia.cobertura)" />
@@ -373,7 +373,7 @@
                             </box-flip>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" ng-if="assistenciasInclusasVOCE.length > 0">
                         <div class="clearfix" style="height: 30px;"></div>
                         <hr class="hr--gray box--margin--40">
                         <div class="col-md-12">
@@ -384,7 +384,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" ng-if="assistenciasInclusasVOCE.length > 0">
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" ng-repeat="assistencia in assistenciasInclusasVOCE">
                             <box-flip type="min" ischeckbox="{{assistencia.cobertura.sequencial}}" name="{{assistencia.cobertura.sequencial}}">
                                 <input type="checkbox" class="boxflip__checkbox___input" id="a{{assistencia.cobertura.sequencial}}" ng-click="selecionaAssistencia(assistencia.cobertura)" />
@@ -430,7 +430,7 @@
                             </box-flip>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" ng-if="assistenciasInclusasAMIGOS.length > 0">
                         <div class="clearfix" style="height: 30px;"></div>
                         <hr class="hr--gray box--margin--40">
                         <div class="col-md-12">
@@ -441,7 +441,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" ng-if="assistenciasInclusasAMIGOS.length > 0">
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" ng-repeat="assistencia in assistenciasInclusasAMIGOS">
                             <box-flip type="min" ischeckbox="{{assistencia.cobertura.sequencial}}" name="{{assistencia.cobertura.sequencial}}">
                                 <input type="checkbox" class="boxflip__checkbox___input" id="pet{{assistencia.cobertura.sequencial}}" ng-click="selecionaAssistencia(assistencia.cobertura)" />
@@ -529,7 +529,7 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 box--nopadding">
                                                 <h2 class="header__text--white--strong box--nomargin box__pricing__price text-center">
-                                                    149,90
+                                                    {{vigencia.valorTaxas}}
                                                     <span class="font-size--14 font--light">/mês</span><span class="font-size--20">*</span>
                                                 </h2>
                                             </div>

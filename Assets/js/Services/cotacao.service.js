@@ -11,7 +11,8 @@
 
         function realizacaoCotacao(requestBody) {
             
-            var url = APP_CONFIG.SERVICO.WEBSERVICE + "/produto/1/canal/1";
+            //var url = APP_CONFIG.SERVICO.WEBSERVICE + "/produto/1/canal/1";
+            var url = "http://lnxdev009:5004/cotacao/residencial";
 
             var headers = {
                 headers: {

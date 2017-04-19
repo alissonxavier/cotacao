@@ -272,7 +272,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-6 col-xs-offset-0 text-center">
-                        <button class="button--line button--line--icon" ng-click="defineImovel('Casa')" ng-class="{'button--line--active' : dadosPessoais.tipoImovel == 'Casa'}">
+                        <button class="button--line button--line--icon" ng-click="defineImovel('CASA')" ng-class="{'button--line--active' : dadosPessoais.tipoImovel == 'CASA'}">
                             <div class="text-center">
                                 <!--<img src="../images/SVGs/ilustracoes_caixa_am_export-48.svg" />-->
                                 <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 342 170" width="342" height="170">
@@ -291,7 +291,7 @@
                         </button>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 text-center">
-                        <button class="button--line button--line--icon" ng-click="defineImovel('Apartamento')" ng-class="{'button--line--active' : dadosPessoais.tipoImovel == 'Apartamento'}">
+                        <button class="button--line button--line--icon" ng-click="defineImovel('APARTAMENTO')" ng-class="{'button--line--active' : dadosPessoais.tipoImovel == 'APARTAMENTO'}">
                             <div class="text-center">
                                 <!--<img src="../images/SVGs/ilustracoes_caixa_am_export-49.svg" />-->
                                 <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 342 170" width="342" height="170">
@@ -318,8 +318,8 @@
                 <div class="row" scrolling-to-steps>
                     <div class="col-md-12 text-center">
                         <h3 class="title title__select--margin--bottom font--regular">
-                            <span ng-if="dadosPessoais.tipoImovel == 'Apartamento'">Este apartamento</span>
-                            <span ng-if="dadosPessoais.tipoImovel == 'Casa'">Esta casa</span>
+                            <span ng-if="dadosPessoais.tipoImovel == 'APARTAMENTO'">Este apartamento</span>
+                            <span ng-if="dadosPessoais.tipoImovel == 'CASA'">Esta casa</span>
                             fica em condomínio fechado?
                         </h3>
                     </div>
@@ -365,10 +365,10 @@
 
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1 text-center roxo--light" ng-if="dadosPessoais.tipoImovel == 'Casa'">
+                                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1 text-center roxo--light" ng-if="dadosPessoais.tipoImovel == 'CASA'">
                                     <img src="../images/SVGs/ilustracoes_caixa_am_export-48.svg" />
                                 </div>
-                                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1 text-center roxo--light" ng-if="dadosPessoais.tipoImovel == 'Apartamento'">
+                                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1 text-center roxo--light" ng-if="dadosPessoais.tipoImovel == 'APARTAMENTO'">
                                     <img src="../images/SVGs/ilustracoes_caixa_am_export-49.svg" />
                                 </div>
                             </div>
@@ -409,8 +409,8 @@
                         <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 text-center">
                             <h3 class="title box--nomargin font--regular">
                                 Você pode dizer o valor aproximado
-                                <span ng-if="dadosPessoais.tipoImovel == 'Apartamento'">do apartamento</span>
-                                <span ng-if="dadosPessoais.tipoImovel == 'Casa'">da casa</span>
+                                <span ng-if="dadosPessoais.tipoImovel == 'APARTAMENTO'">do apartamento</span>
+                                <span ng-if="dadosPessoais.tipoImovel == 'CASA'">da casa</span>
                                 ?
                             </h3>
                             <h5 class="gray--light font--regular line--inherit box--nomargin box--margintop--20">
@@ -467,8 +467,8 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 text-center">
                         <h3 class="title box--nomargin title__select--margin--bottom font--regular">
-                            <span ng-if="dadosPessoais.tipoImovel == 'Apartamento'">Este apartamento</span>
-                            <span ng-if="dadosPessoais.tipoImovel == 'Casa'">Esta casa</span>
+                            <span ng-if="dadosPessoais.tipoImovel == 'APARTAMENTO'">Este apartamento</span>
+                            <span ng-if="dadosPessoais.tipoImovel == 'CASA'">Esta casa</span>
                             já possui seguro em outra empresa?
                         </h3>
                     </div>

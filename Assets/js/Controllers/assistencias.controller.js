@@ -146,13 +146,14 @@
         }
         
 
-        function gerarCotacao(){
+        var gerarCotacao = function() {
+                 alert('Cotação');
                 var data = new Date();
 
                 var cotacao = {
                     clienteNome : $scope.dadosPessoais.nome,
-                    clienteEmail : $scope.dadosPessoais.email,
-                    clienteTelefone :  $scope.dadosPessoais.telefone,
+                    clienteEmail : angular.isUndefined($scope.dadosPessoais.email) ? "" : $scope.dadosPessoais.email,
+                    clienteTelefone :  angular.isUndefined($scope.dadosPessoais.telefone) ? "" : $scope.dadosPessoais.telefone.replace('(','').replace(')','').replace('-','').replace(' ',''),
                     dataInclusao : $filter('date')(data, 'yyyy-MM-ddTHH:mm:ssZ'),
                     canal : "WEB",
                     coberturas: [],
@@ -165,9 +166,9 @@
 
                     cotacao.coberturas.push({ 
                         "codigoCoberturaSistemaOrigem" : item.cobertura.coberturaSistema[0].codigoLegado,
-                        "codigoTermoSistemaOrigem"  : item.cobertura.coberturaSistema[0].termoLegado,
+                        "codigoTermoSistemaOrigem"  : item.cobertura.coberturaSistema[0].codigoTermoLegado,
                         "tipoCobertura"       : item.cobertura.indicadorTipo,
-                        "classificacaoCobertura" : item.tipoComposicao == 'B' ? 'BASICA' : 'ADICIONAL',
+                        "classificacaoCobertura" : item.cobertura.coberturaSistema[0].classificacaoLegado == 'B' ? 'BASICA' : 'ADICIONAL',
                         "valorLimiteIndenizacao" : item.cobertura.valorFranquia
                     });
                 }
@@ -178,9 +179,9 @@
 
                     cotacao.coberturas.push({ 
                         "codigoCoberturaSistemaOrigem" : item.cobertura.coberturaSistema[0].codigoLegado,
-                        "codigoTermoSistemaOrigem"  : item.cobertura.coberturaSistema[0].termoLegado,
+                        "codigoTermoSistemaOrigem"  : item.cobertura.coberturaSistema[0].codigoTermoLegado,
                         "tipoCobertura"       : item.cobertura.indicadorTipo,
-                        "classificacaoCobertura" : item.tipoComposicao == 'B' ? 'BASICA' : 'ADICIONAL',
+                        "classificacaoCobertura" : item.cobertura.coberturaSistema[0].classificacaoLegado == 'B' ? 'BASICA' : 'ADICIONAL',
                         "valorLimiteIndenizacao" : item.cobertura.valorFranquia
                     });
                 }
@@ -190,17 +191,17 @@
                         "numero" : 0,
                         "bairro" : $scope.dadosPessoais.endereco.bairro,
                         "cidade": $scope.dadosPessoais.endereco.cidade,
-                        "cep" : $scope.dadosPessoais.cep,
+                        "cep" : $scope.dadosPessoais.cep.replace('-',''),
                         "uf" : $scope.dadosPessoais.endereco.codUF,
-                        "proprio" : $scope.dadosPessoais.moradiaPrincial,
-                        "tipo" : $scope.dadosPessoais.tipoImovel,
+                        "proprio" : $scope.dadosPessoais.moradiaPrincial == "Sim" ? true : false,
+                        "tipo" : $scope.dadosPessoais.tipoImovel.toUpperCase(),
                         "uso" : "HABITUAL",
                         "valor" : $scope.dadosPessoais.valorImovel,
                         "questionarioCotacao": {
                                 "terrenoBaldio": false,
                                 "condominioFechado": $scope.dadosPessoais.condominioFechado == "Sim" ? true: false,
                                 "empregadoGoverno": false,
-                                "possuiOutrosSegurosPropriedade": $scope.dadosPessoais.possuiSeguroOutraEmpresa == "Nao" ? false : true,
+                                "possuiOutrosSegurosPropriedade": $scope.dadosPessoais.possuiSeguroOutraEmpresa == "Sim" ? true : false,
                                 "possuiOutrosProdutosCaixa": false,
                                 "seguroPropriaResidencia": false,
                                 "economiario": false
@@ -210,13 +211,22 @@
 
                 $cotacaoService.realizacaoCotacao(cotacao)
                 .then(function (result){
-                    toastr.sucess('Sucesso', 'Sucesso');
-                }, function (error){
-                    toastr.error('Ocorreu um erro ao buscar as informações do cep consultado', 'Error');
-                });
-        }
+                    var resultado = result.data;
+                    
+                    var vigencias = resultado.vigencias;
 
-        gerarCotacao();
+                    var vigenciaFinal12Meses = lodash.filter(vigencias, function(o) { return o.mesesVigencia == 12 });
+
+                    $scope.vigencia = vigenciaFinal12Meses;
+
+                }, function (error){
+                    $scope.changeValue = true;
+                    toastr.error('Ocorreu um erro ao buscar as informações da cotação', 'Error');
+                });
+        };
+
+        angular.element(document).ready(gerarCotacao);
+
 
     }]);
 

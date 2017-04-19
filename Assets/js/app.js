@@ -47,7 +47,7 @@
             controller: "mainController"
         });
 
-        angular.extend(toastrConfig, {
+        var options = {
             autoDismiss: true,
             closeButton: false,
             extendedTimeout: "1000",
@@ -60,7 +60,10 @@
             progressBar: false,
             tapToDismiss: true,
             timeout: 0
-        });
+        };
+        
+        angular.extend(toastrConfig, options);
+
     });
 
     $app.controller('appController', ['$scope', function ($scope) {
