@@ -11,13 +11,13 @@
 
         $scope.escolherPlano = function(param){
             
-            if(storageService.restore('coberturas')){
+            if(storageService.restore('oferta')){
                  storageService.remove();
             }
 
             $scope.filteredData = lodash.filter($scope.ofertas, function(o) { return o.sequencialOferta == param; });
                 
-            storageService.save('coberturas',$scope.filteredData);
+            storageService.save('oferta',$scope.filteredData);
         }
 
         /** Buscando as coberturas */

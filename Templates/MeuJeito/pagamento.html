@@ -3,10 +3,10 @@
         <img src="../images/fundo_grafismo_esquerda.svg" height="250" />
     </div>
     <div class="row">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-                    <timeline passo="4"></timeline>
+                <div class="col-lg-12 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                    <timeline passo="passo"></timeline>
                 </div>
                 <div class="col-md-10 col-md-offset-1">
                     <div class="header__logo--min">
@@ -46,7 +46,7 @@
                     <div class="lineText text-center box--margintop--20">
                         <h4 class="header__text--orange font--regular">
                             <span class="white font--medium">
-                                10
+                                {{coberturas.length}}
                             </span>
                             coberturas
                         </h4>
@@ -55,141 +55,15 @@
                 <div class="row resume" ng-init="resume.collapse = false" ng-hide="!resume.collapse">
                     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
                         <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item" ng-repeat="cobertura in coberturas">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-01.svg" />
+                                            <img src="{{cobertura.urlImagemIcone}}" />
                                         </div>
                                         <div>
                                             <h6 class="resume__text text-center">
-                                                Incêndio, queda de raio e explosão
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-02.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Danos elétricos
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-03.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Furto, extorsão e roubo
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-04.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Vendaval, furacão, ciclone, tornado, granizo, e fumaça
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-05.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Roubo e furto de equipamentos portáteis
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-06.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Impacto de veículos terrestres e queda de aeronaves
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-07.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Quebra de vidros, espelhos e mármores
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-08.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Perda ou pagamento de aluguel
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-09.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Responsabilidade civil familiar
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-10.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Tumultos, greves e lock-out
+                                               {{cobertura.descricao}}
                                             </h6>
                                         </div>
                                     </div>
@@ -204,7 +78,7 @@
                     <div class="lineText text-center">
                         <h4 class="header__text--orange font--regular">
                             <span class="header__text--white font--medium">
-                                10
+                                {{assistencias.length}}
                             </span>
                             assistências
                         </h4>
@@ -213,141 +87,15 @@
                 <div class="row resume" ng-init="resume.collapse = false" ng-hide="!resume.collapse">
                     <div class="col-md-10 col-md-offset-1">
                         <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item" ng-repeat="assistencia in assistencias">
                                 <div class="row">
                                     <div class="col-md-12 text-center">
                                         <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-11.svg" />
+                                            <img src="{{assistencia.urlImagemIcone}}" />
                                         </div>
                                         <div>
                                             <h6 class="resume__text text-center">
-                                                Chaveiro
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-12.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Eletricista
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-13.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Hidráulica
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-14.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Vidraceiro
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-16.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Transporte de móveis
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-17.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Cursos online
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-18.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Tira-dúvida com professor online
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-19.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Projetos ecoeficientes
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-20.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Consultoria e orientações ambientais
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 resume__item">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="resume__icon">
-                                            <img src="../images/SVGs/ilustracoes_caixa_am_export-22.svg" />
-                                        </div>
-                                        <div>
-                                            <h6 class="resume__text text-center">
-                                                Assistência bike
+                                                {{assistencia.descricao}}
                                             </h6>
                                         </div>
                                     </div>
@@ -431,7 +179,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <h5 class="font--regular box--margin--6">
-                                    {{dadosComplementares.profissao}}
+                                    {{dadosComplementares.profissao.Texto}}
                                 </h5>
                             </div>
                         </div>
@@ -729,7 +477,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <h4 class="header__text--white">
-                            No total seu seguro ficou <span class="font--medium">R$118,00</span> por ano ou <span class="header__text--orange font--regular">R$ </span><span class="price font-size--36">9,90</span> <span class="header__text--orange font--regular">/mês</span>
+                            No total seu seguro ficou <span class="font--medium">{{cotacao.vigencias[0].valorTotal | currency : 'R$ '}}</span> por ano ou <span class="header__text--orange font--regular">R$ </span><span class="price font-size--36">{{cotacao.vigencias[0].valorPremioMensal | currency : ''}}</span> <span class="header__text--orange font--regular">/mês</span>
                         </h4>
                     </div>
                 </div>
@@ -892,7 +640,7 @@
             </div>
         </div>
         <div class="col-md-12 text-center">
-            <img src="../images/logo-caixaseguradora.png" alt="Logotipo Caixa Seguradora e sua tipografia" />
+            <img src="../images/logo_caixa_cor.svg" height="40" style="margin-top: -4px;" />
         </div>
     </div>
 </footer>

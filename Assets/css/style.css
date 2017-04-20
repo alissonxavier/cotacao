@@ -1,4 +1,4 @@
-/*Font Custom*/
+﻿/*Font Custom*/
 
 @font-face {
     font-family: 'Alright Sans';
@@ -104,9 +104,6 @@ h1, h2, h3, h4, h5, h6, p, u, span {
 
 .container--gray {
     background: #f8f8f8;
-    position: fixed;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
     height: 100%;
     width: 100%;
 }
@@ -364,6 +361,10 @@ h1, h2, h3, h4, h5, h6, p, u, span {
     margin-top: 50px !important;
 }
 
+.container--margintop--90 {
+    margin-top: 60px;
+}
+
 .box--margintop--10 {
     margin-top: 10px !important;
 }
@@ -553,10 +554,12 @@ h1, h2, h3, h4, h5, h6, p, u, span {
 
 .header__timeline__base__bullet--active {
     background: #ff9140;
+    cursor: pointer;
 }
 
     .header__timeline__base__bullet--active .header__timeline__base__bullet__label {
         color: #ff9140;
+        cursor: pointer;
     }
 /*END TIMELINE*/
 
@@ -742,6 +745,10 @@ input-place {
     -o-transition: ease-in-out all .2s;
     -webkit-transition: ease-in-out all .2s;
     transition: ease-in-out all .2s;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    -webkit-appearance: none;
+    box-shadow: none;
 }
 
 .input--min.inputPlace__label {
@@ -944,7 +951,7 @@ input-place {
     color: #fff;
     border: none;
     font-weight: bold;
-    /* padding-bottom: 12px; */
+    padding: 0;
     margin-top: 26px;
     outline: none;
 }
@@ -1083,6 +1090,15 @@ input-place {
 .button--visible {
     visibility: visible;
     opacity: 1;
+}
+
+.button--checkcep {
+    position: relative;
+    right: 77px;
+    top: 10px;
+    padding: 10px;
+    width: auto;
+    z-index: 60;
 }
 
 .checkbox {
@@ -1333,7 +1349,7 @@ input-place {
                 font-family: FontAwesome, sans-serif;
                 position: absolute;
                 top: 4px;
-                left: 11%;
+                left: 9%;
                 font-size: 11px;
                 line-height: 0.8;
                 color: #733791;
@@ -2085,7 +2101,8 @@ select {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     height: 270px;
-    margin: 20px 0 40px 0;
+    margin-top: 20px;
+    margin-bottom: 40px;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
@@ -2246,8 +2263,9 @@ select {
 
     /*TIMELINE*/
     .header__timeline {
-        width: 94%;
+        width: 100%;
         left: 2%;
+        top: 20px;
     }
 
     .header__timeline__base__bullet {
@@ -2300,6 +2318,10 @@ select {
 
     .header__timeline__base__bullet--min {
         margin-left: 1%;
+    }
+
+    .container--margintop--90 {
+        margin-top: 80px;
     }
 }
 

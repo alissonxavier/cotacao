@@ -44,7 +44,6 @@
                     element.find('label').addClass("inputPlace__label--actived");
                 });
 
-
             }
         }
     }]);

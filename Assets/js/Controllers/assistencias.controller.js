@@ -72,17 +72,23 @@
         }
 
         
-        //Buscar as informações das coberturas.
-        if(storageService.restore('coberturas')){
-            $scope.coberturasIniciais = JSON.parse(storageService.restore('coberturas'));
+        //Buscar as informações das coberturas da oferta.
+        if(storageService.restore('oferta')){
+            $scope.coberturasIniciais = JSON.parse(storageService.restore('oferta'));
         }
 
         $scope.coberturas = lodash.filter($scope.coberturasIniciais[0].composicaoOferta, function(o) { return o.cobertura.indicadorTipo == 'COBERTURA'; });
 
-        $scope.coberturaSelecionada = lodash.filter($scope.coberturasIniciais[0].composicaoOferta, function(o) { return o.cobertura.indicadorTipo == 'COBERTURA' && o.tipoComposicao == 'B'; });
+        var coberturaSelecionadaTemp = lodash.filter($scope.coberturasIniciais[0].composicaoOferta, function(o) { return o.cobertura.indicadorTipo == 'COBERTURA' && o.tipoComposicao == 'B'; });
+
+        lodash.forEach(coberturaSelecionadaTemp, function(value) {
+            $scope.coberturaSelecionada.push(value.cobertura);
+        });
 
         $scope.validarAssistencias = function () {
-            storageService.save('rdStorageStep2', $scope.assistencias);
+            storageService.save('rdStorageStep2', $scope.assistenciasSelecionadas);
+            storageService.save('coberturas', $scope.coberturaSelecionada);
+            storageService.save('assistencias', $scope.assistenciasSelecionadas);
             $scope.go('meujeito/complementares');
         }
 
@@ -109,8 +115,12 @@
 
         $scope.assistenciasInclusas = lodash.filter($scope.coberturasIniciais[0].composicaoOferta, function(o) { return o.cobertura.indicadorTipo == 'ASSISTENCIA' && o.cobertura.categoria.titulo == 'PADRAO'; });
 
-        $scope.assistenciasSelecionadas = lodash.filter($scope.coberturasIniciais[0].composicaoOferta, function(o) { return o.cobertura.indicadorTipo == 'ASSISTENCIA' && o.cobertura.categoria.titulo == 'PADRAO'; });
+        var assistenciasSelecionadasTemp = lodash.filter($scope.coberturasIniciais[0].composicaoOferta, function(o) { return o.cobertura.indicadorTipo == 'ASSISTENCIA' && o.cobertura.categoria.titulo == 'PADRAO'; });
         
+        lodash.forEach(assistenciasSelecionadasTemp, function(value) {
+            $scope.assistenciasSelecionadas.push(value.cobertura);
+        });
+
         $scope.assistenciasInclusasBENS = lodash.filter($scope.coberturasIniciais[0].composicaoOferta, function(o) { return o.cobertura.indicadorTipo == 'ASSISTENCIA' && o.cobertura.categoria.titulo == 'BENS'; });
 
         $scope.assistenciasInclusasVOCE = lodash.filter($scope.coberturasIniciais[0].composicaoOferta, function(o) { return o.cobertura.indicadorTipo == 'ASSISTENCIA' && o.cobertura.categoria.titulo == 'VOCE'; });
@@ -137,7 +147,6 @@
         }
 
         $scope.recalcular = function () {
-            $scope.changeValue = false;
             gerarCotacao();
         }
 
@@ -147,7 +156,6 @@
         
 
         var gerarCotacao = function() {
-                 alert('Cotação');
                 var data = new Date();
 
                 var cotacao = {
@@ -165,11 +173,11 @@
                     var item = $scope.coberturaSelecionada[i]; 
 
                     cotacao.coberturas.push({ 
-                        "codigoCoberturaSistemaOrigem" : item.cobertura.coberturaSistema[0].codigoLegado,
-                        "codigoTermoSistemaOrigem"  : item.cobertura.coberturaSistema[0].codigoTermoLegado,
-                        "tipoCobertura"       : item.cobertura.indicadorTipo,
-                        "classificacaoCobertura" : item.cobertura.coberturaSistema[0].classificacaoLegado == 'B' ? 'BASICA' : 'ADICIONAL',
-                        "valorLimiteIndenizacao" : item.cobertura.valorFranquia
+                        "codigoCoberturaSistemaOrigem" : item.coberturaSistema[0].codigoLegado,
+                        "codigoTermoSistemaOrigem"  : item.coberturaSistema[0].codigoTermoLegado,
+                        "tipoCobertura"       : item.indicadorTipo,
+                        "classificacaoCobertura" : item.coberturaSistema[0].classificacaoLegado == 'B' ? 'BASICA' : 'ADICIONAL',
+                        "valorLimiteIndenizacao" : item.valorFranquia
                     });
                 }
 
@@ -178,11 +186,11 @@
                     var item = $scope.assistenciasSelecionadas[i]; 
 
                     cotacao.coberturas.push({ 
-                        "codigoCoberturaSistemaOrigem" : item.cobertura.coberturaSistema[0].codigoLegado,
-                        "codigoTermoSistemaOrigem"  : item.cobertura.coberturaSistema[0].codigoTermoLegado,
-                        "tipoCobertura"       : item.cobertura.indicadorTipo,
-                        "classificacaoCobertura" : item.cobertura.coberturaSistema[0].classificacaoLegado == 'B' ? 'BASICA' : 'ADICIONAL',
-                        "valorLimiteIndenizacao" : item.cobertura.valorFranquia
+                        "codigoCoberturaSistemaOrigem" : item.coberturaSistema[0].codigoLegado,
+                        "codigoTermoSistemaOrigem"  : item.coberturaSistema[0].codigoTermoLegado,
+                        "tipoCobertura"       : item.indicadorTipo,
+                        "classificacaoCobertura" : item.coberturaSistema[0].classificacaoLegado == 'B' ? 'BASICA' : 'ADICIONAL',
+                        "valorLimiteIndenizacao" : item.valorFranquia
                     });
                 }
 
@@ -212,12 +220,16 @@
                 $cotacaoService.realizacaoCotacao(cotacao)
                 .then(function (result){
                     var resultado = result.data;
+
+                    storageService.save('cotacao', resultado);
                     
                     var vigencias = resultado.vigencias;
 
                     var vigenciaFinal12Meses = lodash.filter(vigencias, function(o) { return o.mesesVigencia == 12 });
 
                     $scope.vigencia = vigenciaFinal12Meses;
+
+                     $scope.changeValue = false;
 
                 }, function (error){
                     $scope.changeValue = true;

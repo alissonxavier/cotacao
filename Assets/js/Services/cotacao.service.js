@@ -11,9 +11,8 @@
 
         function realizacaoCotacao(requestBody) {
             
-            //var url = APP_CONFIG.SERVICO.WEBSERVICE + "/produto/1/canal/1";
-            var url = "http://lnxdev009:5004/cotacao/residencial";
-
+            var url = APP_CONFIG.SERVICO.WEBSERVICE + "/cotacao/residencial";
+           
             var headers = {
                 headers: {
                     'Content-Type': 'application/json',
@@ -22,7 +21,7 @@
                 }
             }
 
-            return $http.post(url, requestBody);
+            return $http.post(url,requestBody,headers);
         }
 
         

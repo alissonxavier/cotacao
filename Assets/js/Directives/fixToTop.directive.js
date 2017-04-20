@@ -10,8 +10,8 @@
 
                 var elementTop = element[0].offsetTop;
 
-                $('.container--gray').on('scroll', function (e) {
-                    if ($('.container--gray').scrollTop() > 150) {
+                angular.element($window).on('scroll', function () {
+                    if (angular.element(this)[0].pageYOffset > 150) {
                         element.addClass('headerFix');
                     } else {
                         element.removeClass('headerFix');

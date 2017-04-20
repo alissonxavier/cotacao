@@ -3,10 +3,10 @@
         <img src="../images/fundo_grafismo_esquerda.svg" height="250" />
     </div>
     <div class="row">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row" du-parallax y="header">
-                <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-                    <timeline passo="3"></timeline>
+                <div class="col-lg-12 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                    <timeline passo="passo"></timeline>
                 </div>
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="header__logo--min">
@@ -39,55 +39,62 @@
     <form novalidate ng-submit="validarDadosComplementares()">
         <div class="container container--main">
 
-            <div class="row box--margintop--24 box--margintop--60" style="margin-top: 60px;">
-                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+            <div class="row container--margintop--90" >
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                     <input-nome placeholder="Nome Completo" type="text" name="nomeCompleto" ng-model="dadosComplementares.nomeCompleto" maxlength="40" valid="error.nomeCompleto.valid" message="{{error.nomeCompleto.message}}" />
                 </div>
             </div>
             <div class="row box--margintop--24">
-                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                     <input-cpf placeholder="CPF" name="cpf" ng-model="dadosComplementares.cpf" maxlength="40" valid="error.cpf.valid" message="{{error.cpf.message}}" />
                 </div>
             </div>
             <div class="row box--margintop--24">
-                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                     <input-date placeholder="Data de nascimento" name="dataNascimento" ng-model="dadosComplementares.dataNascimento" maxlength="40" valid="error.dataNascimento.valid" message="{{error.dataNascimento.message}}" />
                 </div>
             </div>
             <div class="row box--margintop--34">
-                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 box--nopadding">
                         <h5 class="gray--light">
                             Sexo
                         </h5>
                     </div>
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-3 radio">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-sm-offset-0 col-xs-8 col-xs-offset-2">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 radio">
                             <input type="radio" name="sexo" id="masculino" ng-model="dadosComplementares.sexo" ng-value="'Masculino'" />
                             <label for="masculino"></label>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 font--regular radio__label">
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-10 font--regular radio__label">
                             Masculino
                         </div>
                     </div>
-                    <div class="col-lg-5 col-md-4 col-sm-5 col-xs-5 ">
-                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-3 radio">
+                    <div class="col-lg-5 col-md-4 col-sm-5 col-sm-offset-0 col-xs-8 col-xs-offset-2">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 radio">
                             <input type="radio" name="sexo" id="feminino" ng-model="dadosComplementares.sexo" ng-value="'Feminino'" />
                             <label for="feminino"></label>
                         </div>
-                        <div class="col-md-9 font--regular radio__label">
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-10 font--regular radio__label">
                             Feminino
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row box--margintop--24">
-                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
-                    <input-nome placeholder="Profissão" name="profissao" ng-model="dadosComplementares.profissao" maxlength="40" valid="error.profissao.valid" message="{{error.profissao.message}}" />
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
+                    <select class="font--medium" id="profissao" ng-model="dadosComplementares.profissao" ng-options="profissao as profissao.Texto for profissao in profissoes track by profissao.Value" ng-class="{'alertInput' : !error.profissao.valid}" ng-init="error.profissao.valid = true">
+                        <option selected value="">
+                            Profissão
+                        </option>
+                    </select>
+                    <label class="select--round" for="renda">
+                        <i class="fa fa-angle-down"></i>
+                    </label>
                 </div>
             </div>
             <div class="row box--margintop--24">
-                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                     <select class="font--medium" id="renda" ng-model="dadosComplementares.faixaDeRenda" ng-options="renda for renda in faixaDeRenda" ng-class="{'alertInput' : !error.faixaDeRenda.valid}" ng-init="error.faixaDeRenda.valid = true">
                         <option selected value="">
                             Faixa de renda
@@ -99,7 +106,7 @@
                 </div>
             </div>
             <div class="row box--margintop--24">
-                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 checkbox">
                         <input type="checkbox" id="proprietario" ng-true-value="'Não'" ng-model="dadosComplementares.eProprietario" />
                         <label for="proprietario"></label>
@@ -112,12 +119,12 @@
                 </div>
             </div>
             <div class="row box--margintop--24" ng-if="dadosComplementares.eProprietario == 'Não'">
-                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                     <input-nome placeholder="Nome do proprietário" type="text" name="nomeCompleto" ng-model="dadosComplementares.proprietario.nomeCompleto" maxlength="40" valid="error.nomeCompletoProprietario.valid" message="{{error.nomeCompletoProprietario.message}}" />
                 </div>
             </div>
             <div class="row box--margintop--24" ng-if="dadosComplementares.eProprietario == 'Não'">
-                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                     <input-cpf placeholder="CPF do proprietário" name="cpf" ng-model="dadosComplementares.proprietario.cpf" maxlength="40" valid="error.cpfProprietario.valid" message="{{error.cpfProprietario.message}}" />
                 </div>
             </div>
@@ -133,12 +140,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
-                        <input-email placeholder="E-mail" type="text" name="email" ng-model="dadosComplementares.email" maxlength="80" valid="error.email.valid" message="{{error.email.message}}" />
+                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
+                        <input-email placeholder="E-mail" type="email" name="email" ng-model="dadosComplementares.email" maxlength="80" valid="error.email.valid" message="{{error.email.message}}" />
                     </div>
                 </div>
                 <div class="row box--margintop--24">
-                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                         <input-telefone placeholder="Telefone" name="telefone" ng-model="dadosComplementares.telefone" maxlength="80" valid="error.telefone.valid" message="{{error.telefone.message}}" />
                     </div>
                 </div>
@@ -156,38 +163,39 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                         <input-cep placeholder="CEP" type="text" name="email" ng-model="dadosPessoais.cep" maxlength="80" valid="error.cep.valid" message="{{error.cep.message}}" is-disabled="true" />
                     </div>
                 </div>
                 <div class="row box--margintop--24">
-                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                         <input-nome placeholder="Endereço" name="endereco" ng-model="dadosPessoais.endereco.endereco" maxlength="80" valid="error.endereco.valid" message="{{error.endereco.message}}" />
                     </div>
                 </div>
                 <div class="row box--margintop--24">
-                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box--nopadding">
-                            <input-nome placeholder="Número" name="numero" size="min" ng-model="dadosPessoais.numero" maxlength="80" valid="error.numero.valid" message="{{error.numero.message}}" />
+                            <input-nome placeholder="Número" name="numero" size="min" ng-model="dadosPessoais.endereco.numero" maxlength="80" valid="error.numero.valid" message="{{error.numero.message}}" />
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 box--nopadding--right">
-                            <input-nome placeholder="Complemento" size="medium" name="complemento" ng-model="dadosPessoais.complemento" maxlength="80" valid="error.complemento.valid" message="{{error.complemento.message}}" />
+                            <input-nome placeholder="Complemento" size="medium" name="complemento" ng-model="dadosPessoais.endereco.complemento" maxlength="80" valid="error.complemento.valid" message="{{error.complemento.message}}" />
                         </div>
                     </div>
                 </div>
                 <div class="row box--margintop--24">
-                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                         <input-nome placeholder="Bairro" name="Bairro" ng-model="dadosPessoais.endereco.bairro" maxlength="80" valid="error.bairro.valid" message="{{error.bairro.message}}" />
                     </div>
                 </div>
                 <div class="row box--margintop--24">
-                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-12">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1 col-xs-12">
                         <div class="col-lg-8 col-lg-offset-0 col-md-8 col-md-offset-0 col-sm-8 col-sm-offset-0 col-xs-7 col-xs-offset-1 box--nopadding">
                             <input-nome placeholder="Cidade" name="cidade" ng-model="dadosPessoais.endereco.cidade" maxlength="80" valid="error.cidade.valid" message="{{error.cidade.message}}" />
                         </div>
                         <div class="col-lg-4 col-sm-4 col-md-4 col-xs-3 box--nopadding--right">
-                            <select class="font--medium gray--light" id="renda" ng-model="dadosPessoais.endereco.codUF" disabled>
-                                <option ng-repeat="estado in estados" ng-selected="{{estado.Sigla==dadosPessoais.endereco.codUF}}" value="{{estado.Sigla}}">
+                            <select class="font--medium gray--light" id="renda" ng-model="complementares.estado" disabled>
+                                <option selected value="">DF</option>
+                                <option ng-repeat="estado in estados" value="{{estado.ID}}">
                                     {{estado.Sigla}}
                                 </option>
                             </select>
@@ -196,7 +204,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                         <div class="box--margintop--24">
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 checkbox">
                                 <input type="checkbox" id="correspondencia" ng-true-value="'Sim'" ng-model="dadosComplementares.eCorrespondencia" />
@@ -213,17 +221,17 @@
 
                 <div ng-if="dadosComplementares.eCorrespondencia">
                     <div class="row box--margintop--24">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
-                            <input-cep placeholder="CEP" type="text" name="cepCorrespondencia" ng-model="dadosComplementares.correspondencia.cep" maxlength="80" valid="error.cep.valid" message="{{error.cepCorrespondencia.message}}"/>
+                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
+                            <input-cep placeholder="CEP" type="text" name="cepCorrespondencia" ng-model="dadosComplementares.correspondencia.cep" maxlength="80" valid="error.cep.valid" message="{{error.cepCorrespondencia.message}}" />
                         </div>
                     </div>
                     <div class="row box--margintop--24">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                             <input-nome placeholder="Endereço" name="enderecoCorrespondencia" ng-model="dadosComplementares.correspondencia.endereco" maxlength="80" valid="error.endereco.valid" message="{{error.enderecoCorrespondencia.message}}" />
                         </div>
                     </div>
                     <div class="row box--margintop--24">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box--nopadding">
                                 <input-nome placeholder="Número" name="numeroCorrespondencia" size="min" ng-model="dadosComplementares.correspondencia.numero" maxlength="80" valid="error.numero.valid" message="{{error.numeroCorrespondencia.message}}" />
                             </div>
@@ -233,12 +241,12 @@
                         </div>
                     </div>
                     <div class="row box--margintop--24">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                             <input-nome placeholder="Bairro" name="bairroCorrespondencia" ng-model="dadosComplementares.correspondencia.bairro" maxlength="80" valid="error.bairro.valid" message="{{error.bairroCorrespondencia.message}}" />
                         </div>
                     </div>
                     <div class="row box--margintop--24">
-                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
                             <div class="col-lg-8 col-lg-offset-0 col-md-8 col-md-offset-0 col-sm-8 col-sm-offset-0 col-xs-7 col-xs-offset-1 box--nopadding">
                                 <input-nome placeholder="Cidade" name="cidadeCorrespondencia" ng-model="dadosComplementares.correspondencia.cidade" maxlength="80" valid="error.cidade.valid" message="{{error.cidadeCorrespondencia.message}}" />
                             </div>
@@ -260,7 +268,7 @@
             </div>
             <hr class="hr--gray hr--margin" />
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-lg-offset-2 col-xs-10 col-xs-offset-1">
                     <h3 class="title title__select--margin--min--30 font--regular text-center line--inherit" style="margin-top: 0;">
                         Para continuar sua compra, crie uma senha. Futuramente você usará<br />
                         essa senha e o seu CPF para acessar a sua conta na Caixa Seguradora.
@@ -273,12 +281,12 @@
 
 
             <div class="row">
-                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                     <input-password placeholder="Senha" type="password" name="senha" ng-model="dadosPessoais.senha" maxlength="80" valid="error.senha.valid" message="{{error.senha.message}}" />
                 </div>
             </div>
             <div class="row box--margintop--20">
-                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-xs-10 col-xs-offset-1">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-xs-10 col-xs-offset-1">
                     <input-password placeholder="Repetir senha" type="password" name="checkSenha" ng-model="dadosPessoais.checkPassword" maxlength="80" valid="error.checkPassword.valid" message="{{error.checkPassword.message}}" />
                 </div>
             </div>
@@ -407,7 +415,7 @@
                         </div>
 
                         <div class="col-lg-12 col-md-12 col-md-12 col-xs-12">
-                            <div class="col-lg-6 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4">
+                            <div class="col-lg-6 col-lg-offset-4 col-md-6 col-md-offset-4 col-sm-6 col-sm-offset-4 col-xs-8 col-xs-offset-2">
                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 checkbox">
                                     <input type="checkbox" id="term">
                                     <label for="term"></label>
@@ -499,7 +507,7 @@
             </div>
         </div>
         <div class="col-md-12 text-center">
-            <img src="../images/logo-caixaseguradora.png" alt="Logotipo Caixa Seguradora e sua tipografia" />
+            <img src="../images/logo_caixa_cor.svg" height="40" style="margin-top: -4px;" />
         </div>
     </div>
 </footer>

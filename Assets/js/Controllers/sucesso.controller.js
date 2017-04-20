@@ -9,6 +9,12 @@
             $scope.dadosPessoais = JSON.parse(storageService.restore('rdStorageStep1'));
         }
 
+        if (storageService.restore('rdStorageStep1') || storageService.restore('rdStorageStep2') || storageService.restore('rdStorageStep3')) {
+            storageService.remove();
+        };
+
+        $scope.passo = 5;
+
         /**
          * go
          * @param param - Url de destino
