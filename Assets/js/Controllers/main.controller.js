@@ -24,6 +24,8 @@
         $coberturasService.getCoberturas().
         then(function (result){
                 $scope.ofertas = result.data.ofertas;
+                storageService.save('ramo',result.data.ramo);
+                storageService.save('descricaoproduto',result.data.descricao);
             },
             function (error) {
                toastr.error('Ocorreu um erro ao buscar as informações das coberturas e assistências', 'Error');

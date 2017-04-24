@@ -193,9 +193,8 @@
                             <input-nome placeholder="Cidade" name="cidade" ng-model="dadosPessoais.endereco.cidade" maxlength="80" valid="error.cidade.valid" message="{{error.cidade.message}}" />
                         </div>
                         <div class="col-lg-4 col-sm-4 col-md-4 col-xs-3 box--nopadding--right">
-                            <select class="font--medium gray--light" id="renda" ng-model="complementares.estado" disabled>
-                                <option selected value="">DF</option>
-                                <option ng-repeat="estado in estados" value="{{estado.ID}}">
+                            <select class="font--medium gray--light" id="renda" ng-model="dadosPessoais.endereco.codUF" disabled>
+                                <option ng-repeat="estado in estados" ng-selected="{{estado.Sigla==dadosPessoais.endereco.codUF}}" value="{{estado.Sigla}}">
                                     {{estado.Sigla}}
                                 </option>
                             </select>
@@ -253,7 +252,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box--nopadding--right">
                                 <select class="font--medium gray--light" id="renda" ng-model="dadosComplementares.correspondencia.estado">
                                     <option selected value="">UF</option>
-                                    <option ng-repeat="estado in estados" value="{{estado.ID}}">
+                                    <option ng-repeat="estado in estados" value="{{estado.Sigla}}">
                                         {{estado.Sigla}}
                                     </option>
                                 </select>

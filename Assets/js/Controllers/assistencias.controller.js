@@ -161,7 +161,7 @@
                 var cotacao = {
                     clienteNome : $scope.dadosPessoais.nome,
                     clienteEmail : angular.isUndefined($scope.dadosPessoais.email) ? "" : $scope.dadosPessoais.email,
-                    clienteTelefone :  angular.isUndefined($scope.dadosPessoais.telefone) ? "" : $scope.dadosPessoais.telefone.replace('(','').replace(')','').replace('-','').replace(' ',''),
+                    clienteTelefone :  angular.isUndefined($scope.dadosPessoais.telefone) ? "" : $scope.dadosPessoais.telefone.replace(/\(/g,"").replace(/\)/g,"").replace(/\-/g,"").replace(/\ /,""),
                     dataInclusao : $filter('date')(data, 'yyyy-MM-ddTHH:mm:ssZ'),
                     canal : "WEB",
                     coberturas: [],
@@ -199,7 +199,7 @@
                         "numero" : 0,
                         "bairro" : $scope.dadosPessoais.endereco.bairro,
                         "cidade": $scope.dadosPessoais.endereco.cidade,
-                        "cep" : $scope.dadosPessoais.cep.replace('-',''),
+                        "cep" : $scope.dadosPessoais.cep.replace(/-/g,""),
                         "uf" : $scope.dadosPessoais.endereco.codUF,
                         "proprio" : $scope.dadosPessoais.moradiaPrincial == "Sim" ? true : false,
                         "tipo" : $scope.dadosPessoais.tipoImovel.toUpperCase(),

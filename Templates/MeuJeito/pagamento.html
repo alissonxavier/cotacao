@@ -557,9 +557,12 @@
         </div>
         <div class="row box--margintop--20">
             <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0">
-                <select class="font--medium gray--light" id="parcelas" ng-model="dadosComplementares.faixaDeRenda" ng-options="renda for renda in faixaDeRenda" ng-class="{'alertInput' : !error.faixaDeRenda.valid}" ng-init="error.faixaDeRenda.valid = true">
+                <select class="font--medium gray--light" id="parcelas" ng-model="pagamento.parcelas" ng-class="{'alertInput' : !error.pagamento.parcelas.valid}" ng-init="error.pagamento.parcelas.valid = true">
                     <option selected value="">
                         Número de parcelas
+                    </option>
+                    <option selected value="1">
+                        1
                     </option>
                 </select>
                 <label class="select--round" for="renda">
@@ -571,7 +574,7 @@
             <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0">
 
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                    <button class="button--background" ng-click="go('meujeito/sucesso')">
+                    <button class="button--background" ng-click="gerarProposta()">
                         Comprar
                     </button>
                 </div>
