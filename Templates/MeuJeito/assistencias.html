@@ -4,10 +4,10 @@
             <img src="../images/fundo_grafismo_esquerda.svg" height="250" />
         </div>
         <div class="row">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row" du-parallax y="header">
-                    <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-                        <timeline passo="2"></timeline>
+                    <div class="col-lg-12 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                        <timeline passo="passo"></timeline>
                     </div>
                     <div class="col-md-8 col-md-offset-2">
                         <div class="header__logo--min">
@@ -91,9 +91,9 @@
                 </div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
+                        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12">
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-repeat="inclusa in coberturas | filter: { tipoComposicao: 'B'} as coberturasFiltradas">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-repeat="inclusa in coberturas | filter: { tipoComposicao: 'B'} as coberturasFiltradas">
                                     <box-flip name="{{inclusa.cobertura.sequencial}}">
                                         <div class="boxflip-flip">
                                             <div class="boxflip__front">
@@ -106,7 +106,7 @@
                                                                 <feColorMatrix id="filter_38" type="saturate" values="0" data-filterid="38" />
                                                             </filter>
                                                         </defs>
-                                                        <image x="-60" y="0" width="280" height="158" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{inclusa.cobertura.urlImagemIcone}}" />
+                                                        <image x="-60" y="0" width="280" height="158" xmlns:xlink="http://www.w3.org/1999/xlink" ng-href="{{inclusa.cobertura.urlImagemIcone}}" xlink:href=""/>
                                                     </svg>
                                                 </div>
                                                 <h4 class="boxflip__title line--inherit box--margintop--10">
@@ -119,18 +119,18 @@
                                                     Mínimo de {{inclusa.cobertura.coberturaLimiteCanal[0].valorMinimo|currency:''}} e máximo de {{inclusa.cobertura.coberturaLimiteCanal[0].valorMaximo|currency:''}}
                                                 </p>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="col-xs-1 col-xs-offset-0 col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1">
-                                                        <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="diminuiRange(inclusa, 100)">
-                                                            -
+                                                    <div class="col-xs-1 col-xs-offset-0 col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-0 box--nopadding">
+                                                        <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="diminuiRange(inclusa, 10)">
+                                                            <i class="fa fa-minus" aria-hidden="true" style="font-size: 7px; position: relative; top: -4px;"></i>
                                                         </button>
                                                     </div>
-                                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                    <div class="col-lg-8 col-md-8 col-sm-10 col-xs-8">
                                                         <rzslider rz-slider-model="inclusa.cobertura.valorFranquia" rz-slider-maxlimit="inclusa.cobertura.coberturaLimiteCanal[0].valorMaximo" rz-slider-options="{id: inclusa.cobertura.sequencial, showSelectionBar: true, hideLimitLabels: true, hidePointerLabels: true,floor: inclusa.cobertura.coberturaLimiteCanal[0].valorMinimo, ceil: inclusa.cobertura.coberturaLimiteCanal[0].valorMaximo, onChange : slider.onChange }"></rzslider>
                                                         
                                                     </div>
-                                                    <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
-                                                        <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="aumentaRange(inclusa, 100)">
-                                                            +
+                                                    <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1 box--nopadding">
+                                                        <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="aumentaRange(inclusa, 10)">
+                                                            <i class="fa fa-plus" aria-hidden="true" style="font-size: 7px; position: relative; top: -4px;"></i>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -162,7 +162,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12 col-lg-offset-0 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                        <div class="col-lg-12 col-lg-offset-0 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                             <div class="col-md-8 col-md-offset-2">
                                 <h4 class="title gray font--light text-center title--margin--top--bottom">
                                     Coberturas que você pode <span class="font--medium">adicionar</span> ao seu plano:
@@ -171,7 +171,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
+                        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 " ng-repeat="cobertura in coberturas | filter: { tipoComposicao: 'A'}">
                                     <box-flip ischeckbox="{{cobertura.cobertura.sequencial}}" name="{{cobertura.cobertura.sequencial}}">
@@ -188,9 +188,9 @@
                                         <div class="boxflip-flip">
                                             <div class="boxflip__front">
                                                 <div class="boxflip__icon">
-                                                    <!--<img src="{{cobertura.icone}}" class="boxflip__icon__img" />-->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 280 158" width="280" height="158">
-                                                        <image class="boxflip__icon__img" x="-60" y="0" width="280" height="158" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{cobertura.cobertura.urlImagemIcone}}" />
+                                                    <img src="{{cobertura.icone}}" class="boxflip__icon__img visible-xs" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 280 158" width="280" height="158" class="hidden-xs">
+                                                        <image class="boxflip__icon__img" x="-60" y="0" width="280" height="158" xmlns:xlink="http://www.w3.org/1999/xlink" ng-href="{{cobertura.cobertura.urlImagemIcone}}" xlink:href=""/>
                                                     </svg>
                                                 </div>
                                                 <h4 class="boxflip__title">
@@ -207,7 +207,7 @@
                                                     <div>
                                                         <div class="col-xs-1 col-xs-offset-0 col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1">
                                                             <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="diminuiRange(cobertura, 100)">
-                                                                -
+                                                                <i class="fa fa-minus" aria-hidden="true" style="font-size: 7px; position: relative; top: -4px;"></i>
                                                             </button>
                                                         </div>
                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
@@ -215,7 +215,7 @@
                                                         </div>
                                                         <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
                                                             <button class="button--rounded--slider button--rounded--slider--margin--min" type="button" ng-click="aumentaRange(cobertura, 100)">
-                                                                +
+                                                                <i class="fa fa-plus" aria-hidden="true" style="font-size: 7px; position: relative; top: -4px;"></i>
                                                             </button>
                                                         </div>
                                                     </div>
@@ -265,7 +265,7 @@
                 </div>
             </div>
             <div class="container-fluid container--white">
-                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
+                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12">
                     <div class="row">
                         <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 text-center">
                             <h3 class="title title__select--margin--min font--medium text-center roxo">
@@ -279,12 +279,12 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="assistencia in assistenciasInclusas as assistenciasFiltradas">
                             <box-flip type="min" name="{{assistencia.cobertura.sequencial}}">
-                                <div class="boxflip-flip">
+                                <div class="boxflip-flip boxflip-flip--min">
                                     <div class="boxflip__front">
                                         <div class="boxflip__icon">
-                                            <!--<img src="{{assistencia.icone}}" class="boxflip__icon__img" />-->
-                                            <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 160 140" width="160" height="140">
-                                                <image class="boxflip__icon__img" x="-40" y="0" width="240" height="170" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{assistencia.cobertura.urlImagemIcone}}" />
+                                            <img src="{{assistencia.icone}}" class="boxflip__icon__img visible-xs" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 160 140" width="160" height="140" class="hidden-xs">
+                                                <image class="boxflip__icon__img" x="-40" y="0" width="240" height="170" xmlns:xlink="http://www.w3.org/1999/xlink" ng-href="{{assistencia.cobertura.urlImagemIcone}}" xlink:href=""/>
                                             </svg>
                                         </div>
                                         <h4 class="boxflip__title line--inherit">
@@ -339,11 +339,12 @@
                                         <img src="../images/icon_off.svg" />
                                     </div>
                                 </label>
-                                <div class="boxflip-flip">
+                                <div class="boxflip-flip boxflip-flip--min">
                                     <div class="boxflip__front">
                                         <div class="boxflip__icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 280 158" width="280" height="158">
-                                                <image class="boxflip__icon__img" x="-60" y="0" width="280" height="158" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{assistencia.cobertura.urlImagemIcone}}" />
+                                            <img src="{{assistencia.cobertura.urlImagemIcone}}" class="boxflip__icon__img visible-xs" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 280 158" width="280" height="158" class="hidden-xs">
+                                                <image class="boxflip__icon__img" x="-60" y="0" width="280" height="158" xmlns:xlink="http://www.w3.org/1999/xlink" ng-href="{{assistencia.cobertura.urlImagemIcone}}" xlink:href="" />
                                             </svg>
                                         </div>
                                         <h4 class="boxflip__title">
@@ -397,12 +398,12 @@
                                         <img src="../images/icon_off.svg" />
                                     </div>
                                 </label>
-                                <div class="boxflip-flip">
+                                <div class="boxflip-flip boxflip-flip--min">
                                     <div class="boxflip__front">
                                         <div class="boxflip__icon boxflip__icon--minmargin">
-                                            <!--<img src="{{oferta.icone}}" class="boxflip__icon__img" ng-class="{'boxflip__icon__img--disabled' : !ofertaAssistencia.opcionais[oferta.id]}" />-->
-                                            <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 160 140" width="160" height="140">
-                                                    <image class="boxflip__icon__img" x="-40" y="0" width="240" height="170" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="" ng-href="{{assistencia.cobertura.urlImagemIcone}}" />
+                                            <img src="{{assistencia.cobertura.urlImagemIcone}}" class="boxflip__icon__img visible-xs"  />
+                                            <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 160 140" width="160" height="140" class="hidden-xs">
+                                                    <image class="boxflip__icon__img" x="-40" y="0" width="240" height="170" xmlns:xlink="http://www.w3.org/1999/xlink" ng-href="{{assistencia.cobertura.urlImagemIcone}}" xlink:href=""/>
                                             </svg>
                                         </div>
                                         <h4 class="boxflip__title line--inherit">
@@ -454,12 +455,12 @@
                                         <img src="../images/icon_off.svg" />
                                     </div>
                                 </label>
-                                <div class="boxflip-flip">
+                                <div class="boxflip-flip boxflip-flip--min">
                                     <div class="boxflip__front">
                                         <div class="boxflip__icon boxflip__icon--minmargin">
-                                            <!--<img src="{{oferta.icone}}" class="boxflip__icon__img" ng-class="{'boxflip__icon__img--disabled' : !ofertaAssistencia.opcionais[oferta.id]}" />-->
-                                            <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 160 140" width="160" height="140">
-                                                    <image class="boxflip__icon__img" x="-40" y="0" width="240" height="170" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="" ng-href="{{assistencia.cobertura.urlImagemIcone}}" />
+                                            <img src="{{assistencia.cobertura.urlImagemIcone}}" class="boxflip__icon__img visible-xs" ng-class="{'boxflip__icon__img--disabled' : !ofertaAssistencia.opcionais[oferta.id]}" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" id="svgroot" viewBox="0 0 160 140" width="160" height="140" class="hidden-xs">
+                                                <image class="boxflip__icon__img" x="-40" y="0" width="240" height="170" xmlns:xlink="http://www.w3.org/1999/xlink" ng-href="{{assistencia.cobertura.urlImagemIcone}}" xlink:href="" />
                                             </svg>
                                         </div>
                                         <h4 class="boxflip__title line--inherit" ng-class="{'disabled' : !ofertaAssistencia.opcionais[oferta.id]}">
@@ -539,8 +540,9 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div ng-class="{'show': changeValue, 'hidden': !changeValue}">
-                                    <button class="button--background--negative box__pricing__button" type="button" ng-click="recalcular()">
-                                        <i class="fa fa-refresh fa-spin" style="margin-right: 10px;"></i> Recalcular
+                                    <button class="button--background--negative box__pricing__button" ng-init="button = 'Calcular'; textvisible = true" type="button" ng-click="recalcular(); button = 'Recalcular';">
+                                        <i class="fa fa-refresh" style="margin-right: 10px;"></i>
+                                        <span ng-if="textvisible">{{button}}</span>
                                     </button>
                                     <div class="clearfix"></div>
                                 </div>

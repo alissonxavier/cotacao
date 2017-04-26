@@ -246,7 +246,7 @@ h1, h2, h3, h4, h5, h6, p, u, span {
 
 .headerFix {
     width: 100%;
-    height: 80px;
+    height: 55px;
     position: fixed;
     z-index: 999;
 }
@@ -409,7 +409,7 @@ h1, h2, h3, h4, h5, h6, p, u, span {
 /*Timeline*/
 .header__timeline {
     width: 97%;
-    padding: 2%;
+    padding: 10px 15px;
     height: 10%;
     position: absolute;
     left: 1%;
@@ -417,10 +417,11 @@ h1, h2, h3, h4, h5, h6, p, u, span {
 }
 
 .header__timeline__base {
-    width: 98%;
+    width: 96%;
     height: 1px;
     background: #8c5fa4;
-    margin-top: 12px;
+    margin-top: 8px;
+    margin-left: 18px;
 }
 
 .header__timeline__base--active {
@@ -944,20 +945,19 @@ input-place {
 }
 
 .button--rounded--slider {
-    width: 22px;
-    height: 22px;
-    border-radius: 20px;
+    width: 16px;
+    height: 16px;
+    border-radius: 40px;
     background: #005fc8;
     color: #fff;
     border: none;
-    font-weight: bold;
     padding: 0;
     margin-top: 26px;
     outline: none;
 }
 
 .button--rounded--slider--margin--min {
-    margin-top: 12px;
+    margin-top: 15px;
 }
 
 .button--background {
@@ -1423,7 +1423,6 @@ input-place {
 
 .boxflip {
     height: 390px;
-    border: 1px solid #e1e1e1;
     display: inline-block;
     -moz-perspective: 1000px;
     -ms-perspective: 1000px;
@@ -1435,7 +1434,8 @@ input-place {
     -o-transition: .6s;
     -webkit-transition: .6s;
     transition: .6s;
-    margin-top: 25px;
+    margin-top: 30px;
+    padding: 0;
 }
 
 .boxflip-flip {
@@ -1449,6 +1449,12 @@ input-place {
     -o-transition: .6s;
     -webkit-transition: .6s;
     transition: .6s;
+    border: 1px solid #e1e1e1;
+    height: 390px;
+}
+
+.boxflip-flip--min {
+    height: 270px;
 }
 
 .boxflip--disabled .boxflip__title {
@@ -1584,7 +1590,7 @@ input[type="checkbox"].boxflip__checkbox___input {
     -moz-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    padding: 0 30px;
+    padding: 0 15px;
     background: #fff;
     height: 100%;
 }
@@ -1614,7 +1620,7 @@ input[type="checkbox"].boxflip__checkbox___input {
     -moz-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    padding: 0 30px;
+    padding: 0 15px;
     background: #fff;
     height: 100%;
     -moz-perspective: 1000px;
@@ -1751,7 +1757,7 @@ input[type="checkbox"].boxflip__checkbox___input {
         position: absolute;
         margin-top: -18px;
         cursor: pointer;
-        top: 385px;
+        top: 390px;
         right: 31px;
     }
 
@@ -1760,7 +1766,7 @@ input[type="checkbox"].boxflip__checkbox___input {
         position: absolute;
         right: 41px;
         font-family: FontAwesome, sans-serif;
-        top: 388px;
+        top: 390px;
         color: #fff;
         cursor: pointer;
     }
@@ -1776,7 +1782,7 @@ input[type="checkbox"].boxflip__checkbox___input {
     position: absolute;
     margin-top: -18px;
     cursor: pointer;
-    top: 385px;
+    top: 390px;
     right: 31px;
 }
 
@@ -1786,7 +1792,7 @@ input[type="checkbox"].boxflip__checkbox___input {
     height: 26px;
     content: "";
     background-repeat: no-repeat;
-    background-position: 5px 4px;
+    background-position: 5px 7px;
 }
 
 .boxflip__button--disabled::before {
@@ -1800,7 +1806,7 @@ input[type="checkbox"].boxflip__checkbox___input {
     position: absolute;
     margin-top: -18px;
     cursor: pointer;
-    top: 385px;
+    top: 390px;
     right: 31px;
 }
 
@@ -2261,11 +2267,26 @@ select {
         margin: 30px 0;
     }
 
+    /*Modals*/
+    .modals {
+        width: 300px;
+        margin-left: -150px;
+    }
+
+        .modals .header {
+            height: 300px;
+        }
+
     /*TIMELINE*/
     .header__timeline {
         width: 100%;
-        left: 2%;
-        top: 20px;
+        left: 0;
+        top: 10px;
+    }
+
+    .header__timeline__base {
+        width: 100%;
+        margin-left: -3px;
     }
 
     .header__timeline__base__bullet {
@@ -2323,6 +2344,12 @@ select {
     .container--margintop--90 {
         margin-top: 80px;
     }
+
+    .button--checkcep {
+        top: -48px;
+        right: 0;
+        left: 87%;
+    }
 }
 
 @media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
@@ -2363,7 +2390,15 @@ select {
     .lineText::after {
         width: 40%;
     }
+
+    .modals {
+        width: 718px;
+        margin-left: -360px;
+    }
 }
 
 @media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
+    .modals {
+        width: 958px;
+    }
 }

@@ -4,21 +4,19 @@
     var $app = angular.module('app');
 
     $app.controller('assistenciasCtrl', ['$scope', '$location', 'storageService', '$logService', 'parallaxHelper','lodash','$filter','$cotacaoService','toastr', function ($scope, $location, storageService, $logService, parallaxHelper,lodash,$filter,$cotacaoService,toastr) {
+		$scope.passo = 2;
 
         $logService.message("assistencias Ctrl");
 
         $scope.changeValue = false;
 
-        $scope.header = parallaxHelper.createAnimator(-0.5, 150, -150);
-        $scope.grafismoLeft = parallaxHelper.createAnimator(-0.4, 0, -140, 40);
-        $scope.grafismoRight = parallaxHelper.createAnimator(-0.4, 0, -140, 40);
+        //$scope.header = parallaxHelper.createAnimator(-0.5, 150, -150);
+        //$scope.grafismoLeft = parallaxHelper.createAnimator(-0.4, 0, -140, 40);
+        //$scope.grafismoRight = parallaxHelper.createAnimator(-0.4, 0, -140, 40);
 
         $scope.assistencias = [];
 
         $scope.slider = {
-            showSelectionBar: true,
-            hideLimitLabels: true,
-            hidePointerLabels: true,
             onChange: function () {
                 $scope.changeValue = true;
             }
@@ -195,8 +193,8 @@
                 }
 
                 cotacao.imoveis.push({
-                        "logradouro" : $scope.dadosPessoais.endereco.endereco,
-                        "numero" : 0,
+                        "logradouro" : $scope.dadosPessoais.endereco.logradouro,
+                        "numero" : angular.isUndefined($scope.dadosPessoais.endereco.numero) ? 0 : $scope.dadosPessoais.endereco.numero,
                         "bairro" : $scope.dadosPessoais.endereco.bairro,
                         "cidade": $scope.dadosPessoais.endereco.cidade,
                         "cep" : $scope.dadosPessoais.cep.replace(/-/g,""),
@@ -204,7 +202,7 @@
                         "proprio" : $scope.dadosPessoais.moradiaPrincial == "Sim" ? true : false,
                         "tipo" : $scope.dadosPessoais.tipoImovel.toUpperCase(),
                         "uso" : "HABITUAL",
-                        "valor" : $scope.dadosPessoais.valorImovel,
+                        "valor" : $scope.dadosPessoais.valorAproximado,
                         "questionarioCotacao": {
                                 "terrenoBaldio": false,
                                 "condominioFechado": $scope.dadosPessoais.condominioFechado == "Sim" ? true: false,
@@ -230,6 +228,9 @@
                     $scope.vigencia = vigenciaFinal12Meses;
 
                      $scope.changeValue = false;
+
+            		//Retorno
+            		$scope.textVisible = true;
 
                 }, function (error){
                     $scope.changeValue = true;

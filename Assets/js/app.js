@@ -9,42 +9,53 @@
         $routeProvider
         .when("/", {
             templateUrl: "Templates/main.html",
-            controller: "mainCtrl"
+            controller: "mainCtrl",
+            reloadOnSearch: false
         })
         .when("/index", {
             templateUrl: "Templates/main.html",
-            controller: "mainCtrl"
+            controller: "mainCtrl",
+            reloadOnSearch: false
         })
         .when("/meujeito", {
-            templateUrl: "Templates/MeuJeito/dadosBasicos.html"
+            templateUrl: "Templates/MeuJeito/dadosBasicos.html",
+            controller: "dadosPessoaisCtrl",
+            reloadOnSearch: false
         })
         .when("/meujeito/assistencias", {
             templateUrl: "Templates/MeuJeito/assistencias.html",
-            controller: "assistenciasCtrl"
+            controller: "assistenciasCtrl",
+            reloadOnSearch: false
         })
         .when("/meujeito/complementares", {
             templateUrl: "Templates/MeuJeito/complementares.html",
-            controller: "complementaresCtrl"
+            controller: "complementaresCtrl",
+            reloadOnSearch: false
         })
         .when("/meujeito/pagamento", {
             templateUrl: "Templates/MeuJeito/pagamento.html",
-            controller: "pagamentoCtrl"
+            controller: "pagamentoCtrl",
+            reloadOnSearch: false
         })
         .when("/meujeito/error", {
             templateUrl: "Templates/MeuJeito/risco.html",
-            controller: "errorCtrl"
+            controller: "errorCtrl",
+            reloadOnSearch: false
         })
         .when("/meujeito/sucesso", {
             templateUrl: "Templates/MeuJeito/sucesso.html",
-            controller: "sucessoCtrl"
+            controller: "sucessoCtrl",
+            reloadOnSearch: false
         })
         .when("/meujeito/analise", {
             templateUrl: "Templates/MeuJeito/analise.html",
-            controller: "errorCtrl"
+            controller: "errorCtrl",
+            reloadOnSearch: false
         })
         .when("/ideal", {
             templateUrl: "Templates/Ideal/dadosBasicos.html",
-            controller: "mainController"
+            controller: "mainController",
+            reloadOnSearch: false
         });
 
         var options = {

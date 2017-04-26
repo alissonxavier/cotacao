@@ -19,12 +19,13 @@
             <img src="../images/fundo_grafismo_direita.svg" height="215" />
         </div>
     </div>
-    <modal ng-init="login = 'hidden'" display="{{login}}">
-        <div class="container-fluid header">
+    <modal ng-init="login.display = 'hidden'" display="{{login.display}}">
+        <div class="container-fluid header header--position--relative">
+            <i class="pull-right fa fa-close modals__close" ng-click="login.display = 'hidden'"></i>
             <div class="header__svg--left" style="width: 20%; top: 10px;">
                 <img src="../images/fundo_grafismo_esquerda.svg" />
             </div>
-            <div class="row" du-parallax y="header">
+            <div class="row">
                 <div class="container-fluid">
                     <div class="row" style="margin-top: 10px;">
                         <div class="col-md-8 col-md-offset-2">
@@ -106,10 +107,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <h4 class="title title__select--margin font--regular text-center hidden-xs">
-                        Se você já é cliente, para fazer a cotação, acesse sua conta <a ng-click="login = 'show'" class="title__href"><u class="title__href__u">aqui</u></a>.
+                        Se você já é cliente, para fazer a cotação, acesse sua conta <a ng-click="login.display = 'show'" class="title__href"><u class="title__href__u">aqui</u></a>.
                     </h4>
                     <h4 class="title box--margintop--34 font--regular text-center visible-xs">
-                        Se você já é cliente, para fazer a cotação, acesse sua conta <a ng-click="login = 'show'" class="title__href"><u class="title__href__u">aqui</u></a>.
+                        Se você já é cliente, para fazer a cotação, acesse sua conta <a ng-click="login.display = 'show'" class="title__href"><u class="title__href__u">aqui</u></a>.
                     </h4>
                 </div>
             </div>

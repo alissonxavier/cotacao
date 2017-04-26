@@ -3,23 +3,156 @@
 
     var $app = angular.module('app');
 
-    $app.controller('dadosPessoaisCtrl', ['$scope', '$attrs', '$location', 'storageService', 'parallaxHelper','$cepService','toastr', function ($scope, $attrs, $location, storageService, parallaxHelper,$cepService,toastr) {
+    $app.controller('dadosPessoaisCtrl', ['$scope', '$location', 'storageService', 'parallaxHelper','$cepService','toastr', function ($scope, $location, storageService, parallaxHelper,$cepService,toastr) {
+		$scope.passo = 1;
 
-        $scope.header = parallaxHelper.createAnimator(-0.5, 0, -150);
-        $scope.grafismoLeft = parallaxHelper.createAnimator(-0.4, 0, 0, 40);
-        $scope.grafismoRight = parallaxHelper.createAnimator(-0.4, 0, 0, 40);
-        
         $scope.dadosPessoais = {};
 
         if (storageService.restore('rdStorageStep1')) {
             $scope.dadosPessoais = JSON.parse(storageService.restore('rdStorageStep1'));
         };
 
+        $scope.estados = [{
+            "ID": "1",
+            "Sigla": "AC",
+            "Nome": "Acre"
+        },
+     {
+         "ID": "2",
+         "Sigla": "AL",
+         "Nome": "Alagoas"
+     },
+     {
+         "ID": "3",
+         "Sigla": "AM",
+         "Nome": "Amazonas"
+     },
+     {
+         "ID": "4",
+         "Sigla": "AP",
+         "Nome": "Amapá"
+     },
+     {
+         "ID": "5",
+         "Sigla": "BA",
+         "Nome": "Bahia"
+     },
+     {
+         "ID": "6",
+         "Sigla": "CE",
+         "Nome": "Ceará"
+     },
+     {
+         "ID": "7",
+         "Sigla": "DF",
+         "Nome": "Distrito Federal"
+     },
+     {
+         "ID": "8",
+         "Sigla": "ES",
+         "Nome": "Espírito Santo"
+     },
+     {
+         "ID": "9",
+         "Sigla": "GO",
+         "Nome": "Goiás"
+     },
+     {
+         "ID": "10",
+         "Sigla": "MA",
+         "Nome": "Maranhão"
+     },
+     {
+         "ID": "11",
+         "Sigla": "MG",
+         "Nome": "Minas Gerais"
+     },
+     {
+         "ID": "12",
+         "Sigla": "MS",
+         "Nome": "Mato Grosso do Sul"
+     },
+     {
+         "ID": "13",
+         "Sigla": "MT",
+         "Nome": "Mato Grosso"
+     },
+     {
+         "ID": "14",
+         "Sigla": "PA",
+         "Nome": "Pará"
+     },
+     {
+         "ID": "15",
+         "Sigla": "PB",
+         "Nome": "Paraíba"
+     },
+     {
+         "ID": "16",
+         "Sigla": "PE",
+         "Nome": "Pernambuco"
+     },
+     {
+         "ID": "17",
+         "Sigla": "PI",
+         "Nome": "Piauí"
+     },
+     {
+         "ID": "18",
+         "Sigla": "PR",
+         "Nome": "Paraná"
+     },
+     {
+         "ID": "19",
+         "Sigla": "RJ",
+         "Nome": "Rio de Janeiro"
+     },
+     {
+         "ID": "20",
+         "Sigla": "RN",
+         "Nome": "Rio Grande do Norte"
+     },
+     {
+         "ID": "21",
+         "Sigla": "RO",
+         "Nome": "Rondônia"
+     },
+     {
+         "ID": "22",
+         "Sigla": "RR",
+         "Nome": "Roraima"
+     },
+     {
+         "ID": "23",
+         "Sigla": "RS",
+         "Nome": "Rio Grande do Sul"
+     },
+     {
+         "ID": "24",
+         "Sigla": "SC",
+         "Nome": "Santa Catarina"
+     },
+     {
+         "ID": "25",
+         "Sigla": "SE",
+         "Nome": "Sergipe"
+     },
+     {
+         "ID": "26",
+         "Sigla": "SP",
+         "Nome": "São Paulo"
+     },
+     {
+         "ID": "27",
+         "Sigla": "TO",
+         "Nome": "Tocantins"
+     }];
+
         $scope.steps = {
             passo1: true
         }
         $scope.error = {};
-        $scope.valorAproximado = 7000000;
+        $scope.valorAproximado = 70000;
 
         /**
          * slider
@@ -29,8 +162,8 @@
             value: $scope.valorAproximado,
             options: {
                 showSelectionBar: true,
-                floor: 7000000,
-                ceil: 50000000,
+                floor: 70000,
+                ceil: 500000,
                 step: 1000,
                 translate: function (value) {
                     $scope.slider.value = value;
@@ -73,6 +206,7 @@
 
             $scope.isValid = true;
             $scope.steps.passo2 = true;
+            $scope.passo = 1.1;
         };
 
         /**
@@ -108,6 +242,7 @@
 
                     $scope.isValid = true;
                     $scope.steps.passo3 = true;
+                    $scope.passo = 1.2;
                 }
             } else {
 
@@ -133,6 +268,7 @@
 
                 $scope.isValid = true;
                 $scope.steps.passo3 = true;
+                $scope.passo = 1.2;
             }
 
         };
@@ -183,6 +319,7 @@
                 $scope.dadosPessoais.error = "";
                 storageService.save('rdStorageStep1', $scope.dadosPessoais);
                 $scope.steps.passo4 = true;
+                $scope.passo = 1.3;
             }
 
         };
@@ -191,61 +328,26 @@
          * validarCepOuLocalizacao
          * @description Validar o preenchimentos dos campos de CEP ou localização
          */
-        $scope.validarCepOuLocalizacao = function () {
 
+        $scope.consultarCep = function () {
             var cep = $scope.dadosPessoais.cep;
-            var localizacao = $scope.dadosPessoais.localizacao;
 
-            if (!cep) {
-                if (!localizacao) {
-                    $scope.error.cep = {
-                        message: "Preencha o seu CEP",
-                        valid: false
-                    };
-                    $scope.error.localizacao = {
-                        message: "ou sua localização.",
-                        valid: false
-                    };
-                    return false;
-                } else {
-                    $scope.error.cep = {
-                        message: "",
-                        valid: true
-                    };
-
-                    $scope.error.localizacao = {
-                        message: "",
-                        valid: true
-                    };
-
-                    $scope.isValid = true;
-                    $scope.steps.passo5 = true;
-                }
-            } else {
-
-                $cepService.consultaCEP(cep).
+            var cepSemMascara = cep.replace("-", "");
+            
+			$cepService.consultaCEP(cepSemMascara).
                 then(function (result){
                         if(result.data.codRetorno == "0"){
 
                             $scope.dadosPessoais.endereco = {
-                                endereco: result.data.indTipoLogradouro.trim(),
+                                logradouro: result.data.indTipoLogradouro.trim(),
                                 bairro: result.data.nomBairro.trim(),
                                 cidade: result.data.nomLocalidade.trim(),
+								localidade: result.data.nomLocalidade.trim(),
                                 codUF: result.data.codUF
                             }
-
-                            $scope.error.cep = {
-                                message: "",
-                                valid: true
-                            };
-
-                            $scope.error.localizacao = {
-                                message: "",
-                                valid: true
-                            };
-
-                            $scope.isValid = true;
-                            $scope.steps.passo5 = true;
+							
+							$scope.dadosPessoais.cepIsValid = true;
+                    
 
                         } else {
                             toastr.error('Ocorreu um erro ao buscar as informações do cep consultado', 'Error');
@@ -254,8 +356,28 @@
                 }, function (error){
                     toastr.error('Ocorreu um erro ao buscar as informações do cep consultado', 'Error');
                 })
-                
-            }
+        }
+
+        $scope.validarCepOuLocalizacao = function () {
+
+            var cep = $scope.dadosPessoais.cep;
+
+            if (!cep) {
+                $scope.error.cep = {
+                    message: "Preencha o seu CEP",
+                    valid: false
+                };
+            } else {
+
+                $scope.error.cep = {
+                    message: "",
+                    valid: true
+                };
+
+                $scope.isValid = true;
+                $scope.steps.passo5 = true;
+                $scope.passo = 1.4;
+			}
 
         };
 
@@ -267,11 +389,11 @@
         $scope.defineImovel = function (tipo) {
 
             if (tipo.toLowerCase() == 'casa') {
-                $scope.dadosPessoais.tipoImovel = "Casa";
+                $scope.dadosPessoais.tipoImovel = "CASA";
             }
 
             if (tipo.toLowerCase() == 'apartamento') {
-                $scope.dadosPessoais.tipoImovel = "Apartamento";
+                $scope.dadosPessoais.tipoImovel = "APARTAMENTO";
             }
 
         };
@@ -282,13 +404,15 @@
         */
         $scope.validarTipoImovel = function () {
             if ($scope.dadosPessoais.tipoImovel) {
-                if ($scope.dadosPessoais.tipoImovel == 'Casa') {
+                if ($scope.dadosPessoais.tipoImovel == 'CASA') {
                     $scope.isValid = true;
                     $scope.steps.passo6 = true;
-                } else if ($scope.dadosPessoais.tipoImovel == 'Apartamento') {
+					$scope.passo = 1.5;
+                } else if ($scope.dadosPessoais.tipoImovel == 'APARTAMENTO') {
                     $scope.isValid = true;
                     $scope.steps.passo6 = false;
                     $scope.steps.passo7 = true;
+					$scope.passo = 1.6;
                 }
             };
         };
@@ -317,6 +441,7 @@
             if ($scope.dadosPessoais.condominioFechado) {
                 $scope.isValid = true;
                 $scope.steps.passo7 = true;
+				$scope.passo = 1.7;
             };
         };
 
@@ -345,6 +470,7 @@
             if ($scope.dadosPessoais.moradiaPrincial) {
                 $scope.isValid = true;
                 $scope.steps.passo8 = true;
+				$scope.passo = 1.7;
             };
         };
 
@@ -353,8 +479,8 @@
          * @returns void
          */
         $scope.somaValorImovel = function () {
-            if ($scope.slider.value < 50000000) {
-                $scope.slider.value = Math.round($scope.slider.value + 500000);
+            if ($scope.slider.value < 500000) {
+                $scope.slider.value = Math.round($scope.slider.value + 5000);
             }
             return false;
         }
@@ -364,8 +490,8 @@
          * @returns void
          */
         $scope.diminuirValorImovel = function () {
-            if ($scope.slider.value > 7000000) {
-                $scope.slider.value = Math.round($scope.slider.value - 500000);
+            if ($scope.slider.value > 70000) {
+                $scope.slider.value = Math.round($scope.slider.value - 5000);
             }
             return false;
         }
@@ -377,11 +503,12 @@
             if (!$scope.valorAproximado) {
                 return false;
             }
-            
-            $scope.dadosPessoais.valorImovel = $scope.slider.value;
+
+            $scope.dadosPessoais.valorAproximado = $scope.slider.value;
 
             $scope.isValid = true;
             $scope.steps.passo9 = true;
+            $scope.passo = 1.9;
         }
 
         /**
@@ -403,6 +530,7 @@
         $scope.validarImovelComSeguroOutraEmpresa = function () {
             $scope.isValid = true;
             $scope.steps.passo10 = true;
+            $scope.passo = 2;
 
             storageService.save('rdStorageStep1', $scope.dadosPessoais);
             $scope.go('meujeito/assistencias');
