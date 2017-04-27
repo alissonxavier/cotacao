@@ -3,7 +3,7 @@
 
     var $app = angular.module('app');
 
-    $app.controller('complementaresCtrl', ['$scope', '$location', 'storageService', 'parallaxHelper', function ($scope, $location, storageService, parallaxHelper) {
+    $app.controller('complementaresCtrl', ['$scope', '$location', 'storageService', 'parallaxHelper','$cepService','toastr', function ($scope, $location, storageService, parallaxHelper,$cepService,toastr) {
 
         //$scope.header = parallaxHelper.createAnimator(-0.5, 150, -150);
         //$scope.grafismoLeft = parallaxHelper.createAnimator(-0.4, 0, -180, 40);
@@ -33,7 +33,70 @@
         if ($scope.dadosPessoais.telefone) {
             $scope.dadosComplementares.telefone = $scope.dadosPessoais.telefone;
         }
-        
+
+        /**
+ * validarCepOuLocalizacao
+ * @description Validar o preenchimentos dos campos de CEP ou localização
+ */
+
+        $scope.consultarCep = function () {
+            
+			var cep = $scope.dadosComplementares.cepCorrespondencia;
+
+            var cepSemMascara = cep.replace("-", "");
+            
+			$cepService.consultaCEP(cepSemMascara).
+                then(function (result){
+                        if(result.data.codRetorno == "0"){
+
+                            $scope.dadosPessoais.endereco = {
+                                logradouro: result.data.indTipoLogradouro.trim(),
+                                bairro: result.data.nomBairro.trim(),
+                                cidade: result.data.nomLocalidade.trim(),
+								localidade: result.data.nomLocalidade.trim(),
+                                codUF: result.data.codUF
+                            }
+							
+							$scope.dadosPessoais.cepIsValid = true;
+                    
+
+                        } else {
+                            toastr.error('Ocorreu um erro ao buscar as informações do cep consultado', 'Error');
+                        }
+
+                }, function (error){
+                    toastr.error('Ocorreu um erro ao buscar as informações do cep consultado', 'Error');
+                });
+        }
+
+        $scope.consultarCepCorrespondencia = function () {
+            var cep = $scope.dadosComplementares.cepCorrespondencia;
+
+            var cepSemMascara = cep.replace("-", "");
+			
+			$cepService.consultaCEP(cepSemMascara).
+                then(function (result){
+                        if(result.data.codRetorno == "0"){
+
+                            $scope.dadosComplementares.correspondencia = {
+                                logradouro: result.data.indTipoLogradouro.trim(),
+                                bairro: result.data.nomBairro.trim(),
+                                cidade: result.data.nomLocalidade.trim(),
+								localidade: result.data.nomLocalidade.trim(),
+                                codUF: result.data.codUF
+                            }
+							
+							$scope.dadosComplementares.cepIsValid = true;
+                    
+
+                        } else {
+                            toastr.error('Ocorreu um erro ao buscar as informações do cep consultado', 'Error');
+                        }
+
+                }, function (error){
+                    toastr.error('Ocorreu um erro ao buscar as informações do cep consultado', 'Error');
+                });
+        }
 
         $scope.error = {};
         $scope.estados = [{
@@ -640,6 +703,56 @@
                 }
             }
 
+            $scope.validarCPF = function (cpf) {
+
+                var cpf = cpf.replace(/[^\d]+/g, '');
+
+                if (cpf == '') {
+                    return false;
+                }
+                // Elimina CPFs invalidos conhecidos    
+                if (cpf.length != 11 ||
+                    cpf == "00000000000" ||
+                    cpf == "11111111111" ||
+                    cpf == "22222222222" ||
+                    cpf == "33333333333" ||
+                    cpf == "44444444444" ||
+                    cpf == "55555555555" ||
+                    cpf == "66666666666" ||
+                    cpf == "77777777777" ||
+                    cpf == "88888888888" ||
+                    cpf == "99999999999") {
+                    return false;
+                }
+                // Valida 1o digito 
+                let add = 0;
+                for (let i = 0; i < 9; i++) {
+                    add += parseInt(cpf.charAt(i)) * (10 - i);
+                }
+                let rev = 11 - (add % 11);
+
+                if (rev == 10 || rev == 11) {
+                    rev = 0;
+                }
+                if (rev != parseInt(cpf.charAt(9))) {
+                    return false;
+                }
+                // Valida 2o digito 
+                add = 0;
+                for (let i = 0; i < 10; i++) {
+                    add += parseInt(cpf.charAt(i)) * (11 - i);
+                }
+                rev = 11 - (add % 11);
+                if (rev == 10 || rev == 11) {
+                    rev = 0;
+                }
+
+                if (rev != parseInt(cpf.charAt(10))) {
+                    return false;
+                }
+                return true;
+            }
+
             //Validar CPF
             if (!$scope.dadosComplementares.cpf) {
                 $scope.error.cpf = {
@@ -648,9 +761,12 @@
                 }
                 return false;
             } else {
+
+                var valid = $scope.validarCPF($scope.dadosComplementares.cpf);
+
                 var rule = /^[0-9]{3}[\.][0-9]{3}[\.][0-9]{3}[\-][0-9]{2}$/.test($scope.dadosComplementares.cpf);
 
-                if (!rule) {
+                if (!rule || !valid) {
                     $scope.error.cpf = {
                         message: "CPF inválido",
                         valid: false
@@ -680,6 +796,65 @@
                     }
                     return false;
                 }
+
+                const date = new Date();
+                let ano = date.getFullYear();
+                let limite = 120;
+                let diffAnoLimite = Math.round(ano - limite);
+                let diffAnoMinimo = Math.round(ano - 18);
+
+                let split = $scope.dadosComplementares.dataNascimento.split("/");
+
+                if (split[0] > 31) {
+                    $scope.error.dataNascimento = {
+                        message: "Data de nascimento inválida",
+                        valid: false
+                    }
+                    return false;
+                }
+
+                if (split[1] > 12) {
+                    $scope.error.dataNascimento = {
+                        message: "Data de nascimento inválida",
+                        valid: false
+                    }
+                    return false;
+                }
+
+                if (split[1] == 2) {
+                    if (split[1] > 29) {
+                        $scope.error.dataNascimento = {
+                            message: "Data de nascimento inválida",
+                            valid: false
+                        }
+                        return false;
+                    }
+                }
+
+                if (split[2] < diffAnoLimite) {
+                    $scope.error.dataNascimento = {
+                        message: "Data de nascimento inválida",
+                        valid: false
+                    }
+                    return false;
+                }
+
+                if (split[2] > diffAnoMinimo) {
+                    $scope.error.dataNascimento = {
+                        message: "Data de nascimento inválida",
+                        valid: false
+                    }
+                    return false;
+                }
+
+                if (split[2] > ano) {
+                    $scope.error.dataNascimento = {
+                        message: "Data de nascimento inválida",
+                        valid: false
+                    }
+                    return false;
+                }
+
                 $scope.error.dataNascimento = {
                     message: "",
                     valid: true
@@ -711,7 +886,7 @@
             } else {
                 $scope.error.faixaDeRenda = {
                     message: "",
-                    valid: false
+                    valid: true
                 }
             }
 

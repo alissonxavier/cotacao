@@ -7,16 +7,21 @@
         return {
             restrict: 'A',
             link: function (scope, element, attrs) {
-                var wWindow = $window.innerWidth;
-                var wTop = element[0].offsetTop;
-                
-                if (wWindow <= 768 || wWindow > 768) {
-                    $("html,body").stop().animate({ scrollTop: Math.round(wTop - 60) }, 1000);
-                }
+                let $form = angular.element(element).parent().parent().parent().parent();
+                let wWindow = $window.innerWidth;
+                let wTop = $(element[0]).offset().top;
 
-                if ( wWindow >= 992) {
-                    $("html,body").stop().animate({ scrollTop: Math.round(wTop + 250) }, 1000);
-                }
+                $form.on('submit', function () {
+                    if (attrs.message.length > 1) {
+                        if (wWindow <= 768 || wWindow > 768) {
+                            $("html,body").stop().animate({ scrollTop: Math.round(wTop - 120) }, 1000);
+                        }
+
+                        if (wWindow >= 992) {
+                            $("html,body").stop().animate({ scrollTop: Math.round(wTop - 60) }, 1000);
+                        }
+                    }
+                });
             }
         };
 

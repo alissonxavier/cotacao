@@ -21,6 +21,8 @@
             },
             restrict: 'EA',
             link: function (scope, element, attr, ngModel) {
+                let $form = angular.element(element).parent().parent().parent().parent();
+                let $element = angular.element(element[0]);
 
                 element.find('input').on('blur', function () {
                     var $this = angular.element(this).val();
@@ -45,6 +47,15 @@
                     element.find('label').addClass("inputPlace__label--actived");
                 });
 
+                $form.on('submit', function () {
+                    if (attr.message.length > 1) {
+                        console.log(attr.message);
+                    }
+                });
+
+                $element.find('input').on('input', function () {
+                    attr.$set('message', '');
+                });
 
             }
         }

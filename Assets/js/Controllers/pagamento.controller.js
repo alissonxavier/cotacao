@@ -57,7 +57,7 @@
                     rendaIndividual: 500,//$scope.dadosComplementares.faixaDeRenda,
                     dataNascimento: $filter('date')(dataNascimento, 'yyyy-MM-ddTHH:mm:ssZ'),
                     sexo: $scope.dadosComplementares.sexo == "Masculino" ? "M" : "F",
-                    enderecoLogradouro: angular.isUndefined($scope.dadosComplementares.eCorrespondencia) ? $scope.dadosPessoais.endereco.endereco : $scope.dadosComplementares.correspondencia.endereco,
+                    enderecoLogradouro: angular.isUndefined($scope.dadosComplementares.eCorrespondencia) ? $scope.dadosPessoais.endereco.logradouro : $scope.dadosComplementares.correspondencia.logradouro,
                     enderecoNumero: angular.isUndefined($scope.dadosComplementares.eCorrespondencia) ? $scope.dadosPessoais.endereco.numero : $scope.dadosComplementares.correspondencia.numero,
                     enderecoBairro: angular.isUndefined($scope.dadosComplementares.eCorrespondencia) ? $scope.dadosPessoais.endereco.bairro : $scope.dadosComplementares.correspondencia.bairro,
                     enderecoCidade: angular.isUndefined($scope.dadosComplementares.eCorrespondencia) ? $scope.dadosPessoais.endereco.cidade : $scope.dadosComplementares.correspondencia.cidade,
